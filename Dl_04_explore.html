@@ -7,6 +7,8 @@
 <title>Doan Lab &mdash; More from the lab</title>
 <style>
   html, body { margin: 0; padding: 0; background: transparent; }
+  /* no trailing margin inside the frame — Drupal supplies the spacing */
+  .doan-lab .dl-band { margin-bottom: 0; }
 </style>
 </head>
 <body>
@@ -196,7 +198,7 @@
   /* Hosts that count as "inside our site" — no dialog for these. */
   var INTERNAL_HOSTS = ["proctor.ucsf.edu"];
 
-  /* Name of this file, used by the parent page to find this iframe. */
+  /* This file's own name, so the parent can find the right iframe. */
   var FRAME_ID = "Dl_04_explore";
 
   function isInternal(host) {
@@ -211,20 +213,34 @@
   }
 
   var framed = (window.parent !== window);
+  var last = 0;
 
-  /* ---- tell the parent how tall we are ---- */
+  /* Measure the CONTENT element, never the document or body — those report
+     the viewport height when content is shorter, which makes the iframe
+     grow a little on every message, forever. */
+  function contentEl() {
+    return document.querySelector(".doan-lab, .proctor-intl") ||
+           document.body.firstElementChild;
+  }
+
   function sendHeight() {
     if (!framed) { return; }
-    var h = Math.max(
-      document.body.scrollHeight, document.documentElement.scrollHeight,
-      document.body.offsetHeight, document.documentElement.offsetHeight);
+    var el = contentEl();
+    if (!el) { return; }
+    var h = Math.ceil(el.getBoundingClientRect().height);
+    if (h < 1) { return; }
+    if (Math.abs(h - last) < 2) { return; }   /* ignore sub-pixel jitter */
+    last = h;
     try { window.parent.postMessage({ dlFrame: FRAME_ID, height: h }, "*"); } catch (e) {}
   }
+
   window.addEventListener("load", sendHeight);
-  window.addEventListener("resize", sendHeight);
+  window.addEventListener("resize", function () { last = 0; sendHeight(); });
   document.addEventListener("click", function () { window.setTimeout(sendHeight, 60); });
-  if (window.ResizeObserver) { new ResizeObserver(sendHeight).observe(document.body); }
-  else { window.setInterval(sendHeight, 800); }
+  if (window.ResizeObserver) {
+    var el = contentEl();
+    if (el) { new ResizeObserver(sendHeight).observe(el); }
+  }
   sendHeight();
 
   /* ---- hand external links up to the parent page ---- */
