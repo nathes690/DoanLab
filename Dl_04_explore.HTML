@@ -1,3 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<base target="_top">
+<title>Doan Lab &mdash; More from the lab</title>
+<style>
+  html, body { margin: 0; padding: 0; background: transparent; }
+</style>
+</head>
+<body>
 <style>
   .doan-lab {
     --ink:#0f1d2c; --ink-soft:#3d4e5e; --muted:#7a8896; --line:#dde4eb;
@@ -176,3 +188,34 @@
         </div>
     </section>
 </div>
+
+<script>
+(function () {
+  "use strict";
+  /* report our height to the Drupal page so the iframe can resize */
+  function sendHeight() {
+    var h = Math.max(
+      document.body.scrollHeight,
+      document.documentElement.scrollHeight,
+      document.body.offsetHeight,
+      document.documentElement.offsetHeight
+    );
+    try {
+      window.parent.postMessage({ dlFrame: "Dl_04_explore", height: h }, "*");
+    } catch (e) {}
+  }
+
+  window.addEventListener("load", sendHeight);
+  window.addEventListener("resize", sendHeight);
+  document.addEventListener("click", function () { window.setTimeout(sendHeight, 60); });
+
+  if (window.ResizeObserver) {
+    new ResizeObserver(sendHeight).observe(document.body);
+  } else {
+    window.setInterval(sendHeight, 800);
+  }
+  sendHeight();
+})();
+</script>
+</body>
+</html>
