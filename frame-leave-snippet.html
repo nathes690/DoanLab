@@ -1,0 +1,62 @@
+<!-- =====================================================================
+     Paste this just before </body> in EVERY GitHub-hosted Proctor block.
+     Change __FRAMEID__ to the file's own name, e.g. "Dl_04_explore".
+     It does two jobs: reports the block's height to the Drupal page,
+     and hands external link clicks up so the page-level dialog opens.
+     ===================================================================== -->
+
+<script>
+(function () {
+  "use strict";
+
+  /* Hosts that count as "inside our site" — no dialog for these. */
+  var INTERNAL_HOSTS = ["proctor.ucsf.edu"];
+
+  /* Name of this file, used by the parent page to find this iframe. */
+  var FRAME_ID = "__FRAMEID__";
+
+  function isInternal(host) {
+    for (var i = 0; i < INTERNAL_HOSTS.length; i++) {
+      if (host === INTERNAL_HOSTS[i]) { return true; }
+      if (host.length > INTERNAL_HOSTS[i].length &&
+          host.slice(-(INTERNAL_HOSTS[i].length + 1)) === "." + INTERNAL_HOSTS[i]) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  var framed = (window.parent !== window);
+
+  /* ---- tell the parent how tall we are ---- */
+  function sendHeight() {
+    if (!framed) { return; }
+    var h = Math.max(
+      document.body.scrollHeight, document.documentElement.scrollHeight,
+      document.body.offsetHeight, document.documentElement.offsetHeight);
+    try { window.parent.postMessage({ dlFrame: FRAME_ID, height: h }, "*"); } catch (e) {}
+  }
+  window.addEventListener("load", sendHeight);
+  window.addEventListener("resize", sendHeight);
+  document.addEventListener("click", function () { window.setTimeout(sendHeight, 60); });
+  if (window.ResizeObserver) { new ResizeObserver(sendHeight).observe(document.body); }
+  else { window.setInterval(sendHeight, 800); }
+  sendHeight();
+
+  /* ---- hand external links up to the parent page ---- */
+  document.addEventListener("click", function (e) {
+    if (!framed) { return; }
+    var a = e.target.closest ? e.target.closest("a") : null;
+    if (!a) { return; }
+    var href = a.getAttribute("href") || "";
+    if (href.indexOf("http") !== 0) { return; }
+    var host;
+    try { host = new URL(href, window.location.href).hostname; }
+    catch (err) { return; }
+    if (isInternal(host)) { return; }
+    if (e.metaKey || e.ctrlKey || e.shiftKey || e.button !== 0) { return; }
+    e.preventDefault();
+    try { window.parent.postMessage({ plLeave: a.href }, "*"); } catch (err2) {}
+  });
+})();
+</script>

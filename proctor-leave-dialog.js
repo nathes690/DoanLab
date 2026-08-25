@@ -1,0 +1,212 @@
+/* ==========================================================================
+   Proctor — "you are leaving this site" dialog
+   Load once, site-wide (theme library). Handles two cases:
+     1. Links inside GitHub-hosted blocks embedded in an iframe
+        (the frame posts a message; see frame-leave-snippet.html)
+     2. Links inside blocks pasted directly into Drupal
+   ========================================================================== */
+(function () {
+  "use strict";
+
+  /* ---- configure -------------------------------------------------------- */
+
+  /* Hosts treated as "inside our site" — no dialog for these. */
+  var INTERNAL_HOSTS = [
+    "proctor.ucsf.edu"
+  ];
+
+  /* Origins allowed to ask us to open the dialog. Add any other
+     GitHub Pages accounts that host Proctor blocks. */
+  var TRUSTED_ORIGINS = [
+    "https://nathes690.github.io"
+  ];
+
+  /* Open the destination in a new tab (true) or this tab (false). */
+  var OPEN_IN_NEW_TAB = true;
+
+  /* ----------------------------------------------------------------------- */
+
+  var dlg = null;
+  var els = {};
+  var lastFocus = null;
+
+  function isInternal(host) {
+    for (var i = 0; i < INTERNAL_HOSTS.length; i++) {
+      if (host === INTERNAL_HOSTS[i]) { return true; }
+      if (host.length > INTERNAL_HOSTS[i].length &&
+          host.slice(-(INTERNAL_HOSTS[i].length + 1)) === "." + INTERNAL_HOSTS[i]) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  function injectStyles() {
+    var css =
+      ".pl-scrim{position:fixed;inset:0;z-index:9999;display:none;" +
+        "align-items:center;justify-content:center;padding:20px;" +
+        "background:rgba(6,15,30,.72);-webkit-backdrop-filter:blur(3px);backdrop-filter:blur(3px)}" +
+      ".pl-scrim.is-open{display:flex;animation:plFade .22s ease-out}" +
+      "@keyframes plFade{from{opacity:0}to{opacity:1}}" +
+      ".pl-card{position:relative;width:100%;max-width:440px;background:#fffdf8;" +
+        "border-radius:16px;border-top:5px solid #d8b25e;padding:32px 32px 26px;" +
+        "text-align:center;color:#1a2438;font-family:Georgia,'Times New Roman',serif;" +
+        "line-height:1.6;box-shadow:0 30px 70px -20px rgba(8,20,40,.6);" +
+        "animation:plRise .28s cubic-bezier(.22,1,.36,1)}" +
+      "@keyframes plRise{from{opacity:0;transform:translateY(20px) scale(.97)}" +
+        "to{opacity:1;transform:none}}" +
+      ".pl-mark{width:46px;height:46px;margin:0 auto 16px;border-radius:50%;" +
+        "background:radial-gradient(circle at 35% 30%,#f0d292,#b88d34);" +
+        "display:flex;align-items:center;justify-content:center;color:#fff;font-size:1.35rem;" +
+        "font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,sans-serif}" +
+      ".pl-title{font-size:1.45rem;font-weight:700;margin:0 0 10px;color:#0a1c38;line-height:1.25}" +
+      ".pl-text{font-size:.96rem;color:#4a5468;margin:0 0 8px;line-height:1.6}" +
+      ".pl-host{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,sans-serif;" +
+        "font-size:.92rem;font-weight:700;color:#10325f;background:#f4f1e9;" +
+        "border:1px solid #e6dcc4;border-radius:8px;padding:10px 14px;margin:0 0 22px;" +
+        "word-break:break-all}" +
+      ".pl-actions{display:flex;flex-direction:column;gap:10px}" +
+      ".pl-go{appearance:none;border:none;cursor:pointer;display:block;text-decoration:none;" +
+        "font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,sans-serif;" +
+        "font-size:.98rem;font-weight:700;color:#3a2a06;padding:14px;border-radius:50px;" +
+        "background:linear-gradient(135deg,#f0d292,#d8b25e 50%,#b88d34);" +
+        "box-shadow:0 8px 20px -8px rgba(216,178,94,.7);transition:transform .2s,filter .2s}" +
+      ".pl-go:hover{transform:translateY(-1px);filter:brightness(1.04)}" +
+      ".pl-stay{appearance:none;cursor:pointer;background:transparent;border:none;padding:8px;" +
+        "font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,sans-serif;" +
+        "font-size:.9rem;font-weight:600;color:#6b7488;border-radius:8px}" +
+      ".pl-stay:hover{color:#1a2438;text-decoration:underline}" +
+      ".pl-go:focus-visible,.pl-stay:focus-visible{outline:3px solid #10325f;outline-offset:3px}" +
+      "@media(prefers-reduced-motion:reduce){.pl-scrim,.pl-card{animation:none!important}" +
+        ".pl-go:hover{transform:none}}";
+    var s = document.createElement("style");
+    s.appendChild(document.createTextNode(css));
+    document.head.appendChild(s);
+  }
+
+  function build() {
+    if (dlg) { return; }
+    injectStyles();
+
+    dlg = document.createElement("div");
+    dlg.className = "pl-scrim";
+    dlg.setAttribute("role", "dialog");
+    dlg.setAttribute("aria-modal", "true");
+    dlg.setAttribute("aria-labelledby", "pl-title");
+
+    var card = document.createElement("div");
+    card.className = "pl-card";
+
+    var mark = document.createElement("div");
+    mark.className = "pl-mark";
+    mark.setAttribute("aria-hidden", "true");
+    mark.appendChild(document.createTextNode("\u2197"));
+
+    var title = document.createElement("p");
+    title.className = "pl-title";
+    title.id = "pl-title";
+    title.appendChild(document.createTextNode("You're leaving the Proctor website"));
+
+    var text = document.createElement("p");
+    text.className = "pl-text";
+    text.appendChild(document.createTextNode(
+      "You'll continue to an external site, which opens in a new tab."));
+
+    var host = document.createElement("p");
+    host.className = "pl-host";
+
+    var actions = document.createElement("div");
+    actions.className = "pl-actions";
+
+    var go = document.createElement("a");
+    go.className = "pl-go";
+    go.setAttribute("href", "#");
+    go.setAttribute("rel", "noopener");
+    if (OPEN_IN_NEW_TAB) { go.setAttribute("target", "_blank"); }
+    go.appendChild(document.createTextNode("Continue"));
+
+    var stay = document.createElement("button");
+    stay.className = "pl-stay";
+    stay.setAttribute("type", "button");
+    stay.appendChild(document.createTextNode("Stay on this page"));
+
+    actions.appendChild(go);
+    actions.appendChild(stay);
+    card.appendChild(mark);
+    card.appendChild(title);
+    card.appendChild(text);
+    card.appendChild(host);
+    card.appendChild(actions);
+    dlg.appendChild(card);
+    document.body.appendChild(dlg);
+
+    els = { go: go, stay: stay, host: host, text: text };
+
+    stay.addEventListener("click", close);
+    go.addEventListener("click", function () { window.setTimeout(close, 60); });
+    dlg.addEventListener("click", function (e) { if (e.target === dlg) { close(); } });
+    document.addEventListener("keydown", function (e) {
+      if (!dlg.classList.contains("is-open")) { return; }
+      if (e.key === "Escape" || e.keyCode === 27) { close(); return; }
+      if (e.key === "Tab" || e.keyCode === 9) {
+        e.preventDefault();
+        (document.activeElement === els.go ? els.stay : els.go).focus();
+      }
+    });
+  }
+
+  function open(url, trigger) {
+    build();
+    lastFocus = trigger || null;
+    els.go.setAttribute("href", url);
+    els.host.textContent = url;
+    els.text.textContent = OPEN_IN_NEW_TAB
+      ? "You'll continue to an external site, which opens in a new tab."
+      : "You'll continue to an external site.";
+    dlg.classList.add("is-open");
+    document.documentElement.style.overflow = "hidden";
+    els.go.focus();
+  }
+
+  function close() {
+    if (!dlg) { return; }
+    dlg.classList.remove("is-open");
+    document.documentElement.style.overflow = "";
+    if (lastFocus && lastFocus.focus) { lastFocus.focus(); }
+    lastFocus = null;
+  }
+
+  /* ---- case 1: message from an embedded GitHub block --------------------- */
+  window.addEventListener("message", function (e) {
+    var ok = false, i;
+    for (i = 0; i < TRUSTED_ORIGINS.length; i++) {
+      if (e.origin === TRUSTED_ORIGINS[i]) { ok = true; break; }
+    }
+    if (!ok || !e.data) { return; }
+
+    /* iframe auto-resize */
+    if (e.data.dlFrame && e.data.height) {
+      var f = document.querySelector('iframe[src*="' + e.data.dlFrame + '"]');
+      if (f) { f.style.height = (e.data.height + 20) + "px"; }
+    }
+
+    /* leaving-site request */
+    if (e.data.plLeave) { open(e.data.plLeave, null); }
+  });
+
+  /* ---- case 2: links in blocks pasted straight into Drupal --------------- */
+  document.addEventListener("click", function (e) {
+    var a = e.target.closest ? e.target.closest("a") : null;
+    if (!a || (dlg && dlg.contains(a))) { return; }
+    if (!a.closest(".doan-lab, .proctor-intl")) { return; }
+    var href = a.getAttribute("href") || "";
+    if (href.indexOf("http") !== 0) { return; }
+    var host;
+    try { host = new URL(href, window.location.href).hostname; }
+    catch (err) { return; }
+    if (isInternal(host)) { return; }
+    if (e.metaKey || e.ctrlKey || e.shiftKey || e.button !== 0) { return; }
+    e.preventDefault();
+    open(a.href, a);
+  });
+})();
