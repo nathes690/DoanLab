@@ -1,0 +1,1400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<base target="_top">
+<title>The Doan Lab &mdash; UCSF Proctor Foundation</title>
+<style>
+  html, body { margin: 0; padding: 0; background: transparent; }
+  #dl-page > .doan-lab:last-child .dl-band { margin-bottom: 0; }
+</style>
+<style>
+  /* ===== 1. HERO ===== */
+
+  .doan-lab {
+    --ink:#0f1d2c;
+    --ink-soft:#3d4e5e;
+    --muted:#7a8896;
+    --line:#dde4eb;
+    --bg:#fafbfc;
+    --paper:#ffffff;
+    --accent:#0b5394;
+    --accent-soft:#eaf1f8;
+    --deep:#0a1f36;
+    --deep-2:#0f2c4a;
+    --amber:#b06d18;
+    --amber-soft:#fdf5e6;
+    --amber-line:#e6c88a;
+    --shadow-1: 0 1px 3px rgba(15,29,44,0.05);
+    --shadow-2: 0 10px 28px rgba(15,29,44,0.10);
+    --radius: 14px;
+    --band-radius: 18px;
+    font-family: Georgia, "Times New Roman", serif;
+    color: var(--ink);
+    max-width: 1200px; margin: 0 auto;
+    line-height: 1.7; font-size: 17px;
+    background: transparent;
+  }
+  .doan-lab * { box-sizing: border-box; }
+  .doan-lab a { color: var(--accent); text-decoration: none; }
+  .doan-lab a:hover { text-decoration: underline; }
+  .doan-lab img { max-width: 100%; }
+  .dl-band {
+    position: relative; border-radius: var(--band-radius);
+    overflow: hidden; margin-bottom: 34px;
+  }
+  .dl-inner { padding: 62px 60px; }
+  .doan-lab .dl-eyebrow {
+    display: inline-block;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, sans-serif;
+    font-size: 0.72rem; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 2px;
+    color: var(--accent); background: var(--accent-soft);
+    padding: 6px 14px; border-radius: 20px; margin: 0 0 18px; line-height: 1.4;
+  }
+  .doan-lab .dl-eyebrow.on-dark { color: #cfe2f5; background: rgba(255,255,255,0.12); }
+  .dl-h2 {
+    font-size: 2.1rem; font-weight: 700; margin: 0 0 16px;
+    line-height: 1.15; letter-spacing: -0.015em; color: var(--ink);
+  }
+  .dl-intro {
+    font-size: 1.05rem; color: var(--ink-soft);
+    margin: 0 0 36px; line-height: 1.7; max-width: 78ch;
+  }
+  @media (max-width: 880px) {
+    .dl-inner { padding: 40px 24px; }
+    .dl-h2 { font-size: 1.55rem; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .doan-lab * { transition: none !important; animation: none !important; }
+  }
+
+  /* ============ 1. HERO ============ */
+  .dl-hero { background: linear-gradient(160deg, var(--deep) 0%, var(--deep-2) 100%); }
+  .dl-hero-photo {
+    position: relative; height: 220px;
+    background: #0d2440; line-height: 0; overflow: hidden;
+  }
+  .dl-hero-photo img,
+  .dl-hero-photo drupal-media img {
+    width: 100% !important; height: 100% !important;
+    object-fit: cover !important; object-position: center 40%;
+    display: block; margin: 0 !important; opacity: 0.85;
+  }
+  .dl-hero-photo drupal-media, .dl-hero-photo figure {
+    display: block; margin: 0 !important; padding: 0; width: 100%; height: 100%;
+  }
+  .dl-hero h1 {
+    font-size: 3rem; font-weight: 700; color: #fff;
+    margin: 0 0 20px; line-height: 1.08; letter-spacing: -0.02em; max-width: 18ch;
+  }
+  .dl-hero p.dl-lede {
+    font-size: 1.15rem; color: rgba(255,255,255,0.86);
+    margin: 0; line-height: 1.7; max-width: 76ch;
+  }
+  @media (max-width: 880px) {
+    .dl-hero-photo { height: 140px; }
+    .dl-hero h1 { font-size: 2rem; max-width: none; }
+    .dl-hero p.dl-lede { font-size: 1.02rem; }
+  }
+  /* ---- hero button ---- */
+  .dl-hero-cta { margin: 30px 0 0; padding: 26px 0 0; border-top: 1px solid rgba(255,255,255,0.18); }
+  .doan-lab a.dl-btn-lg {
+    display: inline-block;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, sans-serif;
+    font-size: 1.05rem; font-weight: 700; letter-spacing: 0.2px;
+    color: #3a2a06; padding: 18px 36px; border-radius: 50px;
+    text-decoration: none; line-height: 1.2;
+    background: linear-gradient(135deg, #f0d292 0%, #d8b25e 48%, #b88d34 100%);
+    box-shadow: 0 10px 26px -8px rgba(216,178,94,.55), 0 1px 0 rgba(255,255,255,.5) inset;
+    transition: transform 0.25s cubic-bezier(.2,.7,.2,1), filter 0.25s, box-shadow 0.25s;
+  }
+  .doan-lab a.dl-btn-lg:hover {
+    text-decoration: none; transform: translateY(-2px); filter: brightness(1.04);
+    box-shadow: 0 16px 34px -8px rgba(216,178,94,.7), 0 1px 0 rgba(255,255,255,.6) inset;
+  }
+  .doan-lab a.dl-btn-lg:focus-visible { outline: 3px solid #f0d292; outline-offset: 4px; }
+  .dl-btn-arrow { display: inline-block; margin-left: 8px; transition: transform 0.25s; }
+  .doan-lab a.dl-btn-lg:hover .dl-btn-arrow { transform: translateX(4px); }
+  .dl-cta-note {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, sans-serif;
+    font-size: 0.82rem; color: rgba(255,255,255,0.6);
+    margin: 14px 0 0; line-height: 1.5;
+  }
+  @media (max-width: 880px) {
+    .doan-lab a.dl-btn-lg { display: block; text-align: center; padding: 17px 22px; font-size: 1rem; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .doan-lab a.dl-btn-lg:hover { transform: none; }
+    .doan-lab a.dl-btn-lg:hover .dl-btn-arrow { transform: none; }
+  }
+
+
+  /* ===== 2. DR. DOAN ===== */
+
+  .doan-lab {
+    --ink:#0f1d2c;
+    --ink-soft:#3d4e5e;
+    --muted:#7a8896;
+    --line:#dde4eb;
+    --bg:#fafbfc;
+    --paper:#ffffff;
+    --accent:#0b5394;
+    --accent-soft:#eaf1f8;
+    --deep:#0a1f36;
+    --deep-2:#0f2c4a;
+    --amber:#b06d18;
+    --amber-soft:#fdf5e6;
+    --amber-line:#e6c88a;
+    --shadow-1: 0 1px 3px rgba(15,29,44,0.05);
+    --shadow-2: 0 10px 28px rgba(15,29,44,0.10);
+    --radius: 14px;
+    --band-radius: 18px;
+    font-family: Georgia, "Times New Roman", serif;
+    color: var(--ink);
+    max-width: 1200px; margin: 0 auto;
+    line-height: 1.7; font-size: 17px;
+    background: transparent;
+  }
+  .doan-lab * { box-sizing: border-box; }
+  .doan-lab a { color: var(--accent); text-decoration: none; }
+  .doan-lab a:hover { text-decoration: underline; }
+  .doan-lab img { max-width: 100%; }
+  .dl-band {
+    position: relative; border-radius: var(--band-radius);
+    overflow: hidden; margin-bottom: 34px;
+  }
+  .dl-inner { padding: 62px 60px; }
+  .doan-lab .dl-eyebrow {
+    display: inline-block;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, sans-serif;
+    font-size: 0.72rem; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 2px;
+    color: var(--accent); background: var(--accent-soft);
+    padding: 6px 14px; border-radius: 20px; margin: 0 0 18px; line-height: 1.4;
+  }
+  .doan-lab .dl-eyebrow.on-dark { color: #cfe2f5; background: rgba(255,255,255,0.12); }
+  .dl-h2 {
+    font-size: 2.1rem; font-weight: 700; margin: 0 0 16px;
+    line-height: 1.15; letter-spacing: -0.015em; color: var(--ink);
+  }
+  .dl-intro {
+    font-size: 1.05rem; color: var(--ink-soft);
+    margin: 0 0 36px; line-height: 1.7; max-width: 78ch;
+  }
+  @media (max-width: 880px) {
+    .dl-inner { padding: 40px 24px; }
+    .dl-h2 { font-size: 1.55rem; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .doan-lab * { transition: none !important; animation: none !important; }
+  }
+
+  /* ============ 2. DR. DOAN ============ */
+  .dl-sr-only {
+    position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+    overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+  }
+  .dl-pi-band { background: var(--bg); border: 1px solid var(--line); }
+  .dl-pi-grid {
+    display: grid; grid-template-columns: 340px 1fr; gap: 48px; align-items: start;
+  }
+  .dl-portrait-wrap { position: relative; padding: 10px 0 22px; }
+  .dl-portrait {
+    position: relative; border-radius: 18px; overflow: hidden;
+    background: #e7ecf1; aspect-ratio: 4 / 5;
+    box-shadow: 0 18px 40px rgba(15,29,44,0.18);
+    animation: dl-float 7s ease-in-out infinite;
+  }
+  .dl-portrait img, .dl-portrait drupal-media img {
+    width: 100% !important; height: 100% !important;
+    object-fit: cover !important; display: block; margin: 0 !important;
+  }
+  .dl-portrait drupal-media, .dl-portrait figure {
+    display: block; margin: 0 !important; padding: 0; width: 100%; height: 100%;
+  }
+  @keyframes dl-float {
+    0%   { transform: translateY(0); }
+    50%  { transform: translateY(-14px); }
+    100% { transform: translateY(0); }
+  }
+  .dl-portrait-shadow {
+    position: absolute; left: 12%; right: 12%; bottom: 4px; height: 14px;
+    border-radius: 50%; background: rgba(15,29,44,0.16); filter: blur(9px);
+    animation: dl-shadow 7s ease-in-out infinite;
+  }
+  @keyframes dl-shadow {
+    0%   { transform: scaleX(1); opacity: 0.55; }
+    50%  { transform: scaleX(0.82); opacity: 0.3; }
+    100% { transform: scaleX(1); opacity: 0.55; }
+  }
+  .dl-pi-name { font-size: 1.9rem; font-weight: 700; margin: 0 0 4px; line-height: 1.15; }
+  .dl-pi-role {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, sans-serif;
+    font-size: 0.8rem; font-weight: 700; letter-spacing: 1.6px;
+    text-transform: uppercase; color: var(--accent); margin: 0 0 20px;
+  }
+  .dl-pi-band p { font-size: 1.04rem; color: var(--ink-soft); line-height: 1.7; margin: 0 0 16px; }
+  .dl-links {
+    display: flex; flex-wrap: wrap; gap: 10px 26px;
+    margin: 26px 0 0; padding: 20px 0 0; border-top: 1px solid var(--line);
+  }
+  .doan-lab a.dl-link {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, sans-serif;
+    font-size: 0.9rem; font-weight: 600; color: var(--accent);
+  }
+  .doan-lab a.dl-link::after { content: " \2197"; }
+  @media (max-width: 980px) {
+    .dl-pi-grid { grid-template-columns: 260px 1fr; gap: 32px; }
+  }
+  @media (max-width: 880px) {
+    .dl-pi-grid { grid-template-columns: 1fr; gap: 26px; }
+    .dl-portrait { max-width: 260px; }
+    .dl-portrait-shadow { left: 6%; right: 46%; }
+    .dl-pi-name { font-size: 1.5rem; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .dl-portrait, .dl-portrait-shadow { animation: none !important; }
+  }
+
+
+  /* ===== 3. WHAT THE LAB DOES ===== */
+
+  .doan-lab {
+    --ink:#0f1d2c; --ink-soft:#3d4e5e; --muted:#7a8896; --line:#dde4eb;
+    --bg:#fafbfc; --paper:#ffffff; --accent:#0b5394; --accent-soft:#eaf1f8;
+    --deep:#0a1f36; --deep-2:#0f2c4a;
+    --shadow-1: 0 1px 3px rgba(15,29,44,0.05);
+    --shadow-2: 0 10px 28px rgba(15,29,44,0.10);
+    --radius: 14px; --band-radius: 18px;
+    font-family: Georgia, "Times New Roman", serif;
+    color: var(--ink); max-width: 1200px; margin: 0 auto;
+    line-height: 1.7; font-size: 17px; background: transparent;
+  }
+  .doan-lab * { box-sizing: border-box; }
+  .doan-lab a { color: var(--accent); text-decoration: none; }
+  .doan-lab a:hover { text-decoration: underline; }
+  .doan-lab img { max-width: 100%; }
+  .dl-band {
+    position: relative; border-radius: var(--band-radius);
+    overflow: hidden; margin-bottom: 34px;
+  }
+  .dl-inner { padding: 52px 60px 62px; }
+  .doan-lab .dl-eyebrow {
+    display: inline-block;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, sans-serif;
+    font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px;
+    color: var(--accent); background: var(--accent-soft);
+    padding: 6px 14px; border-radius: 20px; margin: 0 0 18px; line-height: 1.4;
+  }
+  .dl-h2 {
+    font-size: 2.1rem; font-weight: 700; margin: 0 0 16px;
+    line-height: 1.15; letter-spacing: -0.015em; color: var(--ink);
+  }
+  .dl-intro {
+    font-size: 1.05rem; color: var(--ink-soft);
+    margin: 0 0 36px; line-height: 1.7; max-width: 78ch;
+  }
+  /* ============ 3. WHAT THE LAB DOES ============ */
+  .dl-work-band { background: var(--paper); border: 1px solid var(--line); }
+
+  /* --- banner photo across the top of the section --- */
+  .dl-work-banner {
+    position: relative; height: 240px;
+    background: #dfe6ed; line-height: 0; overflow: hidden;
+    border-bottom: 1px solid var(--line);
+  }
+  .dl-work-banner img,
+  .dl-work-banner drupal-media img {
+    width: 100% !important; height: 100% !important;
+    object-fit: cover !important; object-position: center 45%;
+    display: block; margin: 0 !important;
+  }
+  .dl-work-banner drupal-media, .dl-work-banner figure {
+    display: block; margin: 0 !important; padding: 0; width: 100%; height: 100%;
+  }
+
+  /* --- photo slot inside each card --- */
+  .dl-work-media {
+    position: relative; height: 160px;
+    background: #e3e9ee; line-height: 0; overflow: hidden;
+  }
+  .dl-work-media img,
+  .dl-work-media drupal-media img {
+    width: 100% !important; height: 100% !important;
+    object-fit: cover !important; display: block; margin: 0 !important;
+  }
+  .dl-work-media drupal-media, .dl-work-media figure {
+    display: block; margin: 0 !important; padding: 0; width: 100%; height: 100%;
+  }
+
+  /* placeholder shown until a real photo is dropped in */
+  .dl-ph {
+    position: absolute; inset: 0;
+    display: flex; align-items: center; justify-content: center;
+    background: repeating-linear-gradient(-45deg,
+      #e2e8ee, #e2e8ee 8px, #eaeff4 8px, #eaeff4 16px);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, sans-serif;
+    font-size: 0.7rem; font-weight: 700; letter-spacing: 1.4px;
+    text-transform: uppercase; color: #8a99a7; text-align: center;
+    padding: 8px 14px; line-height: 1.5;
+  }
+
+  .dl-work { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+  .dl-work-card {
+    background: var(--paper); border: 1px solid var(--line);
+    border-radius: var(--radius); box-shadow: var(--shadow-1);
+    overflow: hidden; display: flex; flex-direction: column;
+    transition: box-shadow 0.22s ease, transform 0.22s ease;
+  }
+  .dl-work-card:hover { box-shadow: var(--shadow-2); transform: translateY(-2px); }
+  .dl-work-rule { height: 5px; background: var(--card-color, var(--accent)); }
+  .dl-work-body { padding: 24px 26px 26px; }
+  .dl-work-n {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, sans-serif;
+    font-size: 0.7rem; font-weight: 700; letter-spacing: 1.8px;
+    text-transform: uppercase; color: var(--card-color, var(--accent)); margin: 0 0 10px;
+  }
+  .dl-work-h { font-size: 1.2rem; font-weight: 700; margin: 0 0 10px; line-height: 1.3; }
+  .dl-work-body p { font-size: 0.98rem; color: var(--ink-soft); line-height: 1.6; margin: 0; }
+  .dl-work-card.w-1 { --card-color:#0b5394; }
+  .dl-work-card.w-2 { --card-color:#b9521c; }
+  .dl-work-card.w-3 { --card-color:#1f5132; }
+  @media (max-width: 980px) { .dl-work { grid-template-columns: 1fr; } }
+  @media (max-width: 880px) {
+    .dl-inner { padding: 34px 24px 40px; }
+    .dl-h2 { font-size: 1.55rem; }
+    .dl-work-banner { height: 160px; }
+    .dl-work-media { height: 180px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .doan-lab * { transition: none !important; }
+    .dl-work-card:hover { transform: none; }
+  }
+
+
+  /* ===== 4. EXPLORE ===== */
+
+  .doan-lab {
+    --ink:#0f1d2c; --ink-soft:#3d4e5e; --muted:#7a8896; --line:#dde4eb;
+    --bg:#fafbfc; --paper:#ffffff; --accent:#0b5394; --accent-soft:#eaf1f8;
+    --deep:#0a1f36; --deep-2:#0f2c4a;
+    --shadow-1: 0 1px 3px rgba(15,29,44,0.05);
+    --shadow-2: 0 10px 28px rgba(15,29,44,0.10);
+    --radius: 14px; --band-radius: 18px;
+    font-family: Georgia, "Times New Roman", serif;
+    color: var(--ink); max-width: 1200px; margin: 0 auto;
+    line-height: 1.7; font-size: 17px; background: transparent;
+  }
+  .doan-lab * { box-sizing: border-box; }
+  .doan-lab a { color: var(--accent); text-decoration: none; }
+  .doan-lab a:hover { text-decoration: underline; }
+  .doan-lab img { max-width: 100%; }
+  .dl-band {
+    position: relative; border-radius: var(--band-radius);
+    overflow: hidden; margin-bottom: 34px;
+  }
+  .dl-inner { padding: 62px 60px; }
+  .doan-lab .dl-eyebrow {
+    display: inline-block;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, sans-serif;
+    font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px;
+    color: var(--accent); background: var(--accent-soft);
+    padding: 6px 14px; border-radius: 20px; margin: 0 0 18px; line-height: 1.4;
+  }
+  .dl-h2 {
+    font-size: 2.1rem; font-weight: 700; margin: 0 0 16px;
+    line-height: 1.15; letter-spacing: -0.015em; color: var(--ink);
+  }
+  .dl-intro {
+    font-size: 1.05rem; color: var(--ink-soft);
+    margin: 0 0 36px; line-height: 1.7; max-width: 78ch;
+  }
+  /* ============ 4. EXPLORE THE LAB ============ */
+  .dl-explore-band { background: var(--bg); border: 1px solid var(--line); }
+  .dl-explore { display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px; }
+  .dl-card {
+    position: relative;
+    background: var(--paper); border: 1px solid var(--line);
+    border-left: 5px solid var(--card-color, var(--accent));
+    border-radius: var(--radius); box-shadow: var(--shadow-1);
+    padding: 30px 32px 28px;
+    transition: box-shadow 0.22s ease, transform 0.22s ease, border-color 0.22s ease;
+  }
+  .dl-card:hover { box-shadow: var(--shadow-2); transform: translateY(-2px); border-color: #cfdbe5; }
+  .dl-card-label {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, sans-serif;
+    font-size: 0.7rem; font-weight: 700; letter-spacing: 1.8px;
+    text-transform: uppercase; color: var(--card-color, var(--accent)); margin: 0 0 8px;
+  }
+  .dl-card h3 { font-size: 1.5rem; font-weight: 700; margin: 0 0 12px; line-height: 1.2; }
+  .dl-card p { font-size: 1rem; color: var(--ink-soft); line-height: 1.6; margin: 0 0 14px; }
+  /* project list */
+  .dl-projlist {
+    display: grid; grid-template-columns: repeat(2, 1fr);
+    gap: 18px 30px; margin: 0 0 20px; padding: 18px 0 0;
+    list-style: none; border-top: 1px solid var(--line);
+  }
+  .dl-projlist li { margin: 0; }
+  .doan-lab a.dl-proj-name {
+    display: inline-block;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, sans-serif;
+    font-size: 1rem; font-weight: 700; letter-spacing: 0.2px;
+    color: var(--ink); margin: 0 0 5px; line-height: 1.25;
+    transition: color 0.2s ease;
+  }
+  .doan-lab a.dl-proj-name::after { content: " \2197"; color: var(--card-color, var(--accent)); }
+  .doan-lab a.dl-proj-name:hover { color: var(--accent); }
+  .doan-lab a.dl-proj-name:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+  .dl-proj-desc {
+    font-size: 0.93rem !important; color: var(--ink-soft);
+    line-height: 1.5 !important; margin: 0 !important;
+  }
+  .doan-lab a.dl-card-cta {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, sans-serif;
+    font-size: 0.9rem; font-weight: 600; color: var(--card-color, var(--accent));
+    position: relative; z-index: 1;
+  }
+  .doan-lab a.dl-card-cta::after { content: " \2197"; }
+  .dl-card.c-1 { --card-color:#0b5394; }
+  .dl-card.c-2 { --card-color:#b9521c; }
+  .dl-card.c-3 { --card-color:#1f5132; }
+  .dl-card.c-4 { --card-color:#6a3d8a; }
+  .dl-card.is-wide { grid-column: 1 / -1; }
+  @media (max-width: 880px) {
+    .dl-inner { padding: 40px 24px; }
+    .dl-h2 { font-size: 1.55rem; }
+    .dl-explore { grid-template-columns: 1fr; }
+    .dl-card h3 { font-size: 1.3rem; }
+    .dl-projlist { grid-template-columns: 1fr; gap: 16px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .doan-lab * { transition: none !important; }
+    .dl-card:hover { transform: none; }
+  }
+
+
+  /* ===== 5. SAMPLE SOURCES ===== */
+
+  .doan-lab {
+    --ink:#0f1d2c; --ink-soft:#3d4e5e; --muted:#7a8896; --line:#dde4eb;
+    --bg:#fafbfc; --paper:#ffffff; --accent:#0b5394;
+    --deep:#0a1f36; --deep-2:#0f2c4a;
+    --radius: 14px; --band-radius: 18px;
+    font-family: Georgia, "Times New Roman", serif;
+    color: var(--ink); max-width: 1200px; margin: 0 auto;
+    line-height: 1.7; font-size: 17px; background: transparent;
+  }
+  .doan-lab * { box-sizing: border-box; }
+  .doan-lab a { color: var(--accent); text-decoration: none; }
+  .doan-lab a:hover { text-decoration: underline; }
+  .dl-band { position: relative; border-radius: var(--band-radius); overflow: hidden; margin-bottom: 34px; }
+  .dl-inner { padding: 62px 60px; }
+  .doan-lab .dl-eyebrow {
+    display: inline-block;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, sans-serif;
+    font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px;
+    color: #cfe2f5; background: rgba(255,255,255,0.12);
+    padding: 6px 14px; border-radius: 20px; margin: 0 0 18px; line-height: 1.4;
+  }
+  .dl-h2 { font-size: 2.1rem; font-weight: 700; margin: 0 0 16px; line-height: 1.15; letter-spacing: -0.015em; color: #fff; }
+  .dl-intro { font-size: 1.05rem; color: rgba(255,255,255,0.78); margin: 0 0 36px; line-height: 1.7; max-width: 78ch; }
+  .dl-src-band { background: linear-gradient(160deg, var(--deep) 0%, var(--deep-2) 100%); }
+  .dl-mapcards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+  .dl-mapcard {
+    background: var(--paper); border-radius: var(--radius);
+    overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.22);
+    display: flex; flex-direction: column;
+  }
+  .dl-mapcard-head {
+    display: flex; align-items: baseline; justify-content: space-between;
+    gap: 12px; padding: 18px 20px 14px; border-bottom: 1px solid var(--line);
+  }
+  .dl-mapcard-name { font-size: 1.18rem; font-weight: 700; margin: 0; line-height: 1.2; }
+  .dl-mapcard-count {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, sans-serif;
+    font-size: 0.72rem; font-weight: 700; letter-spacing: 1.4px;
+    text-transform: uppercase; color: var(--muted); margin: 0; white-space: nowrap;
+  }
+  /* maps are inline SVG — nothing is fetched from the internet */
+  .dl-mapcard-map {
+    background: #eaf1f6; border-bottom: 1px solid var(--line);
+    padding: 12px 10px; line-height: 0;
+  }
+  .dl-mapcard-map svg { width: 100%; height: 230px; display: block; }
+  .dl-land { fill: #dbe4ea; stroke: #ffffff; stroke-width: 1.6; stroke-linejoin: round; }
+  .dl-star-hit { fill: transparent; }
+  .dl-star-glyph {
+    font-size: 46px; text-anchor: middle; fill: var(--dot, #0b5394);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, sans-serif;
+    paint-order: stroke; stroke: #ffffff; stroke-width: 5px; stroke-linejoin: round;
+    transition: fill 0.18s ease, font-size 0.18s ease;
+  }
+  .dl-star { cursor: pointer; }
+  .dl-star:hover .dl-star-glyph, .dl-star:focus .dl-star-glyph,
+  .dl-star.is-on .dl-star-glyph { fill: #0f1d2c; font-size: 58px; }
+  .dl-star:focus { outline: none; }
+  .dl-mapcard-list { margin: 0; padding: 16px 20px 8px; list-style: none; flex: 1 1 auto; }
+  .dl-mapcard-list li {
+    font-size: 0.92rem; line-height: 1.4; margin: 0 0 8px;
+    padding: 2px 6px 2px 19px; position: relative; border-radius: 6px;
+    transition: background 0.18s ease;
+  }
+  .dl-mapcard-list li.is-hidden { display: none; }
+  .dl-mapcard-list li::before {
+    content: "\2605"; position: absolute; left: 2px; top: 2px;
+    font-size: 0.8rem; color: var(--dot, var(--accent));
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+  .dl-mapcard-list li.is-on { background: #f1f5f9; }
+  .dl-mapcard-list a { color: var(--ink); }
+  .dl-mapcard-list a:hover { color: var(--accent); }
+  .dl-mapcard-list .dl-place { color: var(--muted); font-size: 0.84rem; display: block; }
+  .dl-mapcard-foot { padding: 4px 20px 18px; }
+  .doan-lab button.dl-more {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, sans-serif;
+    font-size: 0.82rem; font-weight: 700; letter-spacing: 0.3px;
+    color: var(--accent); background: var(--bg);
+    border: 1px solid var(--line); border-radius: 20px;
+    padding: 7px 16px; cursor: pointer;
+    transition: border-color 0.2s ease, background 0.2s ease;
+  }
+  .doan-lab button.dl-more:hover { border-color: #b8c2cc; background: #f2f5f8; }
+  .doan-lab button.dl-more:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+  .dl-mapcard.m-africa   { --dot:#b9521c; }
+  .dl-mapcard.m-asia     { --dot:#1f5132; }
+  .dl-mapcard.m-europe   { --dot:#6a3d8a; }
+  .dl-mapcard.m-namerica { --dot:#15355c; }
+  .dl-mapcard.m-samerica { --dot:#b08400; }
+  .dl-mapcard.m-oceania  { --dot:#8b1e1e; }
+  .dl-src-foot { margin: 30px 0 0; padding: 22px 0 0; border-top: 1px solid rgba(255,255,255,0.16); }
+  .doan-lab a.dl-src-link {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, sans-serif;
+    font-size: 0.92rem; font-weight: 600; color: #cfe2f5;
+  }
+  .doan-lab a.dl-src-link::after { content: " \2192"; }
+  .doan-lab a.dl-src-link:hover { color: #fff; }
+  @media (max-width: 980px) { .dl-mapcards { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 880px) {
+    .dl-inner { padding: 40px 24px; }
+    .dl-h2 { font-size: 1.55rem; }
+    .dl-mapcards { grid-template-columns: 1fr; gap: 18px; }
+    .dl-mapcard-map svg { height: 210px; }
+  }
+  @media (prefers-reduced-motion: reduce) { .doan-lab * { transition: none !important; } }
+
+
+  /* ===== 6. EXIT CTA ===== */
+
+  .doan-lab {
+    --ink:#0f1d2c;
+    --ink-soft:#3d4e5e;
+    --muted:#7a8896;
+    --line:#dde4eb;
+    --bg:#fafbfc;
+    --paper:#ffffff;
+    --accent:#0b5394;
+    --accent-soft:#eaf1f8;
+    --deep:#0a1f36;
+    --deep-2:#0f2c4a;
+    --amber:#b06d18;
+    --amber-soft:#fdf5e6;
+    --amber-line:#e6c88a;
+    --shadow-1: 0 1px 3px rgba(15,29,44,0.05);
+    --shadow-2: 0 10px 28px rgba(15,29,44,0.10);
+    --radius: 14px;
+    --band-radius: 18px;
+    font-family: Georgia, "Times New Roman", serif;
+    color: var(--ink);
+    max-width: 1200px; margin: 0 auto;
+    line-height: 1.7; font-size: 17px;
+    background: transparent;
+  }
+  .doan-lab * { box-sizing: border-box; }
+  .doan-lab a { color: var(--accent); text-decoration: none; }
+  .doan-lab a:hover { text-decoration: underline; }
+  .doan-lab img { max-width: 100%; }
+  .dl-band {
+    position: relative; border-radius: var(--band-radius);
+    overflow: hidden; margin-bottom: 34px;
+  }
+  .dl-inner { padding: 62px 60px; }
+  .doan-lab .dl-eyebrow {
+    display: inline-block;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, sans-serif;
+    font-size: 0.72rem; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 2px;
+    color: var(--accent); background: var(--accent-soft);
+    padding: 6px 14px; border-radius: 20px; margin: 0 0 18px; line-height: 1.4;
+  }
+  .doan-lab .dl-eyebrow.on-dark { color: #cfe2f5; background: rgba(255,255,255,0.12); }
+  .dl-h2 {
+    font-size: 2.1rem; font-weight: 700; margin: 0 0 16px;
+    line-height: 1.15; letter-spacing: -0.015em; color: var(--ink);
+  }
+  .dl-intro {
+    font-size: 1.05rem; color: var(--ink-soft);
+    margin: 0 0 36px; line-height: 1.7; max-width: 78ch;
+  }
+  @media (max-width: 880px) {
+    .dl-inner { padding: 40px 24px; }
+    .dl-h2 { font-size: 1.55rem; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .doan-lab * { transition: none !important; animation: none !important; }
+  }
+
+  /* ============ 6. EXIT CTA ============ */
+  .dl-sr-only {
+    position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+    overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+  }
+  .dl-exit-band { background: var(--paper); border: 1px solid var(--line); }
+  .dl-exit {
+    background: var(--amber-soft); border: 2px solid var(--amber-line);
+    border-radius: var(--radius); padding: 28px 30px 30px;
+    display: flex; align-items: flex-start; gap: 20px;
+  }
+  .dl-exit-mark {
+    flex: 0 0 auto; width: 46px; height: 46px; border-radius: 50%;
+    background: var(--amber); color: #fff;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.35rem; line-height: 1;
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+  .dl-exit-head {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, sans-serif;
+    font-size: 0.72rem; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 1.8px; color: var(--amber); margin: 2px 0 8px;
+  }
+  .dl-exit-text { font-size: 1rem; color: var(--ink); margin: 0 0 20px; line-height: 1.6; }
+  .doan-lab a.dl-btn-lg {
+    display: inline-block;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, sans-serif;
+    font-size: 1.08rem; font-weight: 700;
+    color: #fff; background: var(--accent);
+    padding: 20px 38px; border-radius: 10px; line-height: 1.2;
+    box-shadow: 0 4px 14px rgba(11,83,148,0.28);
+    transition: background 0.2s ease, transform 0.2s ease;
+  }
+  .doan-lab a.dl-btn-lg:hover { background: #094377; text-decoration: none; transform: translateY(-2px); }
+  .doan-lab a.dl-btn-lg:focus-visible { outline: 3px solid var(--amber); outline-offset: 4px; }
+  @media (max-width: 880px) {
+    .dl-exit { flex-direction: column; gap: 14px; padding: 22px 20px 24px; }
+    .doan-lab a.dl-btn-lg { display: block; text-align: center; padding: 18px 22px; font-size: 1rem; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .doan-lab a.dl-btn-lg:hover { transform: none; }
+  }
+
+</style>
+</head>
+<body>
+<div id="dl-page" class="doan-lab">
+
+    <!-- 1. HERO -->
+<div class="doan-lab">
+    <section class="dl-band dl-hero">
+        <div class="dl-hero-photo">
+            <img src="https://doanlab.ucsf.edu/sites/g/files/tkssra11851/files/styles/cke_media_resize_xl/public/wysiwyg/doan_lab_group_2023.jpg.webp?itok=BYtMtmPU" alt="Doan Lab group photo">
+        </div>
+        <div class="dl-inner">
+            <p class="dl-eyebrow on-dark">Proctor Foundation</p>
+            <h1>The Doan Lab</h1>
+            <p class="dl-lede">
+                A metagenomic epidemiology laboratory at the UCSF Proctor Foundation. Samples reach us from clinics, hospitals, and field research centers around the world &mdash; from Niger and Burkina Faso to India, Nepal, Thailand, Vietnam, Vanuatu, Chile, and across the United States. We study how the human microbiome responds to change, and we use sequencing to name the cause of an eye infection when conventional testing cannot.
+            </p>
+            <p class="dl-hero-cta">
+                <a class="dl-btn-lg" href="https://doanlab.ucsf.edu/">Visit the Doan Lab website<span class="dl-btn-arrow">&#8594;</span></a>
+            </p>
+            <p class="dl-cta-note">
+                Opens doanlab.ucsf.edu, the lab's own UCSF site.
+            </p>
+        </div>
+    </section>
+</div>
+
+    <!-- 2. DR. DOAN -->
+<div class="doan-lab">
+    <section class="dl-band dl-pi-band">
+        <div class="dl-inner">
+            <div class="dl-pi-grid">
+                <div class="dl-portrait-wrap">
+                    <div class="dl-portrait">
+                        <img src="" alt="Thuy Doan, MD, PhD">
+                    </div>
+                    <div class="dl-portrait-shadow"></div>
+                </div>
+                <div>
+                    <p class="dl-eyebrow">Principal Investigator</p>
+                    <p class="dl-pi-name">Thuy Doan, MD, PhD</p>
+                    <p class="dl-pi-role">Associate Professor</p>
+                    <p>
+                        Dr. Doan leads the lab's work on ocular infection and inflammation, microbiomes, and antimicrobial resistance. Her research asks why mass antibiotic distribution improves child survival in sub-Saharan Africa, and what that treatment costs in resistance, so that the answer can inform public health policy rather than sit in a journal.
+                    </p>
+                    <p>
+                        Alongside that population work, she applies the same sequencing tools one patient at a time, identifying the organisms behind uveitis, conjunctivitis, corneal ulcers, and scleritis.
+                    </p>
+                    <p class="dl-links">
+                        <a class="dl-link" href="https://profiles.ucsf.edu/thuy.doan">UCSF Profiles</a>
+                        <a class="dl-link" href="https://doanlab.ucsf.edu/">Lab website</a>
+                        <a class="dl-link" href="https://ophthalmology.ucsf.edu/faculty-research-summary/">UCSF Ophthalmology research</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+    <!-- 3. WHAT THE LAB DOES -->
+<div class="doan-lab">
+    <section class="dl-band dl-work-band">
+
+        <div class="dl-work-banner">
+            <span class="dl-ph">Banner photo &mdash; replace this span</span>
+        </div>
+
+        <div class="dl-inner">
+            <p class="dl-eyebrow">Our Work</p>
+            <h2 class="dl-h2">What the lab does</h2>
+            <p class="dl-intro">
+                Three lines of work, one method. Samples are collected inside randomized trials and clinics rather than generated in the laboratory, then sequenced without assuming in advance what they contain.
+            </p>
+            <div class="dl-work">
+
+                <div class="dl-work-card w-1">
+                    <div class="dl-work-media">
+                        <span class="dl-ph">Card 1 photo &mdash; replace this span</span>
+                    </div>
+                    <div class="dl-work-rule">&nbsp;</div>
+                    <div class="dl-work-body">
+                        <p class="dl-work-n">Mechanism</p>
+                        <p class="dl-work-h">Why mass treatment saves children</p>
+                        <p>
+                            Distributing azithromycin to preschool children in sub-Saharan Africa lowers childhood mortality. We look at the gut, ocular, and upper respiratory microbiomes to work out how.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="dl-work-card w-2">
+                    <div class="dl-work-media">
+                        <span class="dl-ph">Card 2 photo &mdash; replace this span</span>
+                    </div>
+                    <div class="dl-work-rule">&nbsp;</div>
+                    <div class="dl-work-body">
+                        <p class="dl-work-n">Surveillance</p>
+                        <p class="dl-work-h">Tracking antimicrobial resistance</p>
+                        <p>
+                            Any benefit from mass treatment has to be weighed against resistance. We track it in the same communities over time, so policy rests on measurement rather than assumption.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="dl-work-card w-3">
+                    <div class="dl-work-media">
+                        <span class="dl-ph">Card 3 photo &mdash; replace this span</span>
+                    </div>
+                    <div class="dl-work-rule">&nbsp;</div>
+                    <div class="dl-work-body">
+                        <p class="dl-work-n">Diagnosis</p>
+                        <p class="dl-work-h">Naming the cause of an eye infection</p>
+                        <p>
+                            Unbiased sequencing identifies pathogens in uveitis, conjunctivitis, corneal ulcers, and scleritis, including cases where culture and targeted testing return nothing.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+</div>
+
+    <!-- 4. EXPLORE -->
+<div class="doan-lab">
+    <section class="dl-band dl-explore-band">
+        <div class="dl-inner">
+            <p class="dl-eyebrow">Explore</p>
+            <h2 class="dl-h2">More from the lab</h2>
+            <p class="dl-intro">
+                The lab keeps its own site, where each of these is maintained in full.
+            </p>
+            <div class="dl-explore">
+                <div class="dl-card c-1 is-wide">
+                    <p class="dl-card-label">Research</p>
+                    <h3>Current projects</h3>
+                    <p>
+                        Four active studies, spanning corneal pathogens, uveitis tissue, mass drug distribution, and a global look at conjunctivitis epidemics.
+                    </p>
+                    <ul class="dl-projlist">
+                        <li>
+                            <a class="dl-proj-name" href="https://doanlab.ucsf.edu/research/capricorn">capriCORN</a>
+                            <p class="dl-proj-desc">
+                                Comprehensive Analysis of Pathogens, Resistomes, and Inflammatory-markers in the CORNea.
+                            </p>
+                        </li>
+                        <li>
+                            <a class="dl-proj-name" href="https://doanlab.ucsf.edu/research/lotus">LOTUS</a>
+                            <p class="dl-proj-desc">
+                                Leveraging Ocular Tissues in Uveitis Study &mdash; working with partners at home and abroad on how ocular inflammatory disease arises, and on better classification, diagnosis, and biomarkers.
+                            </p>
+                        </li>
+                        <li>
+                            <a class="dl-proj-name" href="https://doanlab.ucsf.edu/research/mordor">MORDOR / AVENIR</a>
+                            <p class="dl-proj-desc">
+                                Large randomized trials testing whether mass drug distribution improves childhood survival in Niger and Burkina Faso.
+                            </p>
+                        </li>
+                        <li>
+                            <a class="dl-proj-name" href="https://doanlab.ucsf.edu/research/scorpio">SCORPIO</a>
+                            <p class="dl-proj-desc">
+                                An international, multi-site study of conjunctivitis epidemics: which pathogens drive them, how their genomes shift across time and place, and how the immune system answers.
+                            </p>
+                        </li>
+                    </ul>
+                    <p>
+                        <a class="dl-card-cta" href="https://doanlab.ucsf.edu/research">See all projects</a>
+                    </p>
+                </div>
+                <div class="dl-card c-2">
+                    <p class="dl-card-label">People</p>
+                    <h3>Lab members</h3>
+                    <p>
+                        The scientists, students, and coordinators who run the sequencing, the pipelines, and the field collections.
+                    </p>
+                    <p>
+                        <a class="dl-card-cta" href="https://doanlab.ucsf.edu/lab-members">Meet the team</a>
+                    </p>
+                </div>
+                <div class="dl-card c-3">
+                    <p class="dl-card-label">Output</p>
+                    <h3>Publications</h3>
+                    <p>
+                        Peer-reviewed work from the lab and its collaborators, kept current on the lab site.
+                    </p>
+                    <p>
+                        <a class="dl-card-cta" href="https://doanlab.ucsf.edu/publications">Read the publications</a>
+                    </p>
+                </div>
+                <div class="dl-card c-4 is-wide">
+                    <p class="dl-card-label">Get in touch</p>
+                    <h3>Work with the lab</h3>
+                    <p>
+                        Sending a sample, joining as a trainee, or starting a collaboration &mdash; the lab site lists who to contact and what to include.
+                    </p>
+                    <p>
+                        <a class="dl-card-cta" href="https://doanlab.ucsf.edu/contact">Contact the lab</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+    <!-- 5. SAMPLE SOURCES -->
+<div class="doan-lab">
+    <section class="dl-band dl-src-band">
+        <div class="dl-inner">
+            <p class="dl-eyebrow">Where Samples Come From</p>
+            <h2 class="dl-h2">Collecting sites around the world</h2>
+            <p class="dl-intro">
+                Specimens reach San Francisco from clinics, hospitals, and field research centers on six continents. Each site collects under a shared protocol so that samples arriving from Niamey and from Indianapolis can be compared directly.
+            </p>
+            <div class="dl-mapcards">
+                <div class="dl-mapcard m-africa">
+                    <div class="dl-mapcard-head">
+                        <p class="dl-mapcard-name">Africa</p>
+                        <p class="dl-mapcard-count">3 sites</p>
+                    </div>
+                    <div class="dl-mapcard-map">
+                        <svg viewBox="0 0 710 740" xmlns="http://www.w3.org/2000/svg" role="group" aria-label="Map of Africa showing collecting sites">
+      <g class="dl-land">
+        <path d="M353 439L356 446L358 452L361 455L365 461L371 460L374 458L380 460L381 457L384 452L390 451L396 449L395 453L407 453L407 459L409 463L408 469L409 475L412 479L411 491L418 490L424 489L429 489L430 492L429 497L431 502L429 506L430 509L409 509L409 541L415 549L422 555L404 559L379 558L372 553L332 554L324 550L318 549L312 551L307 553L306 547L308 538L311 529L312 524L315 515L317 511L323 505L326 500L327 493L327 487L324 484L321 478L319 472L322 466L319 456L317 449L312 443L317 440L324 439L353 439ZM314 437L312 438L309 430L313 426L316 424L320 428L316 430L314 432L314 437ZM705 138L708 140L715 138L724 138L730 139L736 132L744 126L750 119L752 123L754 131L748 131L748 137L745 141L745 145L742 149L742 153L740 155L710 150L706 140ZM483 425L482 413L480 408L486 409L489 403L494 404L495 408L497 410L495 416L491 421L487 425L483 425ZM217 317L209 319L206 312L207 289L205 287L204 282L201 278L198 275L199 270L202 269L204 265L209 264L211 261L215 258L218 258L226 263L226 267L228 273L226 277L227 279L222 286L219 289L217 295L217 301L217 317ZM162 284L155 281L150 281L147 284L142 282L140 278L136 276L135 270L138 266L138 263L146 255L147 248L150 245L155 247L159 245L160 242L168 238L170 234L179 230L185 229L187 231L194 231L193 236L194 240L200 247L200 251L212 254L211 261L209 264L204 265L202 269L199 270L190 270L185 269L182 271L178 270L160 270L160 276L162 284ZM446 565L448 567L451 573L463 584L467 585L467 589L470 595L478 596L484 601L470 608L461 616L458 622L455 626L449 627L447 632L446 635L440 637L432 637L427 634L423 633L418 635L416 640L411 643L406 647L399 648L396 645L397 639L391 629L389 628L389 598L399 598L399 563L406 562L422 559L426 563L432 559L441 557L446 565ZM343 306L351 305L353 302L357 305L369 301L374 297L379 294L378 290L381 289L390 290L400 285L407 274L412 270L418 269L420 273L425 279L425 283L424 287L424 290L428 293L435 298L441 302L448 310L452 315L454 321L462 324L463 328L460 329L454 328L446 327L443 328L441 331L438 331L434 329L423 334L418 333L414 340L406 338L399 337L393 333L384 330L379 333L375 338L374 345L368 344L361 343L355 348L350 357L349 354L348 350L344 347L340 341L339 338L335 333L335 330L334 325L335 318L338 316L343 306ZM161 330L157 330L150 328L143 328L132 330L125 333L115 337L114 328L114 323L110 319L107 318L104 315L106 311L105 306L107 303L108 299L108 295L112 294L109 286L107 282L108 279L111 277L114 279L121 279L123 276L128 275L129 279L132 278L136 276L140 278L142 282L147 284L150 281L155 281L162 284L164 298L160 306L157 317L162 326L161 330ZM321 357L313 358L307 357L303 357L286 357L288 349L284 343L279 341L277 336L275 335L277 325L282 316L291 310L295 309L300 314L307 310L308 306L310 302L312 297L317 293L319 286L321 284L323 278L326 272L334 264L334 261L332 255L332 252L339 258L339 264L339 271L344 280L339 280L336 281L332 280L329 285L335 290L340 292L341 296L344 303L343 306L338 316L335 318L334 325L335 330L335 333L339 338L340 341L344 347L348 350L349 354L350 357L349 363L341 360L333 358L321 357ZM498 345L497 357L501 358L498 362L494 364L491 369L488 374L488 382L486 386L485 393L483 396L482 402L480 408L482 413L483 425L485 434L484 439L486 445L492 451L497 463L493 462L480 464L477 465L474 472L476 476L475 488L473 498L476 500L483 504L486 502L487 513L479 512L475 507L471 503L464 501L461 496L455 499L447 498L444 493L438 492L433 493L432 490L429 489L424 489L418 490L414 490L412 479L409 475L408 469L409 463L407 459L407 453L395 453L396 449L391 449L384 452L381 457L380 460L374 458L371 460L365 461L361 455L358 452L356 446L353 439L324 439L320 440L313 441L312 438L314 437L314 432L316 430L320 428L322 429L326 425L331 425L332 428L336 430L342 423L347 419L350 415L350 407L354 397L358 392L365 387L366 384L366 381L368 377L368 371L369 363L371 356L374 351L374 345L375 338L379 333L384 330L393 333L399 337L406 338L414 340L417 334L423 334L434 329L438 331L441 331L443 328L446 327L454 328L460 329L463 328L470 336L474 337L477 335L481 336L487 334L489 338L498 345ZM320 428L316 424L313 426L309 430L301 420L308 414L305 408L308 405L315 404L316 399L321 404L330 405L333 400L334 393L333 386L328 380L333 368L330 366L323 367L320 362L321 357L333 358L341 360L349 363L350 357L355 348L361 343L368 344L374 345L374 351L371 356L369 363L368 371L368 377L366 381L366 384L365 387L358 392L354 397L350 407L350 415L347 419L342 423L336 430L332 428L331 425L326 425L322 429L320 428ZM517 29L519 26L526 26L535 23L529 28L526 30L524 28L519 29ZM529 29L519 34L515 33L512 29L517 29L522 28L524 30L528 29ZM620 253L623 256L622 260L617 263L621 265L617 271L615 269L607 269L606 264L610 259L613 255L617 255L620 253ZM310 145L276 164L247 184L233 188L221 189L221 183L217 181L210 179L208 174L174 152L141 130L103 106L103 92L119 84L129 83L137 80L141 75L153 71L153 64L159 63L164 59L177 57L179 53L176 51L173 41L172 35L168 28L178 23L189 21L195 17L205 14L221 12L238 11L243 13L252 9L263 9L267 11L274 11L272 16L274 25L271 33L265 39L266 47L274 53L280 59L285 77L288 86L288 90L287 99L287 103L286 109L287 115L283 119L289 126L289 131L293 136L298 134L305 139L310 145ZM539 85L536 89L534 97L531 102L529 104L526 100L521 96L514 81L517 93L523 103L531 119L534 124L538 130L547 141L545 142L545 149L557 158L558 160L519 160L480 160L440 160L440 123L440 88L437 80L439 73L438 69L441 64L455 64L464 67L474 70L479 71L487 68L491 65L499 64L507 66L509 71L512 67L520 70L527 70L532 68L539 85ZM613 255L610 251L606 245L601 242L599 239L590 235L583 235L581 233L575 235L569 230L566 238L554 236L553 232L557 217L558 210L561 207L569 206L574 200L580 212L582 221L588 226L601 235L607 241L612 247L616 250L620 253L617 255L613 255ZM100 -39L100 -46L96 -50L110 -57L122 -56L136 -56L146 -54L155 -55L171 -54L175 -50L193 -46L197 -48L208 -43L220 -45L220 -39L211 -32L198 -30L197 -27L191 -21L187 -13L191 -7L185 -3L183 4L176 6L168 13L156 13L146 13L140 17L136 21L131 20L128 16L125 11L115 9L115 6L118 2L120 -1L116 -4L119 -10L115 -16L119 -17L120 -22L121 -31L126 -34L123 -39L117 -39L110 -38L107 -43L103 -41L100 -39ZM569 230L575 235L581 233L583 235L590 235L599 239L601 242L606 245L610 251L613 255L610 259L606 264L607 266L613 270L617 271L615 274L619 280L623 285L626 288L659 300L667 300L639 330L626 330L617 337L611 338L608 341L601 341L597 337L588 342L585 346L579 345L574 344L558 336L551 336L548 332L548 327L543 325L537 314L532 312L530 308L525 303L519 302L523 296L528 296L529 293L529 284L532 274L537 271L538 267L542 259L548 254L552 244L554 236L566 238L569 230ZM301 420L290 410L284 401L278 391L278 388L280 385L283 377L285 370L288 369L303 369L303 357L307 357L313 358L319 357L320 362L323 367L330 366L333 368L328 380L333 386L334 393L333 400L330 405L321 404L316 399L315 404L308 405L305 408L308 414L301 420ZM200 321L185 327L179 330L170 333L161 330L162 326L157 317L160 306L164 298L162 284L160 276L160 270L178 270L182 271L185 269L190 270L189 273L194 278L194 285L194 293L197 297L195 306L196 311L198 317L200 321ZM106 303L101 307L96 305L97 301L92 295L90 296L85 297L85 293L83 290L82 283L79 280L71 280L68 281L64 284L63 287L57 291L53 285L49 281L47 280L44 278L43 273L42 271L39 270L43 265L49 263L53 262L52 259L53 254L58 254L65 257L68 255L73 256L75 259L80 258L84 261L88 262L91 259L94 258L97 257L101 259L102 262L106 266L104 269L104 272L107 272L107 275L110 278L107 282L109 286L112 294L108 295L108 299L107 303ZM22 248L23 244L34 244L36 241L43 244L49 242L52 245L47 247L43 247L39 245L35 247L31 249L22 248ZM39 270L33 265L29 265L27 262L24 258L29 255L32 255L34 254L53 254L53 258L53 262L49 263L46 265L39 270ZM285 370L286 357L303 357L303 369L288 369L285 370ZM427 23L432 26L440 26L447 26L453 27L451 30L437 31L425 27L427 23ZM456 -36L453 -29L450 -28L444 -29L439 -29L427 -27L434 -21L429 -20L423 -20L418 -25L416 -23L418 -17L423 -12L419 -10L425 -5L430 -2L430 3L421 1L424 6L417 7L421 16L415 16L406 12L403 4L401 -3L397 -8L392 -13L391 -16L396 -21L397 -24L400 -26L406 -29L410 -31L416 -31L419 -33L427 -33L435 -36L442 -32L451 -33L451 -38L456 -36ZM729 8L738 6L745 0L751 1L756 -1L763 0L774 5L782 6L793 15L801 15L802 23L798 36L795 43L799 45L795 50L798 58L799 65L807 66L807 73L798 82L803 87L807 93L817 97L817 106L822 108L823 112L808 118L804 129L786 126L775 124L764 123L759 110L754 109L747 110L737 115L724 112L714 104L705 101L698 92L691 79L685 80L679 77L675 81L670 75L670 70L668 63L663 55L651 50L644 40L646 33L651 29L650 23L644 20L637 8L632 0L634 -3L631 -14L638 -17L639 -13L644 -9L651 -7L655 -8L666 -15L670 -16L673 -13L670 -8L676 -3L682 4L691 6L698 11L712 13L728 10ZM644 20L650 23L651 29L646 33L644 40L651 50L663 55L668 63L666 70L670 75L675 81L669 80L663 79L655 89L637 88L609 68L594 61L582 58L578 46L600 36L603 24L603 16L608 14L613 8L617 6L629 7L633 10L637 8L644 20ZM547 53L545 56L542 55L539 61L542 62L539 64L544 65L544 69L539 85L532 68L535 65L537 59L539 52L541 49L544 49L548 47L548 51ZM345 -2L341 6L343 9L341 14L333 10L328 9L314 4L316 -1L327 0L337 -1L345 -2ZM282 -32L288 -25L287 -12L282 -12L278 -9L274 -12L274 -24L271 -30L277 -29L282 -32ZM314 -88L328 -85L327 -80L329 -76L321 -77L313 -74L314 -69L312 -66L316 -61L325 -56L330 -48L341 -40L349 -40L351 -37L349 -35L358 -32L365 -29L374 -24L373 -18L367 -23L358 -24L354 -18L361 -14L360 -9L356 -8L351 0L347 1L349 -8L351 -10L347 -15L344 -20L340 -22L337 -26L330 -28L326 -32L319 -33L311 -37L302 -44L295 -49L292 -59L287 -60L279 -64L274 -62L268 -58L264 -57L265 -61L260 -63L257 -70L261 -73L258 -77L263 -78L267 -78L273 -82L279 -80L282 -84L289 -83L293 -85L294 -89L300 -88L311 -91L314 -88ZM545 56L547 53L558 57L578 46L582 58L580 60L560 65L570 75L566 77L565 80L557 81L555 85L550 88L539 86L544 69L544 65L545 62L545 56ZM600 389L605 397L598 401L596 405L592 406L591 413L588 417L586 423L582 427L567 417L567 411L530 391L529 379L531 375L536 368L540 361L536 349L534 344L530 338L536 332L543 325L548 327L548 332L551 336L558 336L571 344L576 344L585 346L588 342L597 337L601 341L608 341L599 352L600 389ZM669 80L671 85L674 94L667 95L664 90L655 89L663 79L669 80ZM548 47L544 49L544 41L549 34L554 34L556 38L550 42L548 47ZM113 336L100 332L91 324L82 319L76 312L78 309L78 306L83 301L88 296L92 295L97 301L96 305L98 307L103 303L105 306L106 311L104 315L107 318L110 319L114 323L115 327L113 336ZM338 151L331 155L326 150L310 145L305 139L298 134L293 136L289 131L289 126L283 119L287 115L286 109L287 103L287 99L288 90L288 86L285 77L290 75L290 70L289 66L296 62L299 59L304 56L305 49L316 52L321 51L329 53L342 57L347 66L356 68L370 72L381 77L386 75L390 70L388 62L391 58L398 53L405 52L419 54L422 58L426 58L429 60L439 61L441 64L438 69L439 73L437 80L440 88L440 123L440 160L440 180L428 180L428 184L388 165L348 146L338 151ZM479 670L483 673L480 677L478 681L473 682L471 685L467 686L460 679L465 672L470 669L475 666L479 670ZM138 22L144 27L154 26L164 28L168 28L172 35L173 41L176 51L179 53L177 57L164 59L159 63L153 64L153 71L141 75L137 80L129 83L119 84L103 92L103 103L102 109L96 109L93 111L88 111L84 110L76 111L73 119L70 120L65 132L51 143L48 157L44 161L42 165L20 166L20 161L24 158L27 153L27 150L30 143L36 136L39 135L42 129L42 124L46 117L52 114L59 104L64 100L73 99L81 92L86 89L94 81L92 68L96 60L97 54L103 48L113 43L121 39L127 29L131 22L138 22ZM685 505L688 509L690 516L692 528L694 532L693 537L692 540L688 534L686 537L688 545L687 549L685 551L684 560L680 571L675 585L669 604L665 618L661 629L652 632L644 636L638 633L630 630L627 625L627 616L623 608L622 601L624 593L629 592L633 581L634 574L632 570L630 563L629 554L633 549L634 542L639 542L645 540L648 538L653 538L658 532L667 526L670 521L668 517L673 518L678 511L678 505L682 500L685 505ZM68 234L72 232L73 226L83 229L89 227L93 227L94 225L135 225L137 218L130 174L125 130L141 130L174 152L208 174L210 179L217 181L221 183L221 189L233 188L233 211L227 218L226 224L217 226L204 227L200 230L194 231L187 231L185 229L179 230L170 234L168 238L160 242L159 245L155 247L150 245L147 248L146 255L138 263L138 266L135 270L136 276L132 278L129 279L128 275L125 276L121 279L114 279L111 277L107 275L107 272L104 272L104 269L106 266L102 262L101 259L99 257L94 258L91 259L88 262L84 261L81 258L77 259L75 256L75 252L74 249L71 246L69 240L68 234ZM535 495L543 494L555 497L557 496L564 496L568 493L574 493L585 489L593 483L594 488L594 498L595 506L596 522L597 527L594 534L591 541L584 547L575 551L564 556L552 567L549 568L542 576L538 578L537 585L541 593L543 598L545 601L545 611L543 615L546 617L544 621L540 625L532 628L520 634L515 637L516 641L518 647L510 647L510 643L508 638L507 635L509 624L506 617L502 603L512 591L515 584L517 577L516 574L516 567L518 560L518 547L513 544L508 543L506 541L501 539L493 539L492 535L491 528L522 520L528 525L530 524L534 526L535 530L533 535L533 542L540 548L543 541L547 539L547 526L542 519L539 516L535 516L532 503L535 495ZM68 234L62 227L56 220L49 217L44 214L39 214L34 216L29 215L25 219L24 213L27 208L29 199L27 189L26 184L27 179L25 174L19 170L22 167L61 167L59 152L61 147L71 146L70 121L103 121L103 106L141 130L125 130L130 174L135 217L135 225L94 225L93 227L89 227L83 229L76 226L72 232L68 234ZM535 495L532 503L535 516L539 516L542 519L547 526L547 539L543 541L540 548L533 542L533 535L535 530L534 526L530 524L528 525L522 520L517 517L520 508L523 504L521 496L523 488L525 485L522 477L517 472L527 474L529 477L532 482L535 495ZM353 666L346 658L342 651L340 641L337 634L334 619L334 607L332 601L328 597L323 589L318 577L316 570L308 561L307 553L312 551L318 549L324 550L330 554L372 553L379 558L404 559L422 555L430 553L437 554L441 556L435 559L426 563L422 559L406 562L399 563L399 598L389 598L389 628L389 665L380 670L374 670L368 669L364 668L362 664L358 661L353 666ZM211 261L212 254L200 251L200 247L194 240L193 236L194 231L200 230L204 227L217 226L226 224L227 218L233 211L233 188L247 184L276 164L310 145L326 150L331 155L338 151L341 167L345 170L349 176L347 180L343 201L342 214L330 223L325 236L329 240L329 246L336 247L335 251L332 255L323 244L313 250L305 247L300 246L297 248L291 247L285 251L280 252L268 247L263 249L258 249L254 245L244 241L234 243L231 245L230 250L227 254L226 263L218 258L215 258L211 261ZM275 332L264 336L261 335L257 338L249 337L243 331L240 324L233 317L226 317L217 317L217 301L217 295L219 289L222 286L227 279L226 277L228 273L226 267L226 263L227 254L230 250L231 245L234 243L244 241L254 245L258 249L263 249L268 247L280 252L285 251L291 247L297 248L300 246L305 247L313 250L321 244L330 255L336 259L334 264L326 272L323 278L321 284L319 286L317 293L312 297L310 302L308 306L307 310L300 314L295 309L291 310L285 315L277 325L275 332ZM100 -39L103 -41L107 -43L110 -38L116 -38L123 -39L126 -34L121 -31L121 -23L119 -17L115 -16L119 -10L116 -4L120 -1L118 2L115 6L115 9L111 12L106 10L101 11L102 3L102 -3L97 -4L95 -7L95 -14L99 -18L100 -22L102 -28L102 -32L100 -35L100 -39ZM698 132L697 125L700 120L702 119L705 122L706 128L703 134L701 134L698 132ZM494 391L498 397L497 403L494 404L489 403L486 409L480 408L481 403L483 396L485 393L488 394L494 391ZM102 109L102 103L103 106L103 121L70 121L71 146L61 147L59 152L61 167L22 167L19 170L20 166L42 165L44 161L48 157L51 143L65 132L70 120L73 119L76 111L84 110L88 111L93 111L96 109L102 109ZM617 217L616 212L613 209L612 205L607 202L602 193L599 185L592 178L588 177L581 167L580 160L580 154L575 143L570 139L564 137L561 131L559 124L556 122L552 114L546 106L541 99L536 99L538 94L538 90L539 86L550 88L555 85L557 81L565 80L566 77L570 75L560 65L580 60L582 58L594 61L609 68L637 88L655 89L664 90L667 95L674 94L678 103L683 105L684 109L691 113L692 117L691 121L692 124L695 127L696 130L698 132L701 134L703 134L705 138L710 150L740 155L742 153L746 160L740 180L710 190L681 194L671 198L664 209L660 211L657 207L653 208L644 207L630 206L628 207L623 204L621 209L622 213L617 217ZM529 285L528 280L527 277L522 273L521 266L522 258L517 258L510 260L513 263L514 269L508 275L503 282L498 283L490 277L486 279L485 282L480 284L469 286L468 284L461 284L457 285L454 284L449 279L448 276L440 277L438 282L435 291L432 293L429 294L424 290L424 287L425 283L425 279L420 273L418 269L415 263L415 257L413 254L409 254L410 250L413 246L412 242L415 239L413 237L415 231L420 223L429 224L428 184L428 180L440 180L440 160L480 160L519 160L558 160L562 170L559 172L561 182L564 194L568 196L574 200L569 206L561 207L558 210L557 217L553 232L554 236L552 244L548 254L542 259L538 267L537 271L532 274L529 284ZM529 285L529 293L528 296L523 296L519 302L525 303L530 308L532 312L537 314L543 325L536 332L530 338L524 342L517 342L509 344L502 342L498 345L489 338L487 334L481 336L477 335L474 337L470 336L463 328L462 324L454 321L452 315L448 310L441 305L435 298L429 294L432 293L435 291L438 282L440 277L448 276L449 279L454 284L457 285L461 284L468 284L469 286L479 286L485 282L486 279L490 277L498 283L503 282L508 275L514 269L513 263L510 260L516 260L522 258L521 266L522 273L527 277L528 280L528 285ZM23 244L19 236L14 233L18 231L23 224L25 219L29 215L34 216L39 214L44 214L49 217L56 220L62 227L68 234L69 240L71 246L74 249L75 252L75 256L68 255L65 257L58 254L53 254L34 254L32 255L29 255L23 256L22 248L31 249L33 247L39 245L43 247L47 247L52 245L49 242L46 244L39 241L34 244L23 244ZM76 312L73 311L66 307L60 302L59 298L57 291L63 287L64 284L66 282L71 280L79 280L82 283L84 287L85 293L85 297L83 301L78 306L78 309L76 312ZM679 285L674 292L667 300L659 300L626 288L623 285L619 280L615 274L617 271L621 265L624 267L626 271L631 276L636 276L645 273L656 272L665 269L670 268L673 266L679 266L679 270L679 280L679 285ZM687 264L692 263L697 260L701 260L700 268L700 274L698 277L695 288L690 299L684 312L676 327L667 338L655 351L645 360L630 369L621 377L610 389L608 394L605 397L600 389L599 352L608 341L611 338L617 337L626 330L639 330L667 300L674 292L679 285L679 280L679 270L679 266L682 266L687 264ZM510 647L508 652L503 653L497 647L496 644L499 640L500 637L503 637L508 638L510 643L510 647ZM578 46L558 57L547 53L548 47L550 42L556 38L554 34L550 34L549 26L551 22L554 20L557 17L557 12L560 14L571 11L577 13L585 13L596 9L602 9L613 8L608 14L603 16L603 24L600 36L578 46ZM335 251L336 247L329 246L329 240L325 236L330 223L342 214L343 201L347 180L349 176L345 173L341 167L338 151L348 146L388 165L428 184L429 224L420 223L415 231L413 237L415 239L412 242L413 246L410 250L409 254L413 254L415 257L415 263L419 266L412 270L407 274L400 285L390 290L381 289L378 290L379 294L374 297L369 301L357 305L354 303L351 305L343 306L344 303L341 296L340 292L335 290L329 285L332 280L336 281L339 280L344 280L339 271L339 264L339 258L335 251ZM209 319L200 321L198 317L196 311L195 306L197 297L194 293L194 285L194 278L189 273L190 270L199 270L198 275L201 278L204 282L205 287L207 289L206 312L209 319ZM285 77L280 59L274 55L266 47L265 39L271 33L274 25L272 16L274 11L285 7L292 8L292 13L300 9L296 16L296 21L299 23L298 32L291 37L293 42L298 42L301 47L305 49L304 56L299 59L296 62L289 66L290 70L290 75L285 77ZM559 -33L573 -29L585 -31L593 -30L605 -35L616 -36L625 -31L627 -27L626 -23L634 -20L638 -17L631 -14L634 -3L632 0L637 8L633 10L629 7L617 6L613 8L602 9L596 9L585 13L577 13L571 11L560 14L557 12L557 17L554 20L551 22L547 17L551 13L545 14L537 12L530 18L515 19L507 14L496 13L494 17L487 19L477 13L466 13L460 3L453 -2L458 -10L451 -15L463 -24L478 -25L482 -32L501 -31L513 -37L525 -40L541 -40L559 -33ZM529 390L567 411L567 417L582 427L577 439L578 445L584 448L582 457L582 460L582 465L585 471L589 481L593 483L585 489L574 493L568 493L564 496L557 496L555 497L543 494L535 495L532 482L529 477L527 474L517 472L512 469L505 468L501 466L497 463L492 451L486 445L484 439L485 434L483 425L487 425L491 421L495 416L497 414L495 408L494 404L497 403L498 397L494 391L497 390L508 390L529 390ZM508 390L497 390L494 391L488 394L485 393L486 386L488 382L488 374L491 369L494 364L498 362L501 358L497 357L498 345L502 342L509 344L517 342L524 342L530 338L534 344L536 349L540 361L536 368L531 375L529 379L529 390L508 390ZM545 56L545 62L544 65L539 66L542 62L539 61L542 55L545 56ZM721 213L713 216L711 221L711 224L701 228L685 233L676 240L672 241L669 240L663 244L657 246L648 247L644 250L640 253L635 253L631 254L624 254L622 248L622 242L621 239L619 232L616 228L617 223L617 217L622 213L621 209L623 204L628 207L630 206L642 206L653 208L657 207L660 211L664 209L671 198L681 194L710 190L717 207L721 213ZM505 673L499 679L496 684L490 691L479 702L472 708L464 712L454 716L449 717L448 719L441 718L437 720L426 718L420 719L415 719L405 723L397 724L390 728L386 728L382 725L378 724L374 720L372 713L369 706L372 704L372 697L365 687L360 679L353 666L358 661L362 664L364 668L368 669L374 670L380 670L389 665L389 628L391 629L397 639L396 645L399 648L406 647L411 643L416 640L418 635L423 633L427 634L432 637L440 637L446 635L447 632L449 627L455 626L458 622L461 616L470 608L484 601L488 601L493 603L496 602L502 603L506 617L509 624L507 635L508 638L503 637L500 637L499 640L496 644L497 647L503 653L508 652L510 647L518 647L515 655L514 663L512 668L505 673ZM479 670L475 666L470 669L465 672L460 679L467 686L471 685L473 682L478 681L480 677L483 673L479 670ZM517 472L522 477L525 485L523 488L521 496L523 504L520 508L517 517L522 520L491 528L492 535L485 536L479 540L478 544L474 545L466 553L460 559L457 560L454 558L442 557L441 556L437 554L430 553L422 555L415 549L409 541L409 509L430 509L429 506L431 502L429 497L430 492L429 489L432 490L433 493L438 492L444 493L447 498L455 499L461 496L464 501L471 503L475 507L479 512L487 513L486 502L483 504L476 500L473 498L475 488L476 476L474 472L477 465L480 464L493 462L497 463L501 466L505 468L512 469L517 472ZM502 603L496 602L493 603L488 601L484 601L478 596L470 595L467 589L467 585L463 584L451 573L448 567L446 565L442 557L454 558L457 560L460 559L466 553L474 545L478 544L479 540L485 536L492 535L493 539L501 539L506 541L508 543L513 544L518 547L518 560L516 567L516 574L517 577L516 583L512 591L502 603Z"/>
+      </g>
+                    <g class="dl-star" data-i="0" tabindex="0" role="img" aria-label="Health Research Center in Nouna, Nouna, Burkina Faso">
+                        <circle cx="151" cy="253" r="24" class="dl-star-hit"/>
+                        <text x="151" y="267" class="dl-star-glyph">&#9733;</text>
+                        <title>Health Research Center in Nouna &#8212; Nouna, Burkina Faso</title>
+                    </g>
+                    <g class="dl-star" data-i="1" tabindex="0" role="img" aria-label="Programme National de Sante Oculaire, Niamey, Niger">
+                        <circle cx="211" cy="245" r="24" class="dl-star-hit"/>
+                        <text x="211" y="259" class="dl-star-glyph">&#9733;</text>
+                        <title>Programme National de Sant&eacute; Oculaire &#8212; Niamey, Niger</title>
+                    </g>
+                    <g class="dl-star" data-i="2" tabindex="0" role="img" aria-label="Blantyre Institute for Community Outreach, Blantyre, Malawi">
+                        <circle cx="540" cy="538" r="24" class="dl-star-hit"/>
+                        <text x="540" y="552" class="dl-star-glyph">&#9733;</text>
+                        <title>Blantyre Institute for Community Outreach &#8212; Blantyre, Malawi</title>
+                    </g>
+                        </svg>
+                    </div>
+                    <ul class="dl-mapcard-list">
+                    <li data-i="0">
+                        <a href="#">Health Research Center in Nouna</a>
+                        <span class="dl-place">Nouna, Burkina Faso</span>
+                    </li>
+                    <li data-i="1">
+                        <a href="#">Programme National de Sant&eacute; Oculaire</a>
+                        <span class="dl-place">Niamey, Niger</span>
+                    </li>
+                    <li data-i="2">
+                        <a href="#">Blantyre Institute for Community Outreach</a>
+                        <span class="dl-place">Blantyre, Malawi</span>
+                    </li>
+                    </ul>
+                </div>
+                <div class="dl-mapcard m-asia">
+                    <div class="dl-mapcard-head">
+                        <p class="dl-mapcard-name">Asia</p>
+                        <p class="dl-mapcard-count">9 sites</p>
+                    </div>
+                    <div class="dl-mapcard-map">
+                        <svg viewBox="0 0 1115 670" xmlns="http://www.w3.org/2000/svg" role="group" aria-label="Map of Asia showing collecting sites">
+      <g class="dl-land">
+        <path d="M331 203L340 207L347 206L349 201L356 200L361 197L363 189L371 187L372 183L377 186L384 186L391 189L394 190L401 187L404 188L407 184L412 184L415 179L418 175L423 177L422 180L424 189L428 193L431 191L435 190L441 185L447 186L457 186L458 189L453 190L448 192L438 193L428 195L423 199L425 203L426 208L421 213L422 217L419 220L410 220L414 226L408 229L404 235L405 241L401 244L398 243L391 244L390 247L383 247L378 253L378 261L366 265L359 264L358 267L352 265L343 267L328 262L336 253L335 246L328 245L328 238L325 230L329 225L325 223L327 216L331 203ZM243 318L245 320L252 318L259 318L265 319L271 312L278 306L284 299L286 303L287 311L282 311L281 317L279 321L279 325L276 329L276 333L274 335L247 330L243 320ZM170 149L182 148L184 150L188 152L186 154L191 158L188 161L192 164L196 165L196 172L193 173L189 167L185 165L183 163L177 160L170 157L171 153L170 149ZM1083 698L1086 705L1092 702L1095 706L1100 710L1099 714L1101 723L1102 728L1104 729L1107 738L1106 743L1109 750L1119 755L1125 760L1131 764L1130 766L1135 773L1139 783L1143 781L1146 786L1149 784L1150 795L1157 801L1161 805L1168 813L1171 821L1171 826L1170 833L1175 841L1174 850L1172 855L1170 864L1170 869L1168 876L1164 886L1158 890L1154 898L1151 903L1148 912L1145 917L1143 924L1141 931L1142 934L1137 938L1126 938L1118 942L1114 946L1108 950L1101 946L1095 944L1097 939L1092 941L1084 948L1076 945L1070 944L1065 943L1056 940L1051 934L1049 926L1047 921L1042 917L1033 916L1036 911L1034 904L1030 911L1022 913L1026 907L1028 901L1031 896L1031 889L1023 898L1017 901L1014 909L1007 905L1007 899L1001 892L997 888L998 886L987 880L980 880L971 875L955 876L943 879L933 883L924 882L914 887L906 890L905 895L901 899L894 899L888 900L880 898L873 899L867 900L861 905L854 907L850 911L843 910L837 910L827 904L822 902L823 896L827 895L829 893L828 889L830 882L828 876L824 866L822 860L823 855L819 848L815 841L814 833L808 825L807 821L811 825L808 816L812 819L815 823L815 818L811 810L810 807L808 804L809 798L810 796L812 791L811 785L814 778L815 785L819 778L826 775L831 771L838 767L842 766L844 767L852 764L857 763L859 760L866 760L876 757L881 752L883 747L888 742L889 738L889 733L895 724L899 733L903 731L900 726L903 721L907 723L908 716L913 711L915 707L920 705L924 703L928 700L932 698L939 703L944 709L950 709L956 710L954 704L958 696L962 694L961 691L965 685L970 682L975 683L983 681L983 676L976 673L981 671L987 674L992 678L999 680L1002 679L1008 682L1013 680L1016 680L1019 679L1023 684L1020 689L1017 693L1014 693L1015 697L1012 702L1009 707L1009 710L1017 716L1024 719L1028 722L1035 728L1042 731L1044 734L1053 737L1059 734L1060 728L1062 724L1063 718L1066 710L1065 706L1066 703L1064 697L1066 689L1067 687L1066 684L1068 679L1070 673L1074 667L1076 672L1077 678L1079 679L1079 683L1083 688L1083 694L1083 698ZM183 163L185 165L189 165L193 173L187 171L182 167L181 163ZM204 148L208 148L210 146L215 142L220 147L225 154L229 155L232 157L224 158L223 166L221 170L218 172L218 177L210 172L213 167L211 164L207 165L196 172L196 165L192 164L188 161L191 158L186 154L188 152L184 150L182 148L185 146L192 149L196 149L193 143L196 141L204 148ZM40 605L39 593L37 588L42 589L45 583L50 584L50 588L52 590L50 596L47 601L43 605L40 605ZM618 340L618 347L615 345L615 353L613 348L612 343L611 338L607 332L598 332L599 336L596 342L592 340L588 340L585 339L584 331L580 324L582 318L576 315L578 311L584 308L577 302L581 296L588 300L592 300L593 307L602 309L610 309L616 310L611 319L607 319L604 325L609 330L611 324L618 340ZM-21 118L-19 122L-15 121L-8 123L5 123L10 121L20 118L27 122L33 123L28 127L24 134L27 140L20 139L10 142L10 147L2 148L-5 144L-12 147L-19 147L-19 140L-24 137L-22 131L-18 128L-23 124L-24 120L-21 118ZM-14 21L-5 21L5 17L7 12L15 8L14 4L19 2L29 -2L39 1L40 3L45 2L54 4L55 9L53 12L58 18L62 20L68 24L70 26L67 29L59 28L60 33L62 39L54 40L51 42L51 47L47 46L39 46L36 44L33 46L30 44L22 44L12 42L3 41L-4 41L-9 44L-13 44L-14 40L-16 35L-11 33L-11 29L-13 25L-14 21ZM815 515L819 511L826 506L826 510L825 517L821 517L819 520L815 515ZM609 282L613 285L612 292L605 292L597 291L591 293L583 289L589 280L594 277L600 279L605 280L609 282ZM-89 486L-81 485L-80 482L-76 485L-64 481L-60 477L-56 474L-57 470L-54 469L-45 470L-37 465L-30 454L-25 450L-20 449L-18 453L-13 459L-13 463L-15 467L-14 470L-11 473L-4 478L1 482L7 490L11 495L13 501L20 504L22 508L19 509L13 508L6 507L3 508L1 511L-5 509L-16 514L-20 513L-24 520L-31 518L-37 517L-43 513L-51 510L-55 513L-59 518L-60 525L-66 524L-72 523L-77 528L-82 537L-83 534L-83 530L-88 527L-91 521L-92 518L-96 513L-95 510L-96 505L-96 498L-93 496L-89 486ZM780 373L772 378L764 375L764 366L768 362L778 359L784 359L786 363L782 367L780 373ZM938 62L954 66L965 73L968 82L982 82L990 78L1005 75L1000 84L997 88L994 99L988 109L976 107L969 110L971 119L970 131L965 131L965 136L959 130L956 136L941 140L943 145L935 145L931 142L924 149L914 154L907 161L894 164L887 168L878 171L882 166L880 162L888 156L883 151L875 154L865 161L859 167L850 168L845 173L850 179L858 181L858 186L865 188L875 181L884 185L889 185L891 191L878 193L874 199L865 204L860 211L870 216L874 226L879 235L885 243L885 251L879 253L882 259L887 262L886 270L883 278L878 279L871 289L864 303L856 315L843 324L830 332L820 333L814 338L811 335L806 339L793 344L784 346L781 357L776 357L773 350L775 346L763 343L759 344L750 342L745 338L747 332L738 330L734 326L726 332L717 333L710 333L705 335L700 337L702 348L697 348L696 342L689 344L685 343L678 339L681 331L675 329L673 319L663 321L664 309L673 301L673 293L673 285L669 283L666 277L661 277L651 276L654 272L650 265L643 270L636 267L625 274L617 281L609 282L605 280L600 279L594 277L589 280L583 287L582 279L577 281L566 280L556 278L548 274L541 272L538 267L533 265L524 259L516 256L513 258L500 251L491 245L488 234L495 235L495 230L492 225L493 217L483 205L468 201L465 193L458 189L457 186L455 180L456 176L450 174L447 175L445 166L447 163L446 161L455 156L461 154L471 156L474 149L486 148L489 144L504 139L505 137L504 131L510 128L502 111L520 107L525 105L532 87L550 90L555 85L555 75L563 75L570 68L573 67L576 74L583 79L596 83L603 91L599 103L602 107L613 109L626 110L637 116L642 118L646 127L652 133L662 133L681 135L693 133L702 135L715 141L726 141L731 144L741 139L756 135L770 135L780 131L787 126L793 123L792 119L789 115L794 109L799 110L808 112L817 107L831 103L838 96L844 93L858 92L865 93L866 90L858 83L850 79L843 83L834 81L829 83L827 79L833 69L838 61L848 65L861 59L861 54L870 44L875 40L874 35L869 32L877 27L888 26L900 25L914 28L922 32L928 42L931 46L934 53L938 62ZM53 525L53 537L56 538L53 542L50 544L46 549L45 554L44 562L42 566L42 573L39 576L39 582L37 588L39 593L40 605L41 614L40 619L42 625L48 631L52 643L49 642L37 644L34 645L32 652L34 656L32 668L31 678L33 680L40 684L42 682L43 693L36 692L32 687L29 683L22 681L20 676L14 679L7 678L4 673L-2 672L-6 673L-7 670L-10 669L-14 669L-20 670L-24 670L-25 659L-29 655L-29 649L-28 643L-30 639L-30 633L-41 633L-40 629L-45 629L-51 632L-53 637L-55 640L-60 638L-63 640L-69 641L-72 635L-74 632L-77 626L-79 619L-106 619L-109 620L-116 621L-117 618L-114 612L-113 610L-110 608L-107 609L-104 605L-99 605L-99 608L-95 610L-90 603L-84 599L-82 595L-82 587L-79 577L-74 572L-68 567L-67 564L-67 561L-66 557L-66 551L-65 543L-63 536L-60 531L-60 525L-59 518L-55 513L-51 510L-43 513L-37 517L-31 518L-24 520L-21 514L-16 514L-5 509L-2 511L3 508L6 507L13 508L19 509L22 508L27 516L31 517L34 515L38 516L43 514L45 518L53 525ZM71 209L73 206L79 206L87 203L81 208L79 210L77 208L72 209ZM82 209L73 214L68 213L66 209L71 209L75 208L77 210L81 209ZM165 433L167 436L167 440L162 443L166 445L162 451L160 449L153 449L152 444L155 439L159 435L162 435L165 433ZM91 265L88 269L86 277L84 282L82 284L78 280L74 276L68 261L71 273L76 283L83 299L87 304L89 310L98 321L96 322L96 329L107 338L108 340L72 340L37 340L0 340L0 303L0 268L-3 260L0 253L-2 249L2 244L14 244L22 247L32 250L36 251L43 248L47 245L55 244L61 246L64 251L66 247L73 250L80 250L85 248L91 265ZM159 435L155 431L152 425L148 422L145 419L137 415L131 415L129 413L123 415L118 410L115 418L104 416L103 412L107 397L108 390L111 387L118 386L123 380L128 392L130 401L135 406L148 415L153 421L158 427L161 430L165 433L162 435L159 435ZM118 410L123 415L129 413L131 415L137 415L145 419L148 422L152 425L155 431L159 435L155 439L152 444L153 446L158 450L162 451L160 454L164 460L167 465L171 468L201 480L208 480L182 510L170 510L162 517L156 518L154 521L148 521L144 517L136 522L133 526L127 525L123 524L108 516L102 516L99 512L99 507L94 505L89 494L85 492L83 488L78 483L73 482L76 476L81 476L82 473L82 464L85 454L89 451L90 447L94 439L99 434L103 424L104 416L115 418L118 410ZM151 145L153 140L150 134L145 130L140 129L137 126L145 126L159 128L171 133L173 134L178 133L187 135L190 139L196 141L193 143L198 148L192 149L185 146L182 148L170 149L161 144L151 145ZM-12 203L-7 206L0 206L7 206L12 207L11 210L-3 211L-14 207L-12 203ZM15 144L12 151L4 151L-1 151L-12 153L-5 159L-10 160L-15 160L-20 155L-22 157L-20 163L-15 168L-19 170L-13 175L-9 178L-9 183L-17 181L-15 186L-20 187L-17 196L-23 196L-30 192L-34 184L-35 177L-39 172L-44 167L-44 164L-40 159L-40 156L-37 154L-30 151L-27 149L-22 149L-19 147L-12 147L-5 144L2 148L10 147L10 142L15 144ZM874 662L871 663L858 656L867 654L872 657L875 660ZM908 661L901 664L900 659L904 653L913 649L914 654L908 661ZM849 641L852 644L858 643L860 647L849 649L843 650L838 650L841 645L846 644L849 641ZM894 641L893 646L879 649L867 648L867 644L874 642L880 645L886 645L894 641ZM764 628L781 629L783 625L800 629L804 636L817 638L829 644L818 648L808 643L800 644L790 643L782 641L771 637L765 636L761 638L744 634L743 629L734 629L740 619L752 620L759 623L763 624L764 628ZM1002 622L998 629L997 621L998 618L1000 614L1002 617L1002 622ZM934 595L931 598L924 596L923 592L932 591L934 595ZM964 591L967 599L959 594L952 594L946 594L940 594L942 588L953 588L964 591ZM997 572L1000 588L1009 594L1017 583L1027 577L1035 577L1043 581L1050 584L1060 586L1060 619L1060 651L1052 643L1043 641L1040 644L1029 644L1033 636L1038 633L1036 622L1032 614L1014 605L1006 605L993 595L990 600L986 601L984 597L984 593L977 588L987 585L994 585L993 582L980 582L976 576L968 574L964 569L976 567L981 564L996 568L997 572ZM916 546L908 556L902 558L893 556L878 556L870 558L868 565L876 574L881 570L898 566L898 571L894 569L890 575L882 579L890 592L889 595L897 607L897 613L892 616L888 613L893 605L884 609L881 606L883 602L876 596L877 586L871 589L871 601L872 615L866 617L862 614L865 605L863 595L859 595L857 588L860 581L862 574L866 558L868 554L876 547L883 550L895 551L905 551L914 544L916 546ZM947 549L947 557L942 556L941 563L944 568L942 569L938 563L935 550L937 542L940 538L941 544L946 545L947 549ZM848 542L859 551L848 552L845 559L845 568L836 575L836 585L833 600L831 597L821 601L817 595L811 594L806 591L795 595L792 590L786 590L779 589L777 576L773 573L768 565L767 556L768 547L773 540L775 547L781 552L787 550L793 551L798 546L803 545L811 548L819 546L823 532L827 528L830 517L841 517L849 519L843 528L850 537L848 542ZM738 619L728 619L720 610L709 602L705 596L698 588L693 581L686 567L678 558L676 550L672 542L664 535L659 527L652 521L643 510L642 505L648 506L662 508L670 517L677 524L682 528L691 539L700 539L708 546L713 554L720 559L717 567L722 571L725 571L727 578L730 583L737 584L741 591L739 603L738 619ZM483 205L493 217L492 225L495 230L495 235L488 234L491 245L500 251L513 258L507 263L503 272L512 276L521 281L533 286L545 288L550 293L557 294L568 296L576 296L577 292L576 286L577 281L582 279L583 287L591 293L597 291L605 292L612 292L613 285L609 282L617 281L625 274L636 267L643 270L650 265L654 272L651 276L661 277L661 281L658 283L659 289L652 287L641 294L641 300L636 308L635 313L631 321L624 319L624 330L622 333L623 337L618 340L613 324L609 330L604 325L607 319L611 319L616 310L610 309L602 309L593 307L592 300L588 300L581 296L577 302L584 308L578 311L576 315L582 318L580 324L584 331L585 339L584 343L577 343L566 345L567 353L562 358L549 365L538 377L532 383L522 390L522 394L518 397L510 400L505 401L503 409L505 422L505 430L501 439L501 456L496 457L492 465L495 468L487 471L484 477L480 480L471 471L467 457L464 447L460 442L456 433L453 420L452 414L443 400L440 381L437 368L437 356L435 346L422 352L415 351L403 339L408 335L405 332L394 323L401 316L421 316L419 308L414 303L413 295L407 291L417 280L427 281L437 270L443 260L451 250L451 243L459 237L452 232L449 226L445 217L450 213L464 215L474 213L483 205ZM264 188L272 186L279 180L285 181L289 179L295 180L305 185L313 186L323 195L330 195L331 203L327 216L325 223L329 225L325 230L328 238L328 245L335 246L336 253L328 262L332 267L336 273L345 277L345 286L349 288L350 292L337 298L333 309L316 306L306 304L296 303L292 290L288 289L281 290L271 295L260 292L251 284L242 281L236 272L229 259L225 260L219 257L215 261L210 255L210 250L209 243L204 235L193 230L187 220L189 213L193 209L193 203L187 200L181 188L176 180L177 177L175 166L181 163L182 167L187 171L193 173L196 172L207 165L211 164L213 167L210 172L216 177L221 184L230 186L236 191L249 193L263 190ZM187 200L193 203L193 209L189 213L187 220L193 230L204 235L209 243L207 250L210 255L215 261L210 260L204 259L197 269L180 268L154 248L141 241L130 238L126 226L146 216L150 204L149 196L154 194L158 188L162 186L173 187L176 190L181 188L187 200ZM98 233L96 236L93 235L91 241L93 242L91 244L95 245L95 249L91 265L85 248L87 245L89 239L91 232L92 229L96 227L99 231ZM96 236L98 233L108 237L126 226L130 238L110 245L119 255L116 257L114 260L107 261L105 265L101 268L91 266L95 249L95 245L96 242L96 236ZM1002 219L1003 222L998 228L994 225L989 227L987 233L981 230L981 225L986 219L991 221L995 216L1002 219ZM1059 189L1056 197L1058 202L1053 209L1041 213L1025 214L1012 225L1006 222L1006 214L990 216L979 221L968 221L977 229L971 245L965 250L961 246L963 237L958 234L954 227L962 224L967 218L976 213L983 206L1001 203L1011 205L1021 187L1027 192L1040 182L1045 178L1051 166L1050 154L1053 148L1063 146L1068 160L1068 168L1059 178L1059 189ZM1086 118L1093 120L1099 116L1101 127L1088 130L1080 140L1065 133L1060 144L1050 144L1049 134L1053 127L1063 126L1066 112L1069 104L1079 115L1086 118ZM420 137L415 139L403 146L399 153L395 153L393 149L381 148L379 140L375 140L375 130L365 123L349 123L338 125L329 116L322 112L308 105L283 110L283 147L278 147L272 140L266 137L255 139L251 142L253 136L251 132L241 129L237 120L231 117L231 114L240 115L240 108L248 106L256 107L258 98L256 91L247 92L239 90L229 94L220 96L216 94L216 89L211 83L204 83L196 76L201 68L199 66L206 55L215 61L217 54L235 43L250 43L270 50L281 54L290 50L305 49L316 55L319 52L332 52L334 47L319 40L328 36L327 33L335 30L329 23L333 20L367 16L372 14L394 10L403 6L419 8L422 19L431 16L443 20L442 25L451 25L474 15L471 18L482 26L503 51L508 46L520 52L533 49L538 51L543 57L549 59L553 63L565 62L570 68L563 75L555 75L555 85L550 90L532 87L525 105L520 107L502 111L510 128L504 131L505 137L499 135L495 131L481 130L466 130L463 131L450 127L444 129L443 135L428 132L422 133L420 137ZM146 569L152 577L145 581L143 585L139 586L138 593L135 597L133 603L130 607L117 597L116 591L83 571L81 559L84 555L88 548L92 541L88 529L87 524L82 518L88 512L94 505L99 507L99 512L102 516L108 516L120 524L125 524L133 526L136 522L144 517L148 521L154 521L146 532L146 569ZM420 137L422 133L428 132L443 135L444 129L450 127L463 131L466 130L481 130L495 131L499 135L505 137L504 139L489 144L486 148L474 149L471 156L461 154L455 156L446 161L447 163L445 166L427 167L416 164L406 165L407 159L417 161L420 158L427 159L439 151L428 146L422 149L415 145L423 138L420 137ZM717 454L713 448L709 438L707 426L712 418L724 416L733 417L740 421L745 414L753 418L755 425L754 437L738 444L742 450L733 451L725 455L717 454ZM944 174L952 186L954 192L954 204L951 209L943 211L935 215L927 216L926 211L928 203L924 193L931 191L924 183L929 182L932 177L939 177L943 176L944 174ZM210 260L212 265L214 274L207 275L205 270L197 269L204 259L210 260ZM733 417L736 413L736 404L729 396L728 386L721 378L714 377L713 380L707 381L704 379L695 385L695 376L697 365L691 365L690 359L686 356L688 352L696 346L702 348L700 337L705 335L710 343L714 352L726 352L729 361L723 364L721 367L732 373L739 385L745 394L752 401L754 408L753 418L745 414L740 421L733 417ZM99 227L96 229L96 221L100 214L105 214L106 218L101 222L99 227ZM-93 331L-99 335L-104 330L-119 325L-123 319L-130 314L-134 316L-138 311L-138 306L-143 299L-140 295L-140 289L-139 283L-140 279L-138 270L-139 266L-142 257L-137 255L-137 250L-137 246L-131 242L-128 239L-124 236L-123 229L-113 232L-109 231L-101 233L-89 237L-85 246L-77 248L-64 252L-54 257L-50 255L-45 250L-47 242L-44 238L-38 233L-32 232L-19 234L-16 238L-13 238L-10 240L-1 241L2 244L-2 249L0 253L-3 260L0 268L0 303L0 340L0 360L-11 360L-11 364L-47 345L-83 326L-93 331ZM519 485L517 495L514 498L506 500L501 492L500 478L504 462L510 467L514 474L519 485ZM-21 17L-20 11L-25 10L-34 8L-36 0L-26 -3L-10 -3L-1 -4L5 -1L14 4L15 8L7 12L5 17L-5 21L-14 21L-16 18L-21 17ZM-36 0L-36 -8L-31 -14L-23 -18L-15 -10L-8 -10L-6 -18L2 -20L6 -18L13 -15L21 -15L25 -12L26 -8L29 -2L19 2L14 4L5 -1L0 -2L-10 -3L-26 -3L-36 0ZM15 78L17 76L23 75L30 78L34 79L38 82L37 85L40 87L42 91L45 93L46 96L38 96L33 101L32 104L28 101L29 96L29 92L23 86L20 82L18 79L15 78ZM681 358L676 362L669 363L665 374L661 376L666 384L671 392L675 398L672 407L669 409L671 414L677 422L678 427L678 432L681 441L676 450L672 461L671 453L674 446L671 440L672 429L668 424L665 412L663 399L659 391L653 396L643 403L638 402L632 400L635 387L633 378L626 366L627 363L622 361L615 353L615 345L618 347L618 340L623 337L622 333L624 330L624 319L631 321L635 313L636 308L641 300L641 294L652 287L659 289L658 283L661 281L661 277L666 277L669 283L673 285L673 293L673 301L664 309L663 321L673 319L675 329L681 331L678 339L685 343L689 344L696 342L696 346L688 352L686 356L681 358ZM573 67L583 65L600 57L614 52L622 55L632 55L638 60L647 60L660 63L669 56L665 50L675 40L685 44L693 45L704 47L706 55L719 59L727 57L739 56L748 57L757 62L763 67L771 67L783 69L791 66L803 65L816 58L822 59L827 62L838 61L833 69L827 79L829 83L834 81L843 83L850 79L858 83L866 90L865 93L858 92L844 93L838 96L831 103L817 107L808 112L799 110L794 109L789 115L792 119L793 123L787 126L780 131L770 135L756 135L741 139L731 144L726 141L715 141L702 135L693 133L681 135L662 133L652 133L646 127L642 118L637 116L626 110L613 109L602 107L599 103L603 91L596 83L583 79L576 74L573 67ZM87 675L94 674L105 677L108 676L114 676L117 673L123 673L133 669L140 663L141 668L141 678L142 686L143 702L144 707L141 714L138 721L132 727L124 731L113 736L103 747L100 748L93 756L89 758L89 765L93 773L95 778L96 781L96 791L95 795L97 797L96 801L92 805L84 808L73 814L69 817L70 821L72 827L65 827L64 823L62 818L62 815L63 804L61 797L57 783L66 771L69 764L71 757L70 754L70 747L72 740L72 727L67 724L63 723L61 721L56 719L49 719L48 715L47 708L75 700L80 705L83 704L86 706L87 710L85 715L86 722L92 728L94 721L98 719L98 706L94 699L91 696L85 683L87 675ZM87 675L85 683L87 696L94 699L98 706L98 719L94 721L92 728L86 722L85 715L87 710L86 706L83 704L80 705L75 700L70 697L73 688L76 684L74 676L76 668L78 665L75 657L71 652L80 654L82 657L85 662L87 675ZM695 498L696 503L702 502L705 498L712 505L716 511L717 518L716 523L716 526L717 532L720 535L724 544L724 547L717 548L709 540L698 532L697 527L692 521L690 512L687 507L688 500L686 495L695 498ZM855 515L849 519L841 517L830 517L827 528L823 532L819 546L811 548L803 545L798 546L793 551L787 550L781 552L775 547L773 540L780 543L787 541L789 533L793 531L804 529L810 521L815 515L819 520L821 517L825 517L826 510L826 506L833 499L838 491L842 491L846 496L847 500L853 503L860 506L860 510L854 510L855 515ZM577 281L576 286L577 292L576 296L568 296L557 294L550 293L545 288L533 286L521 281L512 276L503 272L507 263L513 258L516 256L524 259L533 265L538 267L541 272L548 274L556 278L566 280L577 281ZM309 349L306 356L302 355L300 358L298 363L300 369L294 371L289 374L288 379L286 381L280 381L277 384L277 388L272 390L267 390L261 393L257 393L254 387L247 370L274 360L280 340L276 333L276 329L279 325L279 321L283 319L282 311L287 311L291 318L296 321L303 323L308 324L312 330L315 333L318 335L315 343L313 346L309 349ZM287 301L284 299L287 296L287 301ZM458 189L465 193L468 201L483 205L474 213L464 215L450 213L445 217L449 226L452 232L459 237L451 243L451 250L443 260L437 270L427 281L417 280L407 291L413 295L414 303L419 308L421 316L401 316L394 323L388 321L385 313L378 306L361 308L346 308L333 309L337 298L350 292L349 288L345 286L345 277L336 273L332 267L328 262L343 267L352 265L358 267L359 264L366 265L378 261L378 253L383 247L390 247L391 244L398 243L401 244L405 241L404 235L408 229L414 226L410 220L419 220L422 217L421 213L426 208L425 203L423 199L428 195L438 193L448 192L453 190L458 189ZM926 476L927 482L928 488L924 497L921 487L917 492L920 500L917 504L906 498L904 491L907 486L901 482L898 486L894 485L887 491L885 488L889 480L895 477L900 473L903 478L910 475L911 470L918 470L917 462L925 467L925 472L926 476ZM904 457L901 460L898 467L895 470L890 463L891 460L894 457L895 451L900 451L898 457L905 448L904 457ZM854 467L842 476L847 469L853 463L859 456L863 446L865 454L859 460L854 467ZM885 441L891 444L896 444L896 448L892 453L886 456L886 451L886 446L885 441ZM918 438L921 450L914 447L914 450L916 456L912 459L911 452L907 445L913 446L912 442L907 434L916 435L918 438ZM882 429L879 438L875 433L871 425L879 426L882 429ZM880 375L886 378L888 375L888 382L891 389L888 397L883 401L882 409L884 417L889 418L893 417L904 422L903 428L906 430L905 435L898 430L895 424L892 428L886 422L878 424L874 421L874 417L877 415L874 412L873 416L869 410L867 406L867 396L870 400L871 384L874 375L880 375ZM1160 615L1155 616L1154 618L1149 621L1144 623L1139 623L1132 620L1127 617L1127 614L1136 616L1141 615L1142 610L1144 615L1149 615L1152 611L1157 608L1156 602L1161 601L1163 603L1163 609L1160 615ZM1116 634L1124 640L1130 651L1136 651L1135 655L1142 657L1140 659L1149 663L1148 666L1142 667L1140 664L1132 663L1123 661L1116 655L1111 649L1106 641L1094 636L1086 639L1081 642L1082 650L1075 653L1069 652L1060 651L1060 619L1060 586L1076 593L1092 599L1099 604L1104 609L1105 615L1120 621L1123 626L1114 627L1116 634ZM965 136L959 141L956 144L957 151L952 153L947 158L941 160L937 162L936 167L939 169L944 174L943 176L939 177L932 177L929 182L925 182L920 181L916 183L913 181L911 179L913 175L915 172L917 166L911 163L907 161L914 154L924 149L931 142L935 145L943 145L941 140L956 136L959 130L965 136ZM236 312L235 305L238 300L240 299L243 302L243 308L241 314L236 312ZM-21 81L-17 79L-11 80L-5 80L-1 83L2 81L9 80L11 78L15 78L18 79L20 82L23 86L29 92L29 96L28 101L30 105L34 107L38 105L42 107L38 112L35 111L33 123L27 122L20 118L10 121L5 123L-8 123L-15 121L-19 122L-21 118L-23 116L-21 114L-23 113L-26 115L-31 112L-32 108L-38 106L-39 103L-44 99L-36 97L-31 90L-26 83L-21 81ZM1084 53L1093 70L1080 67L1074 81L1083 92L1083 99L1076 93L1070 100L1068 92L1069 82L1068 71L1070 64L1070 50L1065 41L1066 27L1074 22L1071 18L1075 16L1077 23L1080 33L1080 42L1084 53ZM-21 17L-38 17L-49 16L-47 11L-34 8L-25 10L-20 11L-21 14ZM749 -210L751 -205L760 -207L786 -207L807 -202L814 -198L812 -193L802 -190L778 -185L771 -182L782 -180L796 -178L804 -180L809 -173L813 -176L827 -178L857 -176L859 -171L897 -170L898 -177L917 -176L932 -176L946 -170L951 -164L945 -160L957 -152L971 -148L980 -158L994 -154L1010 -157L1028 -153L1034 -156L1049 -155L1043 -164L1055 -168L1137 -162L1145 -156L1169 -148L1206 -150L1224 -149L1232 -145L1231 -137L1242 -134L1254 -136L1270 -137L1288 -135L1305 -136L1321 -127L1332 -130L1325 -137L1329 -141L1358 -138L1377 -139L1403 -134L1416 -130L1416 -90L1404 -85L1392 -86L1401 -81L1406 -73L1410 -70L1411 -66L1409 -63L1392 -65L1366 -58L1358 -57L1344 -50L1331 -43L1328 -39L1315 -46L1291 -38L1287 -42L1278 -37L1266 -39L1263 -32L1252 -22L1252 -18L1262 -16L1261 -2L1253 -1L1249 7L1253 11L1237 17L1233 28L1220 30L1217 41L1204 50L1201 43L1197 28L1192 6L1196 -8L1204 -14L1204 -18L1218 -21L1235 -33L1250 -43L1267 -51L1274 -66L1263 -65L1258 -56L1234 -45L1227 -58L1203 -54L1180 -38L1188 -31L1168 -29L1153 -28L1154 -35L1140 -37L1129 -32L1101 -33L1071 -30L1041 -11L1006 13L1020 14L1025 20L1034 22L1040 17L1050 18L1063 29L1063 38L1056 48L1055 60L1051 76L1037 90L1034 97L1022 109L1010 120L1004 126L992 132L986 132L980 127L968 134L966 138L965 131L970 131L971 119L969 110L976 107L988 109L994 99L997 88L1000 84L1005 75L990 78L982 82L968 82L965 73L954 66L938 62L934 53L931 46L928 42L922 32L914 28L900 25L888 26L877 27L869 32L874 35L875 40L870 44L861 54L861 59L848 65L838 61L827 62L822 59L816 58L803 65L791 66L783 69L771 67L763 67L757 62L748 57L739 56L727 57L719 59L706 55L704 47L693 45L685 44L675 40L665 50L669 56L660 63L647 60L638 60L632 55L622 55L614 52L600 57L583 65L573 67L570 68L565 62L553 63L549 59L543 57L538 51L533 49L520 52L508 46L503 51L482 26L471 18L474 15L451 25L442 25L443 20L431 16L422 19L419 8L403 6L394 10L372 14L367 16L333 20L329 23L335 30L327 33L328 36L319 40L334 47L332 52L319 52L316 55L305 49L290 50L281 54L270 50L250 43L235 43L217 54L215 61L206 55L199 66L201 68L196 76L204 83L211 83L216 89L216 94L220 96L216 102L207 104L198 114L206 123L205 130L215 142L210 146L208 148L204 148L198 142L190 139L187 135L178 133L173 134L171 133L159 128L145 126L138 124L125 117L115 113L107 108L113 106L121 98L116 94L129 90L121 89L121 85L126 82L135 81L136 78L134 72L138 67L124 61L119 61L113 56L106 58L95 54L92 48L84 47L84 44L86 42L80 37L70 38L65 39L62 39L60 33L58 29L67 29L70 26L68 24L61 22L58 18L53 12L55 9L54 4L45 2L40 3L39 1L29 -2L26 -8L25 -12L21 -15L25 -18L22 -27L29 -33L38 -40L28 -45L48 -58L56 -64L60 -69L46 -76L50 -82L42 -89L48 -98L37 -109L45 -117L31 -124L33 -131L40 -132L56 -136L65 -139L80 -133L105 -131L140 -119L147 -115L147 -108L137 -103L122 -100L81 -108L75 -106L90 -99L90 -94L91 -84L103 -81L110 -78L111 -83L105 -88L111 -91L133 -85L141 -88L135 -95L156 -105L165 -104L173 -101L178 -108L171 -114L175 -120L169 -126L194 -122L199 -117L188 -116L188 -110L195 -107L209 -109L211 -115L230 -120L262 -129L269 -128L260 -122L272 -121L278 -124L295 -125L309 -129L319 -123L330 -129L320 -135L325 -138L352 -135L364 -132L398 -121L404 -126L394 -131L383 -135L386 -139L381 -147L381 -150L398 -159L404 -168L411 -170L435 -168L437 -162L428 -154L434 -151L437 -144L435 -130L445 -124L441 -117L423 -103L433 -102L437 -105L447 -108L449 -113L457 -118L452 -123L456 -130L446 -131L444 -136L451 -146L439 -154L456 -161L454 -168L458 -169L463 -163L459 -153L469 -152L465 -159L480 -163L499 -163L516 -158L508 -166L507 -176L523 -178L545 -178L565 -179L557 -185L568 -191L578 -191L596 -196L620 -198L623 -200L647 -201L655 -199L675 -204L692 -204L695 -209L703 -213L725 -217L741 -214L728 -211L749 -210ZM50 571L53 577L53 583L50 584L45 583L42 589L37 588L38 583L39 576L42 573L50 571ZM162 397L161 392L158 389L158 385L153 382L148 373L146 365L139 358L135 357L129 347L128 340L129 334L123 323L119 319L114 317L111 311L109 304L106 302L103 294L97 286L93 279L88 279L89 274L90 270L91 266L101 268L105 265L107 261L114 260L116 257L119 255L110 245L128 240L141 241L154 248L180 268L197 269L205 270L207 275L214 274L217 283L222 285L224 289L230 293L230 297L229 301L231 304L233 307L234 310L236 312L239 314L243 318L247 330L274 335L276 333L280 340L274 360L247 370L220 374L212 378L205 389L201 391L199 387L195 388L186 387L174 386L168 384L165 389L166 393L162 397ZM82 465L81 460L80 457L75 453L74 446L75 438L71 438L65 440L67 443L68 449L63 455L58 462L53 463L46 457L42 459L41 462L37 464L27 466L19 464L16 465L9 459L7 456L1 457L-2 462L-4 471L-7 473L-10 474L-14 470L-15 467L-13 463L-13 459L-18 453L-20 449L-23 443L-23 437L-25 434L-28 434L-27 430L-25 426L-26 422L-23 419L-25 417L-22 411L-18 403L-10 404L-11 364L-11 360L0 360L0 340L37 340L72 340L108 340L111 350L109 352L111 362L114 374L118 376L123 380L118 386L111 387L108 390L107 397L103 412L104 416L103 424L99 434L94 439L90 447L89 451L85 454L82 464ZM82 465L82 473L81 476L76 476L73 482L78 483L83 488L85 492L89 494L94 505L88 512L82 518L77 522L70 522L63 524L57 522L53 525L45 518L43 514L38 516L34 515L31 517L27 516L22 508L20 504L13 501L11 495L7 490L1 485L-4 478L-10 474L-7 473L-4 471L-2 462L1 457L7 456L9 459L13 464L19 464L26 464L36 466L41 462L42 459L46 457L53 463L58 462L63 455L68 449L67 443L65 440L70 440L75 438L74 446L75 453L80 457L81 460L81 465ZM219 465L215 472L208 480L201 480L171 468L167 465L164 460L160 454L162 451L166 445L169 447L171 451L175 456L179 456L188 453L198 452L206 449L210 448L214 446L219 446L219 450L219 460L219 465ZM226 444L231 443L235 440L239 440L238 448L238 454L236 457L233 468L229 479L223 492L216 507L208 518L197 531L188 540L174 549L166 557L156 569L154 574L152 577L146 569L146 532L154 521L156 518L162 517L170 510L182 510L208 480L215 472L219 465L219 460L219 450L219 446L226 444ZM126 226L108 237L98 233L99 227L101 222L106 218L105 214L100 214L100 206L102 202L104 200L107 197L107 192L110 194L120 191L125 193L133 193L143 189L148 189L158 188L154 194L149 196L150 204L146 216L126 226ZM709 438L701 434L693 434L694 426L686 426L685 437L680 452L677 460L678 468L684 468L688 477L689 486L694 491L700 493L705 498L702 502L696 503L695 498L688 494L682 492L681 487L676 481L671 476L670 482L668 476L669 470L672 461L676 450L681 441L678 432L678 427L677 422L671 414L669 409L672 407L675 398L671 392L666 384L661 376L665 374L669 363L676 362L681 358L686 356L690 359L691 365L697 365L695 376L695 385L704 379L707 381L713 380L714 377L721 378L728 386L729 396L736 404L736 413L733 417L724 416L712 418L707 426L709 438ZM420 158L417 161L407 159L406 165L416 164L427 167L445 166L447 175L450 174L456 176L455 180L457 186L447 186L441 185L435 190L431 191L428 193L424 189L425 181L423 177L418 175L415 179L414 183L407 184L404 188L401 187L394 190L391 189L396 178L394 171L388 169L390 164L398 165L402 159L405 153L417 150L415 155L417 158L420 158ZM331 203L330 195L323 195L313 186L305 185L295 180L289 179L285 181L279 180L272 186L264 188L263 181L264 170L257 167L259 160L253 160L255 151L264 154L272 150L265 144L262 139L255 141L254 149L251 142L255 139L266 137L272 140L278 147L283 147L293 147L292 142L300 138L307 132L320 138L321 146L324 148L334 147L337 149L341 159L352 166L358 171L367 176L380 180L379 186L372 183L371 187L363 189L361 197L356 200L349 201L347 206L340 207L331 203ZM913 649L914 647L922 644L929 644L931 643L935 644L932 647L922 651L914 654L913 649ZM109 147L122 151L133 149L140 150L151 145L161 144L170 149L171 153L170 157L177 160L181 163L175 166L177 177L176 180L181 188L176 190L173 187L162 186L158 188L148 189L143 189L133 193L125 193L120 191L110 194L107 192L107 197L104 200L102 202L98 197L102 193L96 194L89 192L82 198L69 199L61 194L51 193L49 197L43 199L34 193L24 193L19 183L12 178L16 170L11 165L21 156L35 155L39 148L56 149L67 143L78 140L93 140L109 147ZM20 153L12 158L10 154L12 151L15 144L10 142L20 139L27 140L28 144L36 147L35 149L24 150L20 153ZM884 316L879 332L875 340L870 332L869 324L874 315L882 307L886 310L884 316ZM81 570L116 591L117 597L130 607L126 619L126 625L132 628L130 637L130 640L130 645L133 651L137 661L140 663L133 669L123 673L117 673L114 676L108 676L105 677L94 674L87 675L85 662L82 657L80 654L71 652L66 649L60 648L56 646L52 643L48 631L42 625L40 619L41 614L40 605L43 605L47 601L50 596L53 594L50 588L50 584L53 583L53 577L50 571L53 570L63 570L81 570ZM63 570L53 570L50 571L44 574L42 566L44 562L45 554L46 549L50 544L53 542L56 538L53 537L53 525L57 522L63 524L70 522L77 522L82 518L87 524L88 529L92 541L88 548L84 555L81 559L81 570L63 570ZM62 39L65 39L68 37L80 37L86 42L84 44L84 47L92 48L95 52L106 58L113 56L119 61L124 61L138 64L134 72L136 78L135 81L126 82L121 85L121 89L114 90L107 93L99 94L91 97L92 103L96 106L105 105L104 109L94 111L81 116L76 114L78 110L68 107L70 105L78 101L76 99L62 97L61 93L53 94L49 100L42 107L38 105L34 107L30 105L33 101L36 97L37 95L43 97L45 93L42 91L40 87L37 85L38 82L34 79L30 78L23 75L17 76L15 78L11 78L9 80L2 81L-1 83L-5 80L-11 80L-17 79L-21 81L-27 76L-25 72L-22 69L-23 65L-14 57L-10 56L-9 53L-13 44L-9 44L-4 41L3 41L12 42L22 44L30 44L33 46L36 44L39 46L47 46L51 47L51 42L54 40L62 39ZM379 186L380 180L367 176L358 171L352 166L341 159L337 149L334 147L324 148L321 146L320 138L307 132L300 138L292 142L293 147L283 147L283 110L306 104L322 112L329 116L338 125L349 123L365 123L375 130L375 140L379 140L381 148L393 149L395 153L399 153L403 146L415 139L420 137L423 138L415 145L422 149L428 146L439 151L427 159L420 158L417 158L415 155L417 150L405 153L402 159L398 165L390 164L388 169L394 171L396 178L391 189L384 186L379 186ZM759 344L747 353L739 362L737 369L744 380L752 393L761 399L766 407L770 426L769 443L762 450L751 456L744 465L732 474L729 468L732 461L725 455L733 451L742 450L738 444L754 437L755 425L753 418L754 408L752 401L745 394L739 385L732 373L721 367L723 364L729 361L726 352L714 352L710 343L705 335L710 333L717 333L726 332L734 326L738 330L747 332L745 338L750 342L759 344ZM96 236L96 242L95 245L91 246L93 242L91 241L93 235L96 236ZM257 393L250 396L248 401L248 404L239 408L224 413L216 420L212 421L204 424L198 426L191 427L186 430L183 433L178 433L175 434L169 434L166 428L167 422L165 419L163 412L161 408L162 403L162 397L166 393L165 389L168 384L172 387L185 386L195 388L199 387L201 391L205 389L212 378L220 374L247 370L254 387L257 393ZM71 652L75 657L78 665L76 668L74 676L76 684L73 688L70 697L75 700L47 708L48 715L41 716L36 720L35 724L32 725L24 733L19 739L13 738L2 737L-3 734L-9 733L-16 735L-22 729L-28 721L-28 689L-9 689L-10 686L-8 682L-10 677L-9 672L-10 669L-7 670L-6 673L-2 672L4 673L7 678L14 679L20 676L22 681L29 683L32 687L36 692L43 693L42 682L40 684L33 680L31 678L32 668L34 656L32 652L34 645L37 644L49 642L52 643L56 646L60 648L66 649L71 652Z"/>
+      </g>
+                    <g class="dl-star" data-i="0" tabindex="0" role="img" aria-label="Rabin Medical Center, Petah Tikva, Israel">
+                        <circle cx="90" cy="239" r="24" class="dl-star-hit"/>
+                        <text x="90" y="253" class="dl-star-glyph">&#9733;</text>
+                        <title>Rabin Medical Center &#8212; Petah Tikva, Israel</title>
+                    </g>
+                    <g class="dl-star" data-i="1" tabindex="0" role="img" aria-label="Aravind Eye Hospital, Madurai, India">
+                        <circle cx="485" cy="461" r="24" class="dl-star-hit"/>
+                        <text x="485" y="475" class="dl-star-glyph">&#9733;</text>
+                        <title>Aravind Eye Hospital &#8212; Madurai, India</title>
+                    </g>
+                    <g class="dl-star" data-i="2" tabindex="0" role="img" aria-label="B. P. Koirala Lion's Center for Ophthalmic Studies, Kathmandu, Nepal">
+                        <circle cx="551" cy="283" r="24" class="dl-star-hit"/>
+                        <text x="551" y="297" class="dl-star-glyph">&#9733;</text>
+                        <title>B. P. Koirala Lion's Center for Ophthalmic Studies &#8212; Kathmandu, Nepal</title>
+                    </g>
+                    <g class="dl-star" data-i="3" tabindex="0" role="img" aria-label="Chulalongkorn University, Bangkok, Thailand">
+                        <circle cx="690" cy="423" r="24" class="dl-star-hit"/>
+                        <text x="690" y="437" class="dl-star-glyph">&#9733;</text>
+                        <title>Chulalongkorn University &#8212; Bangkok, Thailand</title>
+                    </g>
+                    <g class="dl-star" data-i="4" tabindex="0" role="img" aria-label="Phramongkutklao Hospital, Bangkok, Thailand">
+                        <circle cx="693" cy="421" r="24" class="dl-star-hit"/>
+                        <text x="693" y="435" class="dl-star-glyph">&#9733;</text>
+                        <title>Phramongkutklao Hospital &#8212; Bangkok, Thailand</title>
+                    </g>
+                    <g class="dl-star" data-i="5" tabindex="0" role="img" aria-label="Srinagarind Hospital, Khon Kaen, Thailand">
+                        <circle cx="711" cy="395" r="24" class="dl-star-hit"/>
+                        <text x="711" y="409" class="dl-star-glyph">&#9733;</text>
+                        <title>Srinagarind Hospital &#8212; Khon Kaen, Thailand</title>
+                    </g>
+                    <g class="dl-star" data-i="6" tabindex="0" role="img" aria-label="Hai Yen Vision Institute, Ho Chi Minh City, Vietnam">
+                        <circle cx="746" cy="452" r="24" class="dl-star-hit"/>
+                        <text x="746" y="466" class="dl-star-glyph">&#9733;</text>
+                        <title>Hai Yen Vision Institute &#8212; Ho Chi Minh City, Vietnam</title>
+                    </g>
+                    <g class="dl-star" data-i="7" tabindex="0" role="img" aria-label="Singapore National Eye Centre, Singapore">
+                        <circle cx="720" cy="547" r="24" class="dl-star-hit"/>
+                        <text x="720" y="561" class="dl-star-glyph">&#9733;</text>
+                        <title>Singapore National Eye Centre &#8212; Singapore</title>
+                    </g>
+                    <g class="dl-star" data-i="8" tabindex="0" role="img" aria-label="National Yang Ming Chiao Tung University, Taipei, Taiwan">
+                        <circle cx="882" cy="309" r="24" class="dl-star-hit"/>
+                        <text x="882" y="323" class="dl-star-glyph">&#9733;</text>
+                        <title>National Yang Ming Chiao Tung University &#8212; Taipei, Taiwan</title>
+                    </g>
+                        </svg>
+                    </div>
+                    <ul class="dl-mapcard-list">
+                    <li data-i="0">
+                        <a href="#">Rabin Medical Center</a>
+                        <span class="dl-place">Petah Tikva, Israel</span>
+                    </li>
+                    <li data-i="1">
+                        <a href="#">Aravind Eye Hospital</a>
+                        <span class="dl-place">Madurai, India</span>
+                    </li>
+                    <li data-i="2">
+                        <a href="#">B. P. Koirala Lion's Center for Ophthalmic Studies</a>
+                        <span class="dl-place">Kathmandu, Nepal</span>
+                    </li>
+                    <li data-i="3">
+                        <a href="#">Chulalongkorn University</a>
+                        <span class="dl-place">Bangkok, Thailand</span>
+                    </li>
+                    <li data-i="4">
+                        <a href="#">Phramongkutklao Hospital</a>
+                        <span class="dl-place">Bangkok, Thailand</span>
+                    </li>
+                    <li data-i="5">
+                        <a href="#">Srinagarind Hospital</a>
+                        <span class="dl-place">Khon Kaen, Thailand</span>
+                    </li>
+                    <li data-i="6">
+                        <a href="#">Hai Yen Vision Institute</a>
+                        <span class="dl-place">Ho Chi Minh City, Vietnam</span>
+                    </li>
+                    <li data-i="7">
+                        <a href="#">Singapore National Eye Centre</a>
+                        <span class="dl-place">Singapore</span>
+                    </li>
+                    <li data-i="8">
+                        <a href="#">National Yang Ming Chiao Tung University</a>
+                        <span class="dl-place">Taipei, Taiwan</span>
+                    </li>
+                    </ul>
+                </div>
+                <div class="dl-mapcard m-europe">
+                    <div class="dl-mapcard-head">
+                        <p class="dl-mapcard-name">Europe</p>
+                        <p class="dl-mapcard-count">2 sites</p>
+                    </div>
+                    <div class="dl-mapcard-map">
+                        <svg viewBox="0 0 326 370" xmlns="http://www.w3.org/2000/svg" role="group" aria-label="Map of Europe showing collecting sites">
+      <g class="dl-land">
+        <path d="M194 291L194 295L195 299L197 302L195 306L195 309L192 314L191 311L187 307L187 303L187 296L188 293L187 288L189 283L193 287L194 291ZM172 229L172 233L168 233L167 241L161 243L158 246L153 245L144 242L143 239L136 241L132 241L129 241L126 239L127 235L132 237L133 234L138 235L142 233L147 235L147 227L149 226L151 221L156 224L159 220L166 223L169 222L172 224L172 229ZM88 197L93 197L98 195L102 200L106 202L105 209L103 215L97 210L94 211L90 206L87 202L83 199L88 197ZM207 268L209 272L216 273L225 273L228 271L235 268L240 272L244 273L240 277L238 284L240 290L235 289L229 292L228 297L223 298L219 294L214 297L209 297L209 290L206 287L207 281L209 278L206 274L206 270L207 268ZM185 261L185 266L188 270L187 274L185 276L183 278L182 284L177 280L174 276L172 273L169 270L168 266L165 262L166 258L168 260L170 258L178 259L182 259L185 261ZM212 171L218 171L225 167L226 162L231 158L231 154L235 152L241 148L248 151L252 152L258 154L258 159L257 162L261 168L263 170L267 174L269 176L267 179L262 178L262 183L263 189L258 190L256 192L256 197L253 196L248 196L246 194L244 196L242 194L237 194L230 192L224 191L219 191L216 194L212 190L211 185L214 183L214 179L213 175L212 171ZM127 235L126 239L129 241L132 241L132 245L129 247L124 246L123 250L119 248L115 252L113 252L110 250L108 246L105 247L105 243L109 237L112 236L119 234L120 232L127 235ZM277 359L271 364L268 363L266 359L270 359L273 358L276 359ZM172 224L169 222L166 223L162 220L156 224L151 221L148 217L145 215L144 210L143 207L148 205L150 203L154 201L156 199L160 199L163 202L168 203L171 208L172 205L176 206L176 210L181 210L184 215L181 217L179 220L176 222L172 224ZM129 160L129 164L135 166L135 170L141 168L145 165L152 169L155 172L156 178L154 180L157 184L158 189L158 193L160 199L157 200L154 201L150 203L148 205L143 207L144 210L145 215L148 217L151 221L149 226L147 227L148 234L142 233L138 235L133 234L132 237L129 234L120 232L119 234L114 234L114 227L118 220L109 218L106 215L106 211L105 209L106 202L105 191L108 191L110 188L111 179L110 175L117 173L122 170L120 166L120 160L125 162L129 160ZM146 154L142 162L136 156L135 152L144 149L146 154ZM135 145L133 149L127 155L129 160L125 162L120 160L118 155L118 145L119 142L120 139L126 138L128 136L133 133L133 138L131 141L132 144L135 145ZM142 475L121 494L103 514L94 518L87 519L87 513L84 511L80 509L79 504L58 482L37 460L14 436L14 422L24 414L30 413L35 410L38 405L45 401L45 394L49 393L52 389L60 387L61 383L59 381L57 371L57 365L54 358L60 353L67 351L71 347L77 344L87 342L97 341L100 343L106 339L113 339L115 341L120 341L118 346L119 355L118 363L114 369L115 377L120 383L123 389L126 407L128 416L128 420L127 429L128 433L127 439L128 445L125 449L129 456L129 461L131 466L134 464L139 469L142 475ZM12 291L12 284L10 280L19 273L26 274L34 274L41 276L46 275L56 276L58 280L70 284L72 282L79 287L86 285L86 291L81 298L73 300L72 303L68 309L66 317L68 323L65 327L64 334L59 336L55 343L47 343L41 343L37 347L35 351L32 350L29 346L28 341L22 339L21 336L24 332L24 329L22 326L24 320L22 314L24 313L24 308L26 299L28 296L27 291L23 291L18 292L17 287L14 289L12 291ZM217 132L218 126L216 127L212 124L211 118L219 115L227 114L234 116L240 115L237 123L238 132L236 135L231 135L225 132L223 130L217 132ZM244 19L243 26L252 33L247 41L254 52L250 61L255 68L253 74L262 81L259 86L254 92L241 105L229 106L219 109L209 112L205 106L199 103L200 93L197 84L200 78L206 72L220 61L224 59L223 55L215 50L213 46L213 31L203 24L195 19L199 16L205 22L213 21L220 24L226 19L229 12L238 8L246 12L244 19ZM127 288L125 296L122 294L120 287L122 284L126 280L127 288ZM90 206L94 211L97 210L103 215L106 215L109 218L118 220L114 227L114 234L109 235L105 243L105 247L108 246L110 250L111 257L109 260L111 267L114 269L113 273L108 279L96 276L87 279L86 285L79 287L72 282L70 284L58 280L56 276L59 270L60 250L54 239L49 234L40 230L39 223L47 221L58 224L56 212L62 217L76 209L78 201L83 199L84 202L90 206ZM33 164L30 171L25 169L21 169L22 164L21 159L26 158L33 164ZM49 124L43 134L49 133L56 133L54 141L49 150L55 151L61 164L65 165L69 177L71 181L78 183L77 189L74 192L77 197L71 202L63 202L52 205L50 203L45 208L40 207L35 210L32 208L41 198L47 196L37 194L35 190L42 187L38 182L40 175L49 176L50 170L45 164L38 162L36 159L39 155L37 152L33 157L33 147L30 142L32 132L37 124L42 124L49 124ZM324 295L324 290L323 284L319 280L316 279L314 276L320 276L329 278L337 283L342 283L348 285L350 289L353 291L355 298L351 299L346 296L336 299L330 294L324 295ZM214 353L217 356L222 356L226 356L230 357L229 360L220 361L212 357L214 353ZM232 294L230 301L224 301L221 301L214 303L218 309L215 310L211 310L208 305L208 313L211 318L209 320L213 325L216 328L216 333L210 331L212 336L208 337L210 346L206 346L201 342L199 334L198 327L195 322L192 317L195 309L195 306L197 304L201 301L204 299L207 299L209 297L214 297L219 294L223 298L228 297L229 292L232 294ZM184 251L185 255L187 258L185 261L182 259L178 259L172 258L168 260L166 258L165 262L168 266L169 270L172 273L174 276L177 280L182 284L176 282L172 278L166 275L161 268L160 263L159 259L156 258L154 262L152 259L152 255L156 255L162 255L164 252L165 248L170 245L176 250L181 252L184 251ZM167 241L170 235L172 233L172 229L175 231L183 231L186 229L189 227L192 227L194 224L202 227L207 228L204 233L201 240L197 247L192 249L188 248L184 251L181 252L176 250L172 246L169 242ZM30 171L31 178L26 187L15 193L6 192L11 181L8 171L16 163L21 159L22 164L21 169L25 169L30 171ZM347 350L351 353L352 359L349 363L347 370L352 380L359 385L362 393L361 400L363 405L367 411L363 410L359 409L354 419L343 418L326 398L316 391L309 388L307 376L320 366L323 354L322 346L325 344L328 338L331 336L338 337L340 340L343 338L347 350ZM163 328L161 336L162 339L161 344L156 340L153 339L144 334L145 329L152 330L159 329L163 328ZM124 298L128 305L127 318L124 318L122 321L120 318L119 306L118 300L121 301L124 298ZM144 242L153 245L152 250L154 254L149 253L144 256L144 261L143 264L145 269L151 274L154 282L161 290L166 290L167 293L166 295L171 298L176 301L181 306L180 312L177 307L172 306L169 312L173 316L173 321L167 330L164 328L166 322L167 320L164 315L163 310L160 308L158 304L154 302L152 298L147 297L142 293L137 286L132 281L131 271L127 270L122 266L120 268L116 272L114 269L111 267L109 260L111 257L110 253L113 252L115 252L119 248L123 250L124 246L129 247L132 245L132 241L136 242L143 239L144 242ZM196 289L193 287L191 284L194 281L195 278L198 279L200 281L202 283L200 287L196 289ZM288 377L286 379L286 371L289 364L293 368L290 372L288 377ZM208 167L208 161L205 160L199 158L197 150L204 147L215 147L221 146L225 149L231 154L231 158L226 162L225 167L218 171L212 171L211 168L208 167ZM105 209L106 211L106 215L103 215L103 209ZM197 150L198 142L201 136L206 132L211 140L216 140L217 132L223 130L225 132L231 135L236 135L239 138L239 142L241 148L235 152L231 154L225 149L222 148L215 147L204 147L197 150ZM36 352L39 357L45 356L52 358L57 365L57 371L59 381L61 383L60 387L52 389L49 393L45 394L45 401L38 405L35 410L30 413L24 414L14 422L14 433L14 439L10 439L8 441L3 440L-2 441L-4 449L-9 462L-18 473L-20 487L-22 491L-23 495L-37 496L-37 491L-34 488L-32 483L-33 480L-31 473L-27 466L-25 465L-24 459L-23 454L-21 447L-17 444L-13 434L-10 430L-4 429L1 422L4 419L9 411L7 398L10 390L10 384L14 378L21 373L25 369L29 359L31 352L36 352ZM232 228L237 225L242 228L247 232L247 235L249 237L250 241L252 243L251 247L247 246L244 251L243 254L240 251L241 246L241 242L237 236L235 232L233 229ZM194 291L199 288L203 287L209 290L209 297L207 299L204 299L201 301L197 302L195 299L194 295L194 291ZM190 285L187 288L187 291L184 287L181 285L183 278L185 276L188 276L191 279L193 281L191 284ZM105 175L110 175L111 179L110 188L108 191L105 191L106 202L102 200L98 195L93 197L88 197L91 194L97 179L105 175ZM241 -2L260 5L252 8L259 14L249 18L244 19L246 12L238 8L229 12L226 19L220 24L213 21L205 22L199 16L195 19L191 19L190 26L179 24L177 30L171 30L167 37L161 48L151 62L153 66L151 70L145 69L141 79L142 92L145 97L143 109L138 116L136 121L131 115L119 127L111 129L103 124L100 113L98 90L104 84L120 75L133 65L144 51L159 32L169 24L186 12L199 7L209 8L219 0L230 0L241 -2ZM160 199L158 193L158 189L157 184L154 180L156 178L155 172L159 169L168 165L176 161L182 163L189 166L196 167L208 167L211 168L212 171L213 175L214 179L214 183L211 185L212 190L213 194L216 203L215 206L212 207L206 215L208 220L201 215L196 217L193 216L190 218L187 214L184 216L181 210L176 210L176 206L172 205L171 208L167 206L163 202L160 199ZM12 291L14 289L17 287L18 292L22 292L27 291L28 296L26 299L25 307L24 313L22 314L24 320L22 326L24 329L24 332L21 336L22 339L19 342L16 340L13 341L14 333L13 327L11 326L9 323L10 316L12 312L12 308L14 302L14 298L12 295L12 291ZM208 231L210 229L214 230L218 230L221 233L223 231L227 230L229 228L233 229L235 232L237 236L241 242L241 246L240 251L242 255L244 257L247 255L250 257L247 262L244 273L240 272L235 268L228 271L225 273L216 273L211 271L207 268L208 264L204 265L200 262L200 258L196 256L196 253L192 249L197 247L201 240L204 233L208 231ZM208 167L196 167L189 166L190 161L199 158L205 160L208 161L208 167ZM726 -60L728 -55L734 -57L752 -57L765 -52L770 -48L769 -43L762 -40L746 -35L741 -32L749 -30L758 -28L764 -30L767 -23L769 -26L779 -28L799 -26L800 -21L826 -20L827 -27L840 -26L849 -26L859 -20L862 -14L859 -10L866 -2L876 2L882 -8L892 -4L902 -7L914 -3L919 -6L929 -5L924 -14L933 -18L988 -12L993 -6L1009 2L1034 0L1047 1L1052 5L1051 13L1059 16L1067 14L1078 13L1089 15L1101 14L1112 23L1119 20L1114 13L1117 9L1137 12L1150 11L1167 16L1176 20L1176 60L1168 65L1160 64L1166 69L1169 77L1172 80L1173 84L1171 87L1160 85L1142 92L1137 93L1128 100L1119 107L1116 111L1108 104L1092 112L1089 108L1083 113L1075 111L1073 118L1065 128L1065 132L1072 134L1072 148L1066 149L1063 157L1066 161L1055 167L1053 178L1044 180L1042 191L1033 200L1031 193L1028 178L1025 156L1028 142L1033 136L1033 132L1043 129L1054 117L1064 107L1075 99L1080 84L1073 85L1069 94L1054 105L1048 92L1033 96L1017 112L1022 119L1009 121L999 122L999 115L990 113L982 118L963 117L943 120L923 139L900 163L909 164L912 170L918 172L922 167L929 168L938 179L938 188L933 198L933 210L930 226L921 240L919 247L910 259L902 270L898 276L890 282L886 282L882 277L874 284L873 288L872 281L875 281L876 269L874 260L880 257L887 259L891 249L893 238L896 234L899 225L889 228L884 232L874 232L872 223L864 216L854 212L851 203L849 196L847 192L843 182L838 178L829 175L820 176L813 177L808 182L811 185L811 190L808 194L802 204L802 209L793 215L786 211L779 212L776 209L772 208L763 215L755 216L749 219L741 217L736 217L732 212L726 207L720 206L712 207L706 209L697 205L696 197L689 195L683 194L676 190L670 200L672 206L667 213L658 210L651 210L647 205L641 205L636 202L626 207L614 215L608 217L602 212L594 213L592 209L587 207L584 201L581 199L572 202L564 196L560 201L547 176L539 168L541 165L526 175L520 175L520 170L512 166L506 169L504 158L493 156L487 160L472 164L469 166L446 170L443 173L448 180L442 183L443 186L437 190L447 197L445 202L437 202L435 205L427 199L417 200L411 204L403 200L390 193L380 193L368 204L367 211L360 205L356 216L357 218L354 226L359 233L364 233L368 239L367 244L370 246L367 252L361 254L355 264L361 273L360 280L367 292L363 296L362 298L359 298L355 292L350 289L348 285L342 283L338 284L329 278L320 276L314 274L306 267L299 263L294 258L298 256L303 248L300 244L309 240L303 239L303 235L306 232L312 231L313 228L312 222L314 217L305 211L302 211L298 206L293 208L285 204L283 198L278 197L278 194L279 192L276 187L269 188L266 189L262 183L260 179L267 179L269 176L267 174L263 172L261 168L257 162L258 159L258 154L252 152L249 153L241 148L239 142L239 138L236 135L238 132L237 123L241 117L247 110L241 105L254 92L259 86L262 81L253 74L255 68L250 61L254 52L247 41L252 33L243 26L244 19L249 18L259 14L266 11L276 17L293 19L316 31L321 35L321 42L314 47L304 50L277 42L272 44L282 51L282 56L283 66L291 69L296 72L296 67L293 62L297 59L311 65L317 62L313 55L327 45L333 46L338 49L342 42L337 36L340 30L335 24L352 28L356 33L348 34L348 40L353 43L363 41L364 35L377 30L398 21L403 22L397 28L405 29L409 26L421 25L430 21L437 27L444 21L437 15L441 12L459 15L467 18L490 29L494 24L487 19L480 15L482 11L479 3L490 -9L494 -18L498 -20L515 -18L516 -12L510 -4L514 -1L516 6L514 20L521 26L519 33L507 47L514 48L516 45L523 42L524 37L530 32L526 27L529 20L522 19L521 14L526 4L518 -4L529 -11L527 -18L534 -13L531 -3L538 -2L535 -9L545 -13L558 -13L569 -8L564 -16L563 -26L574 -28L589 -28L602 -29L597 -35L604 -41L611 -41L623 -46L640 -48L642 -50L658 -51L663 -49L677 -54L688 -54L690 -59L696 -63L710 -67L721 -64L712 -61L726 -60ZM196 256L200 258L200 262L204 265L206 263L207 268L206 270L206 274L209 278L207 281L206 284L203 287L202 283L200 281L198 279L196 277L194 281L191 279L188 276L188 270L185 266L187 261L187 258L185 255L184 251L188 248L192 249L196 253L196 256ZM184 215L187 214L190 218L193 216L196 217L201 215L207 219L205 222L204 226L196 224L192 227L189 228L186 229L183 231L178 232L172 229L172 225L173 222L178 221L180 217L182 215ZM153 245L158 246L161 243L166 243L169 242L170 245L165 248L164 252L162 255L158 254L152 255L152 250L153 245ZM204 53L198 60L199 66L189 74L178 83L173 97L178 104L183 109L178 120L171 123L169 140L165 149L158 148L155 156L147 156L145 147L140 136L136 121L138 116L143 109L145 97L142 92L141 79L145 69L151 70L153 66L151 62L161 48L167 37L171 30L177 30L179 24L190 26L191 19L195 19L203 24L213 31L213 46L215 50L204 53ZM173 136L169 148L168 144L173 136ZM187 130L183 133L184 136L181 139L179 141L179 137L183 131L187 130ZM307 376L294 387L288 383L288 377L290 372L293 368L292 364L289 356L290 352L292 350L294 347L294 342L296 344L303 341L306 343L311 343L318 339L321 339L328 338L325 344L322 346L323 354L320 366L307 376ZM126 407L123 389L120 385L115 377L114 369L118 363L119 355L118 346L120 341L126 337L131 338L130 343L136 339L133 346L133 351L135 353L134 362L130 367L131 372L136 377L138 379L138 386L135 389L133 392L129 396L130 400L129 405L126 407ZM295 297L304 301L311 299L316 300L324 295L330 294L336 299L337 303L336 307L341 310L344 313L339 316L341 327L340 330L343 338L340 340L338 337L331 336L328 338L321 339L318 339L311 343L306 343L303 341L296 344L294 342L294 347L292 350L290 352L288 347L290 343L287 344L281 342L277 348L268 349L263 344L256 343L255 347L251 349L245 343L238 343L234 333L230 328L233 320L229 315L236 306L245 305L248 298L259 299L267 293L274 290L284 290L295 297ZM235 303L230 308L228 304L230 301L232 294L229 292L235 289L240 290L241 294L246 297L245 299L238 300L235 303ZM263 189L267 187L276 187L279 192L278 194L278 197L283 198L286 202L293 208L298 206L302 211L305 211L314 214L312 222L313 228L312 231L306 232L303 235L303 239L298 240L294 243L288 244L283 247L283 253L286 256L293 255L291 259L285 261L276 266L273 264L274 260L268 257L275 251L273 249L263 247L263 243L257 244L255 250L250 257L247 255L244 257L242 255L244 251L246 247L247 245L251 247L252 243L250 241L249 237L247 235L247 232L244 229L237 225L233 226L229 228L227 230L223 231L221 233L218 230L214 230L210 229L208 231L204 226L205 222L207 219L206 215L212 207L215 206L216 203L213 194L219 191L224 191L230 192L237 194L242 194L244 196L246 194L248 196L253 196L256 197L256 192L258 190L263 189Z"/>
+      </g>
+                    <g class="dl-star" data-i="0" tabindex="0" role="img" aria-label="Saarland University Medical Center, Homburg, Germany">
+                        <circle cx="113" cy="217" r="24" class="dl-star-hit"/>
+                        <text x="113" y="231" class="dl-star-glyph">&#9733;</text>
+                        <title>Saarland University Medical Center &#8212; Homburg, Germany</title>
+                    </g>
+                    <g class="dl-star" data-i="1" tabindex="0" role="img" aria-label="Pallas Kliniken, Olten, Switzerland">
+                        <circle cx="116" cy="236" r="24" class="dl-star-hit"/>
+                        <text x="116" y="250" class="dl-star-glyph">&#9733;</text>
+                        <title>Pallas Kliniken &#8212; Olten, Switzerland</title>
+                    </g>
+                        </svg>
+                    </div>
+                    <ul class="dl-mapcard-list">
+                    <li data-i="0">
+                        <a href="#">Saarland University Medical Center</a>
+                        <span class="dl-place">Homburg, Germany</span>
+                    </li>
+                    <li data-i="1">
+                        <a href="#">Pallas Kliniken</a>
+                        <span class="dl-place">Olten, Switzerland</span>
+                    </li>
+                    </ul>
+                </div>
+                <div class="dl-mapcard m-namerica">
+                    <div class="dl-mapcard-head">
+                        <p class="dl-mapcard-name">North America</p>
+                        <p class="dl-mapcard-count">10 sites</p>
+                    </div>
+                    <div class="dl-mapcard-map">
+                        <svg viewBox="0 0 904 660" xmlns="http://www.w3.org/2000/svg" role="group" aria-label="Map of North America showing collecting sites">
+      <g class="dl-land">
+        <path d="M708 482L705 477L702 474L703 468L708 477L708 482ZM706 454L698 456L697 452L701 451L706 452ZM712 454L711 461L710 455L706 451L712 454ZM619 542L624 535L627 537L626 544L626 549L625 555L624 557L621 561L619 550L619 542ZM815 254L820 256L827 256L823 260L821 260L811 256L809 253L812 250L815 254ZM829 229L825 229L815 226L808 221L811 220L821 223L829 227ZM356 235L352 236L340 232L337 228L331 225L329 222L321 220L318 215L327 214L332 216L339 217L342 220L345 225L353 229L356 235ZM872 213L867 222L872 218L877 221L875 224L881 227L885 224L893 228L890 235L896 233L897 238L899 245L896 253L892 254L887 252L889 244L887 242L878 251L873 251L879 246L871 244L863 244L848 244L847 241L852 237L849 235L855 229L863 213L868 207L874 204L878 204L876 207L872 213ZM286 180L293 179L291 190L297 198L290 194L287 189L283 186L282 181L282 178L286 180ZM695 98L692 104L689 103L687 100L690 96L695 98ZM675 93L666 98L661 98L659 95L665 91L675 91ZM650 63L651 68L655 66L660 69L668 72L677 75L678 80L683 79L689 83L682 86L670 83L666 79L658 84L647 89L644 84L634 85L641 80L642 72L644 63L650 63ZM721 49L713 49L711 44L714 39L721 37L727 40L727 44L721 49ZM570 29L565 32L554 29L548 30L538 26L545 23L550 19L558 21L563 23L565 25L570 29ZM609 25L609 35L619 27L628 34L626 41L633 48L641 41L647 32L647 21L658 22L669 23L680 28L680 33L674 39L680 44L679 49L664 56L653 57L645 54L643 59L636 68L633 72L624 79L613 80L607 84L607 90L598 92L589 100L580 111L577 119L577 131L588 132L592 142L595 149L606 147L620 151L628 155L633 160L643 163L651 167L664 168L672 169L671 177L673 187L679 198L690 208L696 205L700 194L696 179L691 173L703 169L712 162L716 155L715 148L710 139L701 132L710 121L707 112L704 97L709 94L722 97L730 98L737 96L744 99L753 105L756 109L769 109L769 118L771 130L778 132L784 138L795 132L802 121L808 117L814 126L823 138L832 150L829 157L839 162L846 168L858 171L863 174L866 182L872 184L875 187L876 199L870 202L865 206L852 209L842 218L829 219L813 217L802 217L794 218L787 225L777 229L766 243L758 252L764 250L776 237L792 229L804 228L811 233L803 239L806 250L808 258L818 263L831 261L839 250L839 257L844 261L835 267L818 273L810 277L802 285L796 284L795 275L809 267L796 267L788 269L783 263L783 249L780 246L774 248L772 246L766 253L764 261L761 265L758 267L755 270L740 270L729 270L725 272L717 279L714 284L707 284L699 284L696 285L698 290L688 296L680 298L671 303L666 302L667 296L671 290L673 284L672 276L670 267L662 262L660 259L658 255L654 256L652 251L646 248L640 244L632 241L625 237L618 240L606 237L600 239L593 235L585 234L580 233L577 232L576 226L573 230L557 230L531 230L505 230L482 230L459 230L437 230L413 230L406 230L383 230L361 230L345 220L340 216L326 212L322 203L323 197L313 192L312 184L302 177L302 172L307 167L306 161L293 154L286 143L281 136L274 131L269 127L264 122L257 125L249 131L243 124L237 120L230 117L222 117L222 60L222 23L237 25L249 30L257 31L263 27L273 24L284 25L295 21L308 18L313 22L319 20L321 15L326 16L339 25L349 18L350 26L360 24L362 21L372 22L383 26L401 30L412 32L419 31L430 36L419 41L433 43L454 42L460 40L468 46L477 41L469 37L474 33L483 33L489 32L495 34L503 40L512 39L525 44L537 42L548 42L547 36L554 34L566 38L566 47L571 39L577 39L580 29L572 23L563 19L564 8L573 1L583 2L591 7L601 18L594 23L609 25ZM428 -11L424 -7L441 -10L452 -5L460 -10L467 -6L474 3L477 -1L472 -11L479 -12L486 -11L495 -7L500 3L502 10L515 15L529 20L528 24L515 25L520 29L518 32L504 31L491 28L482 29L467 32L448 34L434 35L430 30L420 27L413 28L403 20L408 19L420 18L431 18L441 16L426 14L410 15L399 15L395 11L413 7L401 7L388 4L394 -3L399 -7L420 -13L428 -11ZM502 -14L495 -8L483 -15L486 -16L496 -16L502 -14ZM717 -11L718 -8L710 -9L702 -9L693 -7L683 -13L683 -17L687 -18L704 -17L717 -11ZM639 -12L645 -5L652 -13L672 -18L685 -7L684 -1L699 -4L706 -7L723 -2L734 2L735 7L749 4L757 11L775 15L782 19L789 28L775 33L793 39L805 42L816 51L828 51L826 58L813 70L803 66L791 56L781 57L780 63L788 69L799 74L802 76L807 86L804 93L795 91L775 83L786 91L794 97L795 101L775 97L758 91L749 86L752 83L740 78L729 73L707 78L701 74L706 67L720 67L736 65L733 62L736 57L746 47L744 43L741 39L729 34L713 31L718 29L710 22L703 22L697 18L693 21L679 23L652 20L635 17L623 16L617 12L625 8L614 8L611 -2L617 -11L625 -15L645 -18L639 -12ZM534 -18L543 -16L556 -18L558 -15L551 -10L563 -6L561 3L549 7L541 6L536 3L517 -5L533 -7L524 -14L534 -18ZM588 -8L580 0L571 -1L567 -9L567 -14L571 -19L578 -21L594 -21L609 -19L597 -10L588 -8ZM379 6L359 11L355 7L338 1L341 -3L346 -10L353 -17L345 -23L371 -24L382 -22L402 -22L409 -19L417 -15L408 -12L389 -5L379 2L379 6ZM725 722L722 719L718 716L716 717L709 716L707 712L698 706L697 703L700 702L700 697L701 694L705 693L709 687L711 682L709 679L710 673L708 664L710 662L709 653L706 648L707 643L711 641L709 635L714 634L719 627L723 626L724 614L728 609L733 609L740 608L746 603L749 600L753 596L757 599L756 602L751 604L749 609L746 612L744 615L743 623L741 628L745 629L746 634L747 636L748 640L747 644L749 647L751 650L761 649L765 650L771 659L774 658L779 658L784 657L786 659L785 664L783 668L783 675L784 682L786 685L783 692L786 694L788 697L790 707L787 703L785 700L782 703L767 703L768 709L772 710L772 714L766 715L766 722L769 725L770 731L770 736L767 763L763 758L766 747L760 743L755 743L752 742L748 744L743 743L738 733L734 730L732 725L727 721ZM667 638L663 636L661 633L662 629L659 627L656 625L654 624L653 621L651 619L650 624L649 622L646 621L645 616L646 612L644 611L646 609L652 610L656 610L660 613L661 611L663 616L666 620L670 624L667 625L667 629L668 634L667 638ZM672 488L679 489L685 489L692 492L695 496L702 495L705 497L711 503L716 508L723 510L728 513L734 517L728 521L723 521L718 520L707 521L712 516L709 513L704 513L701 510L699 504L695 504L688 502L685 500L675 498L673 496L676 494L668 493L663 498L658 501L655 502L651 501L655 498L657 494L660 492L664 490L670 489ZM753 523L760 521L764 524L768 527L772 527L775 530L779 534L776 538L772 536L769 536L765 538L762 538L761 536L758 537L755 544L753 542L753 537L751 534L753 532L754 528L753 523ZM944 -106L970 -112L997 -112L1006 -115L1033 -116L1095 -115L1143 -107L1128 -103L1099 -103L1058 -102L1062 -100L1089 -101L1112 -98L1127 -101L1133 -97L1125 -92L1144 -95L1181 -99L1204 -97L1209 -93L1178 -86L1173 -83L1149 -82L1166 -81L1157 -74L1151 -68L1152 -56L1161 -50L1149 -49L1136 -46L1150 -41L1152 -32L1144 -32L1154 -23L1137 -22L1146 -18L1143 -15L1132 -13L1122 -13L1131 -6L1131 -2L1116 -6L1112 -3L1123 -1L1133 5L1136 13L1122 15L1116 11L1107 6L1109 12L1100 18L1121 18L1131 19L1111 27L1090 35L1067 39L1059 39L1051 43L1040 53L1024 60L1019 61L1008 63L997 65L991 72L991 79L987 85L974 93L977 101L974 109L970 119L959 120L948 111L933 111L925 106L920 96L907 84L903 77L902 68L891 59L894 52L889 48L896 36L908 33L911 29L913 21L904 24L900 26L893 27L883 24L883 17L886 12L893 12L909 14L895 8L889 5L881 6L875 3L883 -6L878 -10L872 -16L863 -27L853 -31L853 -35L833 -41L817 -42L796 -41L778 -41L769 -44L755 -50L775 -53L791 -54L758 -56L741 -60L742 -64L771 -69L799 -74L802 -78L781 -81L788 -85L814 -92L826 -93L822 -98L840 -100L864 -102L888 -102L896 -99L916 -104L935 -101L945 -100L961 -97L943 -102L944 -106ZM612 583L608 581L603 581L600 579L596 575L597 569L599 559L609 559L609 556L607 553L605 551L602 547L605 547L605 542L612 542L619 542L619 550L619 561L624 563L623 567L619 569L619 573L618 576L615 579L612 581ZM845 636L850 640L854 647L854 652L861 657L865 660L863 669L859 672L858 679L861 687L864 692L869 701L863 701L861 703L857 705L854 707L850 707L845 702L845 698L843 692L844 684L846 680L844 676L842 674L843 670L841 668L837 668L832 660L834 658L834 653L838 651L840 650L838 646L838 642L845 636ZM633 590L632 587L630 582L628 580L624 582L622 579L620 577L619 573L619 569L623 567L626 563L629 561L632 562L637 562L640 562L643 561L646 560L650 561L655 561L658 564L661 566L663 567L665 570L662 571L659 573L655 574L653 572L651 574L647 579L645 582L643 580L641 582L638 582L638 587L636 590ZM742 521L746 521L753 523L754 528L753 532L751 534L753 537L748 538L744 539L740 538L736 540L732 537L733 533L740 535L745 536L748 533L745 529L745 525L740 524L742 521ZM708 535L713 536L717 538L719 541L713 541L711 543L707 541L702 538L706 535ZM558 461L555 470L554 477L553 491L553 496L554 501L556 506L558 514L563 521L565 527L568 532L576 534L579 539L586 536L591 535L597 533L602 531L607 527L609 521L609 513L611 510L616 507L624 505L631 505L635 505L637 507L637 512L633 517L631 524L631 530L629 537L627 535L622 541L612 542L605 542L605 547L602 547L605 551L607 553L609 556L609 559L599 559L596 567L596 572L587 564L583 561L577 558L573 559L566 562L563 563L557 561L551 559L544 554L539 553L530 548L523 544L522 541L517 540L509 537L506 533L498 527L494 521L492 516L495 515L494 512L496 509L496 506L493 501L493 497L490 492L483 482L476 475L472 468L465 464L464 462L465 456L461 453L457 448L455 441L451 441L446 435L443 430L442 427L438 420L435 412L436 408L430 404L423 402L422 406L423 411L424 418L426 422L432 429L433 432L436 436L438 442L441 445L442 448L447 453L450 463L452 467L454 472L455 477L458 477L461 482L464 486L461 492L457 486L452 480L447 475L443 473L443 465L442 460L438 457L433 452L430 451L425 449L421 443L425 443L427 439L428 434L422 427L417 424L415 418L412 412L408 404L405 395L414 394L423 393L434 400L452 407L467 407L473 407L473 402L486 402L489 406L493 409L498 414L500 419L502 424L506 427L512 430L517 422L523 422L529 426L533 433L535 439L540 445L542 452L544 456L550 459L555 462ZM646 609L643 606L639 602L638 599L635 595L631 591L633 590L637 587L638 582L641 582L643 580L645 582L647 579L650 576L652 572L655 574L659 573L662 571L665 570L664 573L665 577L663 580L662 584L662 589L663 596L661 601L660 606L661 611L660 613L656 610L652 610L647 608ZM706 648L703 645L701 639L703 637L700 633L696 630L693 631L691 634L688 637L686 639L689 645L686 647L683 648L681 642L678 643L676 639L673 638L668 637L668 634L669 631L667 625L670 624L673 628L676 630L678 632L682 631L685 629L690 627L693 624L697 624L701 626L704 628L707 631L710 633L711 641L709 644L706 648ZM795 535L798 536L798 540L792 540L788 541L787 536L795 535ZM-38 54L-33 57L-35 49L-14 51L1 60L-7 65L-19 66L-20 75L-23 77L-30 77L-36 74L-46 71L-48 66L-55 65L-64 66L-68 63L-67 59L-76 61L-72 66L-77 70L-77 30L-58 38L-38 48L-38 54ZM630 586L624 588L622 587L619 585L614 585L612 583L615 579L618 576L622 579L624 580L628 580L630 582L630 586ZM865 660L874 662L881 660L889 662L885 671L886 678L889 684L887 688L887 693L885 697L880 695L877 696L873 695L873 698L873 702L869 701L864 692L863 687L858 679L859 674L863 669L865 660ZM830 612L834 611L835 619L829 620L830 616L830 612ZM111 529L108 527L107 523L108 520L112 519L114 521L116 525L113 528L111 529ZM107 514L103 512L105 511L107 512ZM95 507L91 507L90 504L92 503L95 507ZM576 226L577 232L580 233L585 234L593 235L600 239L606 237L616 240L625 237L632 241L640 244L646 248L652 251L655 255L658 257L662 259L670 267L672 276L673 284L671 290L667 296L666 299L669 303L680 298L688 296L698 291L697 287L699 284L707 284L714 284L716 280L725 272L729 270L740 270L755 270L758 267L761 265L764 261L766 253L772 246L774 248L780 246L783 249L783 263L788 269L789 272L781 277L773 280L765 283L761 289L760 291L760 297L762 302L765 302L765 299L767 301L766 304L761 305L757 305L752 307L748 307L744 308L738 311L749 309L751 311L740 314L736 314L733 315L734 323L728 331L726 328L724 325L725 330L727 332L727 336L725 340L721 348L722 341L718 337L717 328L716 333L718 339L712 338L718 341L718 350L721 354L722 364L717 372L709 375L704 381L701 381L697 385L696 388L687 395L683 400L679 406L678 413L679 420L682 428L685 435L685 440L689 451L689 458L688 462L687 468L684 469L680 468L679 464L676 461L672 453L669 445L668 441L669 434L667 429L661 421L658 419L650 424L645 418L640 416L632 417L625 416L619 417L616 418L617 421L617 425L619 427L615 427L612 429L606 429L600 423L594 424L588 422L583 423L577 425L570 433L562 437L558 442L556 446L556 453L557 458L558 461L550 459L544 456L542 452L540 445L535 439L533 433L529 426L523 422L517 422L512 430L506 427L502 424L500 419L498 414L493 409L489 406L486 402L473 402L473 407L467 407L452 407L434 400L423 395L414 394L405 395L404 390L399 384L395 383L394 380L390 379L387 377L380 376L378 374L377 368L370 358L364 344L360 339L354 330L353 322L349 317L351 309L351 300L348 292L351 283L352 274L353 265L352 251L349 243L347 238L359 240L363 249L365 246L364 238L361 230L383 230L406 230L413 230L437 230L459 230L482 230L505 230L531 230L557 230L573 230L573 226ZM130 149L123 153L119 150L117 145L124 142L128 140L134 141L137 144L130 149ZM34 121L29 122L24 121L19 118L27 116L33 117L34 121ZM-13 82L-9 84L-4 83L2 86L10 87L4 90L-2 88L-5 86L-12 87L-13 82ZM114 9L120 13L123 11L136 12L148 16L155 15L171 18L186 19L192 20L202 18L214 21L222 23L222 60L222 117L230 117L237 120L243 124L249 131L257 125L264 122L269 127L274 131L281 136L286 143L293 154L306 161L307 167L302 172L298 168L291 165L289 156L279 148L275 139L268 138L256 138L247 135L231 125L223 123L210 119L199 120L184 115L175 111L167 113L168 120L164 121L155 123L149 126L140 128L139 123L142 113L151 110L148 107L139 113L133 119L122 126L128 131L121 139L113 143L105 146L103 150L91 155L89 160L80 164L74 164L67 166L59 170L53 173L40 176L47 170L55 167L63 161L72 160L76 156L87 150L88 148L94 144L95 137L99 131L90 134L88 132L84 136L79 131L77 134L74 129L66 133L62 133L61 127L62 124L57 120L47 122L41 117L36 115L36 109L30 105L33 99L39 94L42 89L48 88L53 89L59 85L65 85L71 82L69 78L65 76L71 72L66 72L58 74L55 77L49 74L39 76L27 73L24 69L14 63L25 59L42 54L49 54L48 59L64 59L58 53L48 49L43 44L35 40L25 36L29 31L43 31L52 26L54 21L62 17L69 16L84 11L91 12L103 6L114 9ZM756 602L751 606L754 610L754 616L750 621L753 629L756 629L758 621L756 618L755 610L765 606L764 602L766 598L769 605L775 606L780 611L780 614L787 615L795 614L799 618L805 619L809 616L819 613L828 613L822 616L824 621L830 621L836 626L838 634L841 634L845 636L838 642L838 646L840 650L838 651L834 653L834 658L832 660L837 668L838 671L835 675L827 678L821 680L819 682L813 680L807 679L809 682L809 689L810 695L816 696L811 701L810 705L807 707L802 709L800 712L794 713L790 707L788 697L786 694L783 692L787 687L784 682L783 675L783 668L785 664L786 659L784 657L779 658L774 658L771 659L765 650L761 649L751 650L749 647L747 644L748 640L747 636L746 634L745 629L741 628L743 623L744 615L746 612L749 609L751 604L756 602Z"/>
+      </g>
+                    <g class="dl-star" data-i="0" tabindex="0" role="img" aria-label="EyeSight Hawaii, Honolulu, HI">
+                        <circle cx="90" cy="504" r="24" class="dl-star-hit"/>
+                        <text x="90" y="518" class="dl-star-glyph">&#9733;</text>
+                        <title>EyeSight Hawaii &#8212; Honolulu, HI</title>
+                    </g>
+                    <g class="dl-star" data-i="1" tabindex="0" role="img" aria-label="Pacific Vision Institute of Hawaii, Honolulu, HI">
+                        <circle cx="97" cy="511" r="24" class="dl-star-hit"/>
+                        <text x="97" y="525" class="dl-star-glyph">&#9733;</text>
+                        <title>Pacific Vision Institute of Hawaii &#8212; Honolulu, HI</title>
+                    </g>
+                    <g class="dl-star" data-i="2" tabindex="0" role="img" aria-label="OHSU Casey Eye Institute, Portland, OR">
+                        <circle cx="362" cy="265" r="24" class="dl-star-hit"/>
+                        <text x="362" y="279" class="dl-star-glyph">&#9733;</text>
+                        <title>OHSU Casey Eye Institute &#8212; Portland, OR</title>
+                    </g>
+                    <g class="dl-star" data-i="3" tabindex="0" role="img" aria-label="University of California, Berkeley, Berkeley, CA">
+                        <circle cx="366" cy="341" r="24" class="dl-star-hit"/>
+                        <text x="366" y="355" class="dl-star-glyph">&#9733;</text>
+                        <title>University of California, Berkeley &#8212; Berkeley, CA</title>
+                    </g>
+                    <g class="dl-star" data-i="4" tabindex="0" role="img" aria-label="UCLA Stein Eye Institute, Los Angeles, CA">
+                        <circle cx="395" cy="379" r="24" class="dl-star-hit"/>
+                        <text x="395" y="393" class="dl-star-glyph">&#9733;</text>
+                        <title>UCLA Stein Eye Institute &#8212; Los Angeles, CA</title>
+                    </g>
+                    <g class="dl-star" data-i="5" tabindex="0" role="img" aria-label="UC San Diego Shiley Eye Institute, La Jolla, CA">
+                        <circle cx="404" cy="391" r="24" class="dl-star-hit"/>
+                        <text x="404" y="405" class="dl-star-glyph">&#9733;</text>
+                        <title>UC San Diego Shiley Eye Institute &#8212; La Jolla, CA</title>
+                    </g>
+                    <g class="dl-star" data-i="6" tabindex="0" role="img" aria-label="Cornea Associates of Texas, Dallas, TX">
+                        <circle cx="561" cy="392" r="24" class="dl-star-hit"/>
+                        <text x="561" y="406" class="dl-star-glyph">&#9733;</text>
+                        <title>Cornea Associates of Texas &#8212; Dallas, TX</title>
+                    </g>
+                    <g class="dl-star" data-i="7" tabindex="0" role="img" aria-label="Price Vision Group, Indianapolis, IN">
+                        <circle cx="642" cy="322" r="24" class="dl-star-hit"/>
+                        <text x="642" y="336" class="dl-star-glyph">&#9733;</text>
+                        <title>Price Vision Group &#8212; Indianapolis, IN</title>
+                    </g>
+                    <g class="dl-star" data-i="8" tabindex="0" role="img" aria-label="Edward S. Harkness Eye Institute, Columbia, New York, NY">
+                        <circle cx="736" cy="312" r="24" class="dl-star-hit"/>
+                        <text x="736" y="326" class="dl-star-glyph">&#9733;</text>
+                        <title>Edward S. Harkness Eye Institute, Columbia &#8212; New York, NY</title>
+                    </g>
+                    <g class="dl-star" data-i="9" tabindex="0" role="img" aria-label="Visualiza, Guatemala City, Guatemala">
+                        <circle cx="609" cy="574" r="24" class="dl-star-hit"/>
+                        <text x="609" y="588" class="dl-star-glyph">&#9733;</text>
+                        <title>Visualiza &#8212; Guatemala City, Guatemala</title>
+                    </g>
+                        </svg>
+                    </div>
+                    <ul class="dl-mapcard-list">
+                    <li data-i="0">
+                        <a href="#">EyeSight Hawaii</a>
+                        <span class="dl-place">Honolulu, HI</span>
+                    </li>
+                    <li data-i="1">
+                        <a href="#">Pacific Vision Institute of Hawaii</a>
+                        <span class="dl-place">Honolulu, HI</span>
+                    </li>
+                    <li data-i="2">
+                        <a href="#">OHSU Casey Eye Institute</a>
+                        <span class="dl-place">Portland, OR</span>
+                    </li>
+                    <li data-i="3">
+                        <a href="#">University of California, Berkeley</a>
+                        <span class="dl-place">Berkeley, CA</span>
+                    </li>
+                    <li data-i="4">
+                        <a href="#">UCLA Stein Eye Institute</a>
+                        <span class="dl-place">Los Angeles, CA</span>
+                    </li>
+                    <li data-i="5">
+                        <a href="#">UC San Diego Shiley Eye Institute</a>
+                        <span class="dl-place">La Jolla, CA</span>
+                    </li>
+                    <li data-i="6">
+                        <a href="#">Cornea Associates of Texas</a>
+                        <span class="dl-place">Dallas, TX</span>
+                    </li>
+                    <li data-i="7">
+                        <a href="#">Price Vision Group</a>
+                        <span class="dl-place">Indianapolis, IN</span>
+                    </li>
+                    <li data-i="8">
+                        <a href="#">Edward S. Harkness Eye Institute, Columbia</a>
+                        <span class="dl-place">New York, NY</span>
+                    </li>
+                    <li data-i="9">
+                        <a href="#">Visualiza</a>
+                        <span class="dl-place">Guatemala City, Guatemala</span>
+                    </li>
+                    </ul>
+                </div>
+                <div class="dl-mapcard m-samerica">
+                    <div class="dl-mapcard-head">
+                        <p class="dl-mapcard-name">South America</p>
+                        <p class="dl-mapcard-count">1 site</p>
+                    </div>
+                    <div class="dl-mapcard-map">
+                        <svg viewBox="0 0 451 690" xmlns="http://www.w3.org/2000/svg" role="group" aria-label="Map of South America showing collecting sites">
+      <g class="dl-land">
+        <path d="M155 682L146 682L141 679L136 679L126 679L126 656L129 661L134 668L146 674L159 677L155 682ZM160 351L166 358L169 350L180 350L182 352L199 369L206 370L218 378L228 382L229 386L220 401L229 404L240 405L247 404L256 396L257 387L262 385L267 391L266 399L259 405L252 409L242 419L229 432L227 440L224 450L224 460L222 463L222 469L221 474L233 483L232 490L237 494L237 499L228 512L214 517L195 519L185 518L187 524L185 532L187 537L181 540L171 542L162 538L159 541L160 551L166 554L171 550L174 556L166 559L158 565L157 575L154 580L146 580L138 586L135 593L145 600L154 602L150 611L139 617L133 629L125 633L121 637L124 648L130 653L126 653L117 651L95 650L91 644L91 637L85 637L81 634L81 623L88 619L91 612L90 607L95 599L98 586L97 580L101 578L100 574L96 572L99 568L95 564L93 553L96 551L95 538L97 528L99 519L105 516L102 506L102 497L109 490L109 482L114 472L115 463L112 461L108 444L114 433L113 424L116 415L122 405L129 399L126 395L128 392L128 375L138 370L141 360L140 357L148 348L160 351ZM180 350L169 350L166 358L160 351L148 348L140 357L133 359L129 345L124 334L127 324L122 320L121 313L117 306L123 295L118 287L121 283L119 280L123 275L123 266L123 259L125 256L117 240L124 240L129 240L131 237L139 233L144 229L157 228L156 235L157 239L156 246L166 255L177 256L180 260L187 262L191 265L197 265L202 268L202 274L204 276L204 281L205 293L223 293L222 299L223 303L228 306L230 312L229 320L226 324L227 330L224 332L215 324L206 323L190 326L185 335L185 341L182 352L180 350ZM229 432L242 419L252 409L259 405L266 399L267 391L262 385L257 387L259 382L260 376L260 370L257 368L253 370L250 370L249 366L248 357L246 354L240 351L236 353L226 351L227 337L224 332L227 330L226 324L229 320L230 312L228 306L223 303L222 299L223 293L205 293L202 281L204 276L202 274L202 268L197 265L191 265L187 262L180 260L177 256L166 255L156 246L157 239L156 235L157 228L144 229L139 233L131 237L129 240L124 240L117 240L112 241L108 240L108 225L101 231L92 231L89 225L82 225L84 220L79 214L75 205L78 203L78 199L83 196L83 191L85 187L86 183L96 176L104 174L114 173L118 146L118 141L117 135L113 132L113 125L118 123L120 120L115 119L114 113L133 113L136 110L139 113L140 119L147 123L155 122L156 119L163 117L167 115L168 111L175 108L167 105L165 99L166 92L161 89L170 90L178 92L180 90L187 88L198 85L201 81L200 78L205 78L207 80L206 84L209 86L211 90L208 94L207 102L209 108L210 112L216 117L220 117L224 115L229 113L232 111L237 111L244 112L244 108L245 105L248 106L253 105L258 107L262 109L265 106L269 109L273 109L277 105L280 98L285 88L288 88L291 93L296 111L301 113L301 120L294 128L297 131L314 132L314 142L321 136L333 139L349 146L353 151L352 157L363 154L381 159L395 159L409 167L421 178L428 181L436 181L439 185L443 197L444 203L440 220L436 226L422 240L416 252L409 260L405 268L405 287L403 302L402 309L399 313L397 326L387 339L386 349L378 354L376 360L366 360L351 364L344 368L334 371L323 379L315 389L313 396L315 402L313 412L311 417L305 422L294 440L286 448L280 452L275 462L269 468L266 462L271 457L265 450L258 445L248 439L245 439L235 431L229 432ZM126 656L126 679L136 679L141 679L138 683L130 686L126 686L120 685L113 682L103 681L91 675L82 670L69 658L77 660L90 667L102 671L107 666L110 659L119 655L126 656ZM129 345L133 359L140 357L141 360L138 370L128 375L128 392L126 395L129 399L122 405L116 415L113 424L114 433L108 444L112 461L115 463L114 472L109 482L109 490L102 497L102 506L105 516L99 519L97 528L95 538L96 551L93 553L95 564L99 568L96 572L100 574L101 578L97 580L98 586L95 599L90 607L91 612L88 619L81 623L81 634L85 637L91 637L91 644L95 650L117 651L126 653L118 653L113 655L105 659L103 668L99 669L89 665L78 658L66 653L63 646L66 640L61 634L60 617L64 607L74 599L60 596L69 588L72 571L82 575L87 554L81 551L78 564L72 562L75 548L78 529L83 523L80 513L79 502L83 501L89 485L95 469L99 454L97 439L100 431L99 419L104 406L106 387L109 366L112 344L111 328L109 313L114 311L117 306L121 313L122 320L127 324L124 334L129 345ZM62 132L58 129L54 126L51 127L43 126L41 122L30 116L28 113L32 112L31 107L34 104L38 103L42 97L46 92L42 89L44 83L42 74L44 72L43 63L39 58L40 53L43 54L45 51L43 45L49 44L56 37L59 36L60 32L61 24L67 19L73 19L81 18L88 13L92 10L96 6L100 6L102 9L100 12L94 14L92 19L88 22L85 25L84 33L82 38L87 39L88 44L90 46L91 50L89 54L92 57L94 60L106 59L112 60L119 69L122 68L129 68L134 67L138 69L136 74L134 78L133 85L135 92L138 95L133 102L137 104L139 107L142 117L139 113L136 110L133 113L114 113L115 119L120 120L120 124L113 125L113 132L117 135L118 141L118 146L114 173L109 168L112 157L105 153L99 153L96 152L91 154L84 153L78 143L74 140L71 135L65 131L62 132ZM16 164L21 157L19 152L15 157L10 152L12 150L10 141L13 139L15 133L19 126L18 122L23 120L30 116L39 122L43 126L51 127L54 126L58 129L62 132L64 139L61 146L50 156L39 160L33 169L32 175L26 180L22 175L19 173L15 174L14 171L17 168L16 164ZM195 648L207 642L215 645L220 641L228 646L225 649L212 652L208 648L200 653L195 648ZM277 105L273 109L269 109L267 107L262 109L258 107L261 103L261 98L263 94L259 88L259 81L264 72L267 74L274 76L284 84L285 88L280 98L277 105ZM209 46L215 50L221 57L221 62L225 62L230 67L234 70L232 79L226 82L225 89L229 97L234 102L239 111L232 111L229 113L224 115L221 115L216 117L210 112L209 108L207 102L208 94L211 90L209 86L206 84L207 80L205 78L200 78L193 70L196 68L196 63L202 61L204 60L201 56L202 52L209 46ZM39 58L36 55L34 49L36 47L32 43L27 40L23 41L21 44L17 47L14 49L19 55L16 56L10 58L9 52L5 53L3 49L-1 48L-4 47L-8 47L-8 44L-7 41L-9 39L-9 35L-5 34L-2 38L2 40L5 42L10 41L14 39L20 37L23 34L28 34L33 36L37 38L40 41L44 43L45 51L43 54L40 53L39 58ZM117 306L114 311L109 313L100 308L99 304L80 294L64 283L56 276L52 268L54 265L46 252L37 234L28 214L24 209L21 202L14 195L7 191L10 187L6 177L8 170L16 164L17 168L14 171L15 174L19 173L22 175L26 180L32 175L33 169L39 160L50 156L61 146L64 139L62 132L65 131L71 135L74 140L78 143L84 153L91 154L96 152L99 153L105 153L112 157L106 167L114 173L105 173L96 176L86 183L85 187L83 191L83 196L78 199L78 203L75 205L79 214L84 220L82 225L89 225L92 231L101 231L108 225L108 240L112 241L117 240L125 256L123 259L123 266L123 275L119 280L121 283L118 287L123 295L117 306ZM182 352L185 341L185 335L190 326L206 323L215 324L224 329L227 337L226 351L236 353L240 351L246 354L248 357L249 366L250 370L253 370L257 368L260 370L260 376L259 382L257 387L256 396L247 404L240 405L229 404L220 401L229 386L228 382L218 378L206 370L199 369L182 352ZM234 70L245 72L253 70L264 72L259 81L259 88L263 94L261 98L261 103L258 107L253 105L248 106L245 105L244 108L245 110L239 111L234 102L232 97L225 89L227 84L232 79L234 70ZM191 22L196 21L198 29L190 30L191 26L191 22ZM229 432L235 431L245 439L248 439L258 445L265 450L271 457L266 462L269 468L265 474L254 480L247 478L242 479L234 474L227 475L222 469L222 463L224 460L224 450L227 440L229 432ZM100 12L94 16L98 20L97 26L93 31L97 39L101 39L103 31L100 28L100 20L111 16L110 12L113 8L117 15L123 16L129 21L130 24L138 25L148 24L154 28L161 29L166 26L178 23L189 23L181 26L184 31L192 31L199 36L200 44L205 44L209 46L202 52L201 56L204 60L202 61L196 63L196 68L193 70L200 78L201 81L198 85L187 88L180 90L178 92L170 90L163 89L166 92L165 99L167 105L175 106L168 111L167 115L163 117L156 119L155 122L147 123L142 117L139 107L137 104L133 102L138 97L135 92L133 85L134 78L136 74L138 69L134 67L129 68L122 68L119 69L112 60L106 59L94 60L92 57L89 54L91 50L90 46L88 44L87 39L82 38L84 33L85 25L88 22L92 19L94 14L100 12Z"/>
+      </g>
+                    <g class="dl-star" data-i="0" tabindex="0" role="img" aria-label="Laboratorio de Enfermedades Autoinmunes Oculares y Sistemicas, Santiago, Chile">
+                        <circle cx="106" cy="464" r="24" class="dl-star-hit"/>
+                        <text x="106" y="478" class="dl-star-glyph">&#9733;</text>
+                        <title>Laboratorio de Enfermedades Autoinmunes Oculares y Sist&eacute;micas &#8212; Santiago, Chile</title>
+                    </g>
+                        </svg>
+                    </div>
+                    <ul class="dl-mapcard-list">
+                    <li data-i="0">
+                        <a href="#">Laboratorio de Enfermedades Autoinmunes Oculares y Sist&eacute;micas</a>
+                        <span class="dl-place">Santiago, Chile</span>
+                    </li>
+                    </ul>
+                </div>
+                <div class="dl-mapcard m-oceania">
+                    <div class="dl-mapcard-head">
+                        <p class="dl-mapcard-name">Oceania</p>
+                        <p class="dl-mapcard-count">2 sites</p>
+                    </div>
+                    <div class="dl-mapcard-map">
+                        <svg viewBox="0 0 634 440" xmlns="http://www.w3.org/2000/svg" role="group" aria-label="Map of Oceania showing collecting sites">
+      <g class="dl-land">
+        <path d="M321 368L330 371L335 370L342 368L347 369L348 381L345 384L344 392L340 389L334 396L327 395L321 387L320 380L315 372L315 367L321 368ZM304 98L307 105L313 102L316 106L321 110L320 114L322 123L323 128L325 129L328 138L327 143L330 150L340 155L346 160L352 164L351 166L356 173L360 183L363 181L367 186L369 184L371 195L377 201L381 205L388 213L391 221L391 226L391 233L395 241L394 250L393 255L390 264L391 269L389 276L385 286L378 290L375 298L372 303L369 312L365 317L363 324L362 331L362 334L357 338L347 338L339 342L335 346L329 350L322 346L316 344L317 339L313 341L305 348L297 345L292 344L286 343L278 340L272 334L270 326L268 321L264 317L255 316L258 311L256 304L251 311L243 313L248 307L249 301L253 296L252 289L245 298L239 301L236 309L228 305L229 299L223 292L218 288L220 286L208 280L202 280L193 275L177 276L165 279L155 283L146 282L137 287L129 290L127 295L124 299L116 299L110 300L102 298L96 299L90 300L84 305L77 307L73 311L66 310L60 310L50 304L46 302L46 296L50 295L52 293L51 289L53 282L52 276L47 266L45 260L46 255L42 248L38 241L37 233L32 225L30 221L34 225L31 216L36 219L38 223L38 218L34 210L33 207L31 204L32 198L34 196L35 191L34 185L38 178L38 185L42 178L49 175L54 171L61 167L65 166L67 167L75 164L80 163L81 160L89 160L98 157L103 152L106 147L111 142L111 138L112 133L118 124L122 133L126 131L122 126L125 121L129 123L130 116L135 111L137 107L142 105L146 103L150 100L155 98L161 103L166 109L172 109L178 110L176 104L180 96L184 94L183 91L187 85L192 82L197 83L205 81L204 76L198 73L203 71L209 74L213 78L221 80L224 79L229 82L235 80L238 80L240 79L244 84L242 89L238 93L235 93L236 97L234 102L230 107L231 110L238 116L245 119L250 122L257 128L264 131L265 134L274 137L280 134L282 128L283 124L285 118L287 110L286 106L287 103L286 97L287 89L289 87L287 84L289 79L291 73L295 67L297 72L298 78L300 79L301 83L304 88L304 94L304 98ZM620 133L623 136L621 142L616 143L611 142L610 137L613 134L617 135L620 133ZM629 128L623 130L622 126L626 124L629 124L634 121L634 126L629 128ZM97 62L93 63L81 56L90 54L94 57L98 60ZM131 61L123 64L123 59L127 53L136 49L137 54L131 61ZM72 41L75 44L80 43L83 47L72 49L66 50L61 50L64 45L69 44L72 41ZM117 41L116 46L102 49L90 48L90 44L97 42L103 45L109 45L117 41ZM-12 28L5 29L7 25L24 29L27 36L41 38L52 44L41 48L31 43L23 44L14 43L5 41L-5 37L-12 36L-16 38L-32 34L-34 29L-42 29L-36 19L-25 20L-17 23L-14 24L-12 28ZM224 22L219 29L219 21L220 18L222 14L224 17L224 22ZM156 -5L153 -2L147 -4L145 -8L154 -9L156 -5ZM186 -9L189 -1L181 -6L174 -6L168 -6L162 -6L164 -12L176 -12L186 -9ZM219 -28L221 -12L231 -6L238 -17L249 -23L257 -23L265 -19L271 -16L281 -14L281 19L281 51L273 43L264 41L262 44L250 44L254 36L260 33L257 22L253 14L236 5L228 5L214 -5L212 0L208 1L206 -3L206 -7L199 -12L209 -15L216 -15L215 -18L201 -18L198 -24L190 -26L186 -31L198 -33L203 -36L217 -32L219 -28ZM138 -54L131 -44L124 -42L115 -44L100 -44L92 -42L91 -35L99 -26L104 -30L121 -34L120 -29L116 -31L112 -25L104 -21L113 -8L111 -5L119 7L119 13L114 16L111 13L115 5L106 9L104 6L105 2L99 -4L99 -14L93 -11L94 1L95 15L89 17L85 14L87 5L86 -5L82 -5L79 -12L83 -19L84 -26L89 -42L91 -46L99 -53L106 -50L117 -49L128 -49L137 -56L138 -54ZM71 -58L82 -49L71 -48L68 -41L68 -32L59 -25L59 -15L56 0L54 -3L44 1L40 -5L34 -6L30 -9L19 -5L15 -10L10 -10L2 -11L1 -24L-4 -27L-8 -35L-9 -44L-8 -53L-3 -60L-2 -53L5 -48L11 -50L16 -49L22 -54L26 -55L34 -52L42 -54L47 -68L50 -72L53 -83L64 -83L71 -81L66 -72L73 -63L71 -58ZM506 171L513 177L518 182L514 184L509 181L503 177L497 171L491 164L490 161L494 161L499 165L503 168L506 171ZM571 369L573 373L580 369L582 373L582 378L579 382L573 390L568 394L572 399L565 399L557 402L555 409L549 419L542 424L538 426L529 426L524 423L514 422L512 419L517 411L528 401L534 399L541 396L549 390L554 385L558 378L561 375L563 370L569 365L571 369ZM586 322L592 332L592 325L596 328L598 336L605 339L611 340L616 336L621 337L619 346L616 352L609 351L607 354L608 359L603 366L598 373L591 377L590 374L586 373L591 365L588 359L578 355L579 351L585 348L587 340L586 334L583 327L579 321L571 312L568 305L571 305L576 310L583 313L586 322ZM416 28L413 29L409 25L405 19L403 11L406 13L408 16L413 22L417 25L416 28ZM380 15L376 16L374 18L369 21L365 23L360 23L352 20L347 17L348 14L356 16L361 15L362 10L365 15L370 15L372 11L377 8L376 2L382 1L384 3L384 9L380 15ZM337 34L345 40L351 51L356 51L356 55L363 57L360 59L370 63L369 66L363 67L361 64L353 63L344 61L337 55L331 49L327 41L315 36L307 39L302 42L303 50L296 53L291 52L281 51L281 19L281 -14L297 -7L313 -1L320 4L325 9L326 15L341 21L343 26L335 27L337 34ZM391 5L388 8L386 2L384 -2L380 -5L375 -10L369 -13L371 -15L376 -12L379 -10L383 -8L386 -3L390 0L391 5ZM472 65L475 68L469 68L465 62L471 64ZM461 59L457 59L452 58L450 56L450 52L456 54L459 56L461 59ZM468 56L460 49L458 43L465 51L468 56ZM452 43L445 41L440 38L437 34L442 36L450 40L452 43ZM431 33L425 32L421 28L427 30L431 33ZM136 49L137 47L145 44L151 44L154 43L157 44L154 47L144 51L137 54L136 49ZM524 125L521 126L518 122L524 125ZM518 109L519 117L517 116L513 114L513 106L518 109Z"/>
+      </g>
+                    <g class="dl-star" data-i="0" tabindex="0" role="img" aria-label="Sydney Eye Hospital, Sydney, Australia">
+                        <circle cx="374" cy="299" r="24" class="dl-star-hit"/>
+                        <text x="374" y="313" class="dl-star-glyph">&#9733;</text>
+                        <title>Sydney Eye Hospital &#8212; Sydney, Australia</title>
+                    </g>
+                    <g class="dl-star" data-i="1" tabindex="0" role="img" aria-label="National Eye Centre, Port Vila, Vanuatu">
+                        <circle cx="529" cy="137" r="24" class="dl-star-hit"/>
+                        <text x="529" y="151" class="dl-star-glyph">&#9733;</text>
+                        <title>National Eye Centre &#8212; Port Vila, Vanuatu</title>
+                    </g>
+                        </svg>
+                    </div>
+                    <ul class="dl-mapcard-list">
+                    <li data-i="0">
+                        <a href="#">Sydney Eye Hospital</a>
+                        <span class="dl-place">Sydney, Australia</span>
+                    </li>
+                    <li data-i="1">
+                        <a href="#">National Eye Centre</a>
+                        <span class="dl-place">Port Vila, Vanuatu</span>
+                    </li>
+                    </ul>
+                </div>            </div>
+            <p class="dl-src-foot">
+                <a class="dl-src-link" href="/content/international-programs">See all Proctor international collaborators</a>
+            </p>
+        </div>
+    </section>
+</div>
+
+    <!-- 6. EXIT CTA -->
+<div class="doan-lab">
+    <section class="dl-band dl-exit-band">
+        <div class="dl-inner">
+            <div class="dl-exit">
+                <span class="dl-exit-mark" aria-hidden="true">&#8599;</span>
+                <div>
+                    <p class="dl-exit-head">You are about to leave this site</p>
+                    <p class="dl-exit-text">
+                        The lab publishes its own site, with current projects, team members, and protocols. This button takes you off proctor.ucsf.edu and opens <strong>doanlab.ucsf.edu</strong> in a new tab.
+                    </p>
+                    <a class="dl-btn-lg" href="https://doanlab.ucsf.edu/">Go to doanlab.ucsf.edu &#8599;</a>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+</div>
+<script>
+/* ===== 5. SAMPLE SOURCES ===== */
+
+(function () {
+  var VISIBLE = 5;
+  var cards = document.querySelectorAll('.doan-lab .dl-mapcard');
+  if (!cards.length) { return; }
+
+  Array.prototype.forEach.call(cards, function (card) {
+    var stars = card.querySelectorAll('.dl-star');
+    var ul = card.querySelector('.dl-mapcard-list');
+    if (!ul) { return; }
+    var items = ul.querySelectorAll('li');
+
+    function link(i, on) {
+      var k;
+      for (k = 0; k < stars.length; k++) {
+        if (stars[k].getAttribute('data-i') === String(i)) {
+          if (on) { stars[k].classList.add('is-on'); } else { stars[k].classList.remove('is-on'); }
+        }
+      }
+      for (k = 0; k < items.length; k++) {
+        if (items[k].getAttribute('data-i') === String(i)) {
+          if (on) { items[k].classList.add('is-on'); } else { items[k].classList.remove('is-on'); }
+        }
+      }
+    }
+
+    function wire(nodes) {
+      Array.prototype.forEach.call(nodes, function (n) {
+        var i = n.getAttribute('data-i');
+        n.addEventListener('mouseenter', function () { link(i, true); });
+        n.addEventListener('mouseleave', function () { link(i, false); });
+        n.addEventListener('focus', function () { link(i, true); }, true);
+        n.addEventListener('blur', function () { link(i, false); }, true);
+      });
+    }
+    wire(stars);
+    wire(items);
+
+    if (items.length > VISIBLE) {
+      for (var i = VISIBLE; i < items.length; i++) { items[i].classList.add('is-hidden'); }
+      var foot = document.createElement('div');
+      foot.className = 'dl-mapcard-foot';
+      var btn = document.createElement('button');
+      btn.className = 'dl-more';
+      btn.setAttribute('type', 'button');
+      btn.setAttribute('aria-expanded', 'false');
+      btn.textContent = 'Show all ' + items.length + ' sites';
+      btn.addEventListener('click', function () {
+        var open = btn.getAttribute('aria-expanded') === 'true';
+        for (var j = VISIBLE; j < items.length; j++) {
+          if (open) { items[j].classList.add('is-hidden'); }
+          else { items[j].classList.remove('is-hidden'); }
+        }
+        btn.setAttribute('aria-expanded', open ? 'false' : 'true');
+        btn.textContent = open ? ('Show all ' + items.length + ' sites') : 'Show fewer';
+      });
+      foot.appendChild(btn);
+      card.appendChild(foot);
+    }
+  });
+})();
+
+</script>
+
+<script>
+(function () {
+  "use strict";
+
+  /* Hosts that count as "inside our site" — no dialog for these. */
+  var INTERNAL_HOSTS = ["proctor.ucsf.edu"];
+
+  /* This file's own name, so the parent can find the right iframe. */
+  var FRAME_ID = "doan-lab";
+
+  function isInternal(host) {
+    for (var i = 0; i < INTERNAL_HOSTS.length; i++) {
+      if (host === INTERNAL_HOSTS[i]) { return true; }
+      if (host.length > INTERNAL_HOSTS[i].length &&
+          host.slice(-(INTERNAL_HOSTS[i].length + 1)) === "." + INTERNAL_HOSTS[i]) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  var framed = (window.parent !== window);
+  var last = 0;
+
+  /* Measure the CONTENT element, never the document or body — those report
+     the viewport height when content is shorter, which makes the iframe
+     grow a little on every message, forever. */
+  function contentEl() {
+    return document.querySelector(".doan-lab, .proctor-intl") ||
+           document.body.firstElementChild;
+  }
+
+  function sendHeight() {
+    if (!framed) { return; }
+    var el = contentEl();
+    if (!el) { return; }
+    var h = Math.ceil(el.getBoundingClientRect().height);
+    if (h < 1) { return; }
+    if (Math.abs(h - last) < 2) { return; }   /* ignore sub-pixel jitter */
+    last = h;
+    try { window.parent.postMessage({ dlFrame: FRAME_ID, height: h }, "*"); } catch (e) {}
+  }
+
+  window.addEventListener("load", sendHeight);
+  window.addEventListener("resize", function () { last = 0; sendHeight(); });
+  document.addEventListener("click", function () { window.setTimeout(sendHeight, 60); });
+  if (window.ResizeObserver) {
+    var el = contentEl();
+    if (el) { new ResizeObserver(sendHeight).observe(el); }
+  }
+  sendHeight();
+
+  /* ---- hand external links up to the parent page ---- */
+  document.addEventListener("click", function (e) {
+    if (!framed) { return; }
+    var a = e.target.closest ? e.target.closest("a") : null;
+    if (!a) { return; }
+    var href = a.getAttribute("href") || "";
+    if (href.indexOf("http") !== 0) { return; }
+    var host;
+    try { host = new URL(href, window.location.href).hostname; }
+    catch (err) { return; }
+    if (isInternal(host)) { return; }
+    if (e.metaKey || e.ctrlKey || e.shiftKey || e.button !== 0) { return; }
+    e.preventDefault();
+    try { window.parent.postMessage({ plLeave: a.href }, "*"); } catch (err2) {}
+  });
+})();
+</script>
+
+</body>
+</html>
